@@ -1,0 +1,8 @@
+drone.png
+size:64,32
+filter:Linear,Linear
+pma:true
+Layer 1
+bounds:2,2,16,16
+Layer 2
+bounds:20,2,16,16
