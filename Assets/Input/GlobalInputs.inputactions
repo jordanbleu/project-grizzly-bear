@@ -1,41 +1,33 @@
 {
-    "name": "InputActions",
+    "name": "GlobalInputs",
     "maps": [
         {
             "name": "Player",
-            "id": "8823f0e3-2eb7-486e-85cb-6e33f1ff6b85",
+            "id": "e848f05a-98ce-4d78-975d-7aff67dfdc53",
             "actions": [
                 {
                     "name": "Jump",
                     "type": "Button",
-                    "id": "11328212-c841-4357-9d47-664fa058c9b1",
+                    "id": "d158e288-1c98-41d9-bc55-02dffbf8ab78",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Hold"
+                    "interactions": ""
                 },
                 {
                     "name": "Move",
                     "type": "Value",
-                    "id": "fceb9981-9642-4753-a64d-5a4a81b2c35b",
+                    "id": "6746dbf6-b6bc-4f22-9057-e6d6a49cfa5d",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": "Hold"
-                },
-                {
-                    "name": "Pickup",
-                    "type": "Button",
-                    "id": "dda680c9-8486-4389-987f-3c86c258a144",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Hold"
+                    "interactions": ""
                 }
             ],
             "bindings": [
                 {
                     "name": "",
-                    "id": "c4e04cdd-6b0a-4bbd-80b4-52d3669b0745",
+                    "id": "50d70003-045e-4bdc-b8c2-71ceff15d8d2",
                     "path": "<Keyboard>/space",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Jump",
@@ -44,9 +36,9 @@
                 },
                 {
                     "name": "",
-                    "id": "9325ead9-75f9-40ca-bebd-eda6e6cd1d4e",
+                    "id": "dd473509-f168-4d8c-811a-abc327464931",
                     "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Jump",
@@ -55,7 +47,7 @@
                 },
                 {
                     "name": "WASD",
-                    "id": "f2d0b556-f5c1-44af-902a-15bf0b09383f",
+                    "id": "ab4f9212-8411-415e-ade8-f2cc43904c30",
                     "path": "2DVector",
                     "interactions": "",
                     "processors": "",
@@ -66,7 +58,7 @@
                 },
                 {
                     "name": "up",
-                    "id": "4c0a4920-eb27-42d3-a78b-d8a57362dc3d",
+                    "id": "75b68e8d-dcb8-4c9f-bfd6-ac5805c7b5a3",
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
@@ -77,7 +69,7 @@
                 },
                 {
                     "name": "down",
-                    "id": "9753548b-1987-44a0-84fa-7ce809871e48",
+                    "id": "95eb5737-2ce9-4e86-a177-c15310a3473c",
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
@@ -88,7 +80,7 @@
                 },
                 {
                     "name": "left",
-                    "id": "7d96e9bc-6c9c-4c82-b485-22e1e82acd42",
+                    "id": "1f2d0454-ea6c-4f45-aa21-c15920f26c48",
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
@@ -99,7 +91,7 @@
                 },
                 {
                     "name": "right",
-                    "id": "60ca928f-d147-4da2-9245-1aec8354a5f5",
+                    "id": "fd9ad41b-49b1-480f-9502-3eece6ce859a",
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
@@ -107,39 +99,6 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "68726c08-a904-439d-a604-c74a3d4fd304",
-                    "path": "<Gamepad>/leftStick",
-                    "interactions": "",
-                    "processors": "NormalizeVector2",
-                    "groups": "Gamepad",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "d7ad6e32-88ae-403b-9f8b-57af3316588a",
-                    "path": "<Gamepad>/buttonWest",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Pickup",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "15787f36-6cfb-4b39-98db-b2477b13fc51",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Pickup",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 }
             ]
         }
@@ -148,7 +107,13 @@
         {
             "name": "Keyboard",
             "bindingGroup": "Keyboard",
-            "devices": []
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
         },
         {
             "name": "Gamepad",
@@ -156,7 +121,7 @@
             "devices": [
                 {
                     "devicePath": "<Gamepad>",
-                    "isOptional": false,
+                    "isOptional": true,
                     "isOR": false
                 }
             ]
