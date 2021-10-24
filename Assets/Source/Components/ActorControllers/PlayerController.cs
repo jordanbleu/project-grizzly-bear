@@ -1,5 +1,6 @@
-﻿
+﻿using Assets.Source.Components.Animators;
 using Assets.Source.Math;
+using Spine.Unity;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -18,16 +19,36 @@ namespace Assets.Source.Components.ActorControllers
         [SerializeField]
         private Rigidbody2D rigidBody;
 
-        // How fast the player is moving themselves
-        private float horizontalInput = 0f;
         [SerializeField]
+        private PlayerAnimator playerAnimator;
+
+        // The horizontal input axis from the player
+        private float horizontalInput = 0f;
+        // How fast the player is moving
         private float horizontalSpeed = 0f;
+
 
         private void Update()
         {
+            HandleMovement();
+            UpdateAnimations();
+        }
+
+        private void UpdateAnimations()
+        {
+            if (horizontalInput != 0) { 
+                playerAnimator.Direction = horizontalInput;
+            }
+
+            playerAnimator.HorizontalSpeed = horizontalInput;
+            
+        }
+
+        private void HandleMovement()
+        {
             // Accelerate
             horizontalSpeed += (horizontalInput * HORIZONTAL_ACCELERATION);
-            
+
             // Decelerate
             horizontalSpeed = horizontalSpeed.Stabilize(HORIZONTAL_DECELERATION, 0);
 
