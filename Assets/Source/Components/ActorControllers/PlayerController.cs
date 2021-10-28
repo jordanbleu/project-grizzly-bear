@@ -1,4 +1,6 @@
-﻿using Assets.Source.Components.Animators;
+﻿using Assets.Source.Components.ActorControllers.Interfaces;
+using Assets.Source.Components.Animators;
+using Assets.Source.Components.Physics;
 using Assets.Source.Math;
 using Spine.Unity;
 using UnityEngine;
@@ -9,7 +11,7 @@ namespace Assets.Source.Components.ActorControllers
     /// <summary>
     /// The player controller takes controls from user input and applies them to the character
     /// </summary>
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : MonoBehaviour, IActorController
     {
         private const int JUMP_FORCE = 10;
         private const float HORIZONTAL_ACCELERATION = 1;
@@ -22,11 +24,13 @@ namespace Assets.Source.Components.ActorControllers
         [SerializeField]
         private PlayerAnimator playerAnimator;
 
-        // The horizontal input axis from the player
-        private float horizontalInput = 0f;
-        // How fast the player is moving
-        private float horizontalSpeed = 0f;
+        [SerializeField]
+        private GroundDetector groundDetector;
 
+        /// <summary> The horizontal input axis from the player </summary>
+        public float HorizontalInput { get; set; } = 0f;
+
+        public float HorizontalSpeed { get; set; } = 0f;
 
         private void Update()
         {
@@ -34,26 +38,64 @@ namespace Assets.Source.Components.ActorControllers
             UpdateAnimations();
         }
 
+        // Apply animations
         private void UpdateAnimations()
         {
-            if (horizontalInput != 0) { 
-                playerAnimator.Direction = horizontalInput;
+            if (HorizontalInput != 0) { 
+                playerAnimator.Direction = HorizontalInput;
             }
 
-            playerAnimator.HorizontalSpeed = horizontalInput;
-            
+            playerAnimator.HorizontalSpeed = HorizontalInput;
+
+            // todo:  The below logic works but we need a better way to handle collider rotation
+
+            //
+            // Figure out which slope to use based on the ground normal
+            //
+            // ...on a slope going upwards
+            if (groundDetector.GroundNormal.x > 0)
+            {
+                // facing left
+                if (playerAnimator.IsFlipped)
+                {
+                    //playerAnimator.SlopeAngle = PlayerAnimator.Slope.Down;
+                }
+                // facing right
+                else
+                {
+                    //playerAnimator.SlopeAngle = PlayerAnimator.Slope.Up;
+                }
+            }
+            // ...on a slope going downwards
+            else if (groundDetector.GroundNormal.x < 0)
+            {
+                // facing left
+                if (playerAnimator.IsFlipped)
+                {
+                    //playerAnimator.SlopeAngle = PlayerAnimator.Slope.Up;
+                }
+                // facing right
+                else
+                {
+                    //playerAnimator.SlopeAngle = PlayerAnimator.Slope.Down;
+                }
+            }
+            else {
+                playerAnimator.SlopeAngle = PlayerAnimator.Slope.Flat;
+            }
         }
 
+        // Updates the user speed
         private void HandleMovement()
         {
             // Accelerate
-            horizontalSpeed += (horizontalInput * HORIZONTAL_ACCELERATION);
+            HorizontalSpeed += (HorizontalInput * HORIZONTAL_ACCELERATION);
 
             // Decelerate
-            horizontalSpeed = horizontalSpeed.Stabilize(HORIZONTAL_DECELERATION, 0);
+            HorizontalSpeed = HorizontalSpeed.Stabilize(HORIZONTAL_DECELERATION, 0);
 
             // Clamp Max Speed
-            horizontalSpeed = Mathf.Clamp(horizontalSpeed, -MAX_SPEED, MAX_SPEED);
+            HorizontalSpeed = Mathf.Clamp(HorizontalSpeed, -MAX_SPEED, MAX_SPEED);
 
             rigidBody.velocity = CombineVelocities();
         }
@@ -61,18 +103,21 @@ namespace Assets.Source.Components.ActorControllers
         // Combines all velocities into one final velocity
         private Vector2 CombineVelocities()
         {
-            return new Vector2(horizontalSpeed, rigidBody.velocity.y);
+            return new Vector2(HorizontalSpeed, rigidBody.velocity.y);
         }
+
 
         #region Input Callbacks - invoked via PlayerInput component.
         private void OnJump(InputValue inputValue)
         {
-            rigidBody.AddForce(new Vector2(0, JUMP_FORCE), ForceMode2D.Impulse);            
+            if (groundDetector.IsGrounded) { 
+                rigidBody.AddForce(new Vector2(0, JUMP_FORCE), ForceMode2D.Impulse);            
+            }
         }
 
         private void OnMove(InputValue inputValue)
         {
-            horizontalInput = inputValue.Get<Vector2>().x;
+            HorizontalInput = inputValue.Get<Vector2>().x;
         }
         #endregion
     }

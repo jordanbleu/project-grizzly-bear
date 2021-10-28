@@ -19,6 +19,11 @@ namespace Assets.Source.Components.Animators
 
         public float Direction { get; set; } = 1;
 
+        /// <summary>
+        /// Returns true if the skeleton is flipped to the left
+        /// </summary>
+        public bool IsFlipped { get; private set; }
+
         public Slope SlopeAngle { get; set; } = Slope.Flat;
 
         private void Update()
@@ -26,7 +31,8 @@ namespace Assets.Source.Components.Animators
             HandleFlip();
 
             animator.SetFloat("horizontal-speed", HorizontalSpeed);
-            animator.SetInteger("slope", (int)SlopeAngle);
+            // Has to be a float because blend trees don't work well with ints
+            animator.SetFloat("slope", (float)SlopeAngle); 
         }
 
         private void HandleFlip()
@@ -40,6 +46,8 @@ namespace Assets.Source.Components.Animators
             else {
                 skeleton.Skeleton.ScaleX = -xScale;
             }
+
+            IsFlipped = (skeleton.Skeleton.ScaleX < 0);
         }
 
         public enum Slope { 
