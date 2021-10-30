@@ -15,6 +15,8 @@ namespace Assets.Source.Components.Animators
 
         public float HorizontalSpeed { get; set; }
 
+        public bool IsHoldingItem { get; set; }
+
         public float Direction { get; set; } = 1;
 
         /// <summary>
@@ -22,12 +24,17 @@ namespace Assets.Source.Components.Animators
         /// </summary>
         public bool IsFlipped { get; private set; }
 
+        public bool IsGrounded { get; set; }
+
+        public void Jump() => animator.SetTrigger("jump");
 
         private void Update()
         {
             HandleFlip();
-
             animator.SetFloat("horizontal-speed", HorizontalSpeed);
+            // we use floats as a hack so we can use blend trees in our animator controller, which simplifies the animation logic a ton
+            animator.SetFloat("is-holding-item", BoolToFloat(IsHoldingItem));
+            animator.SetBool("is-grounded", IsGrounded);
         }
 
         private void HandleFlip()
@@ -44,6 +51,8 @@ namespace Assets.Source.Components.Animators
 
             IsFlipped = (skeleton.Skeleton.ScaleX < 0);
         }
+
+        private float BoolToFloat(bool val) => val ? 1 : 0;
 
     }
 }

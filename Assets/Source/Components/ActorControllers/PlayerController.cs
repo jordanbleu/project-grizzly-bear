@@ -48,6 +48,8 @@ namespace Assets.Source.Components.ActorControllers
         // Apply animations
         private void UpdateAnimations()
         {
+            playerAnimator.IsGrounded = groundDetector.IsGrounded;
+
             if (HorizontalInput != 0) { 
                 playerAnimator.Direction = HorizontalInput;
             }
@@ -120,7 +122,8 @@ namespace Assets.Source.Components.ActorControllers
         private void OnJump(InputValue inputValue)
         {
             if (groundDetector.IsGrounded) { 
-                rigidBody.AddForce(new Vector2(0, JUMP_FORCE), ForceMode2D.Impulse);            
+                rigidBody.AddForce(new Vector2(0, JUMP_FORCE), ForceMode2D.Impulse);
+                playerAnimator.Jump();
             }
         }
 
