@@ -27,6 +27,13 @@ namespace Assets.Source.Components.ActorControllers
         [SerializeField]
         private GroundDetector groundDetector;
 
+        [SerializeField]
+        private SkeletonMecanim skeleton;
+
+
+        [SerializeField]
+        private CapsuleCollider2D attachedCollider;
+
         /// <summary> The horizontal input axis from the player </summary>
         public float HorizontalInput { get; set; } = 0f;
 
@@ -47,42 +54,44 @@ namespace Assets.Source.Components.ActorControllers
 
             playerAnimator.HorizontalSpeed = HorizontalInput;
 
-            // todo:  The below logic works but we need a better way to handle collider rotation
+            var skeletonRot = skeleton.gameObject.transform.rotation;
 
-            //
-            // Figure out which slope to use based on the ground normal
-            //
-            // ...on a slope going upwards
             if (groundDetector.GroundNormal.x > 0)
             {
-                // facing left
+                // on a slope going down facing left
                 if (playerAnimator.IsFlipped)
                 {
-                    //playerAnimator.SlopeAngle = PlayerAnimator.Slope.Down;
+                    attachedCollider.direction = CapsuleDirection2D.Horizontal;
+                    skeleton.gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, -45));
                 }
-                // facing right
+                // on a slope going down facing right
                 else
                 {
-                    //playerAnimator.SlopeAngle = PlayerAnimator.Slope.Up;
+                    attachedCollider.direction = CapsuleDirection2D.Horizontal;
+                    skeleton.gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, -45));
                 }
             }
-            // ...on a slope going downwards
             else if (groundDetector.GroundNormal.x < 0)
             {
-                // facing left
+                // slope going upwards, facing left
                 if (playerAnimator.IsFlipped)
                 {
-                    //playerAnimator.SlopeAngle = PlayerAnimator.Slope.Up;
+                    attachedCollider.direction = CapsuleDirection2D.Horizontal;
+                    skeleton.gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 45));
                 }
-                // facing right
+                // slope going upwards facing right
                 else
                 {
-                    //playerAnimator.SlopeAngle = PlayerAnimator.Slope.Down;
+                    attachedCollider.direction = CapsuleDirection2D.Horizontal;
+                    skeleton.gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 45));
                 }
             }
-            else {
-                playerAnimator.SlopeAngle = PlayerAnimator.Slope.Flat;
+            else
+            {
+                attachedCollider.direction = CapsuleDirection2D.Vertical;
+                skeleton.gameObject.transform.rotation = new Quaternion(0, 0, 0, skeletonRot.w);
             }
+            
         }
 
         // Updates the user speed

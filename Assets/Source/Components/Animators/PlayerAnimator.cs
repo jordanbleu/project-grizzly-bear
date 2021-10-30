@@ -6,8 +6,6 @@ namespace Assets.Source.Components.Animators
 
     public class PlayerAnimator : MonoBehaviour
     {
-
-
         [SerializeField]
         private SkeletonMecanim skeleton;
 
@@ -24,15 +22,12 @@ namespace Assets.Source.Components.Animators
         /// </summary>
         public bool IsFlipped { get; private set; }
 
-        public Slope SlopeAngle { get; set; } = Slope.Flat;
 
         private void Update()
         {
             HandleFlip();
 
             animator.SetFloat("horizontal-speed", HorizontalSpeed);
-            // Has to be a float because blend trees don't work well with ints
-            animator.SetFloat("slope", (float)SlopeAngle); 
         }
 
         private void HandleFlip()
@@ -48,12 +43,6 @@ namespace Assets.Source.Components.Animators
             }
 
             IsFlipped = (skeleton.Skeleton.ScaleX < 0);
-        }
-
-        public enum Slope { 
-            Flat = 0,
-            Up = -1,
-            Down = 1            
         }
 
     }

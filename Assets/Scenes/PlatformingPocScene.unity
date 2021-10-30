@@ -1401,6 +1401,8 @@ MonoBehaviour:
   rigidBody: {fileID: 2070466015}
   playerAnimator: {fileID: 2070466017}
   groundDetector: {fileID: 2070466020}
+  skeleton: {fileID: 1334700118}
+  attachedCollider: {fileID: 2070466016}
 --- !u!114 &2070466020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1414,7 +1416,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   feetPosition: {x: 0, y: -1.37}
-  radius: 0.35
+  radius: 0.5
   groundLayers:
     serializedVersion: 2
     m_Bits: 4294967295

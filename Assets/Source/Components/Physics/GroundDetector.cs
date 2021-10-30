@@ -1,10 +1,5 @@
 ﻿using Assets.Editor.Attributes;
 using Assets.Source.Math;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Assets.Source.Components.Physics
@@ -17,7 +12,6 @@ namespace Assets.Source.Components.Physics
         [SerializeField]
         [Tooltip("This is the position of the actor's 'feet'.  This should be the point at which the ground hits the bottom of the actor's body.")]
         private Vector2 feetPosition = Vector2.zero;
-        
 
         [SerializeField]
         [Tooltip("How big of an area to check for feet.")]
@@ -26,7 +20,6 @@ namespace Assets.Source.Components.Physics
         [SerializeField]
         [Tooltip("Which layers are considered ground.")]
         private LayerMask groundLayers;
-        
 
         [SerializeField]
         [ReadOnly]
@@ -38,6 +31,7 @@ namespace Assets.Source.Components.Physics
         private Vector2 groundNormal = Vector2.zero;
         public Vector2 GroundNormal { get => groundNormal; }
 
+
         private void Update()
         {
             // Do it this way so we only run this, at most, once per frame.
@@ -47,15 +41,10 @@ namespace Assets.Source.Components.Physics
 
         private bool CheckIfGrounded()
         {
-            // Represents the bottom area of the collider, which we call its "feet"
             Collider2D[] colliders = Physics2D.OverlapCircleAll((Vector2)transform.position + feetPosition, radius);
 
             for (int i = 0; i < colliders.Length; i++)
             {
-                // If the game object we're colliding with:
-                // * Is not ourself
-                // * Is not a trigger
-                // * Is included in our ground layers layermask
                 if (colliders[i].gameObject != gameObject && (!colliders[i].isTrigger) && groundLayers.IncludesLayer(colliders[i].gameObject.layer))
                 {
                     return true;
@@ -66,25 +55,32 @@ namespace Assets.Source.Components.Physics
 
         private Vector2 CalculateNormal() {
 
-            var contactFilter = new ContactFilter2D()
-            {
-                useLayerMask = true,
-                layerMask = groundLayers
-            };
-
             var raycast = Physics2D.Raycast((Vector2)transform.position+feetPosition, -transform.up, radius*2, groundLayers, -9999, 9999);
 
             return raycast.normal;
   
         }
 
-
         private void OnDrawGizmosSelected()
         {
-            Gizmos.color = Color.magenta;
+            // white or magenta shows the feet radius
+            if (IsGrounded)
+            {
+                Gizmos.color = Color.white;
+            }
+            else {
+                Gizmos.color = Color.magenta;
+            }
             Gizmos.DrawWireSphere(new Vector3(transform.position.x + feetPosition.x, transform.position.y + feetPosition.y, 1), radius);
-
+            
+            // Red line shows the normal
+            Gizmos.color = Color.red;
             Gizmos.DrawLine((Vector2)transform.position + feetPosition, (Vector2)transform.position + feetPosition + groundNormal);
+
+            // Blue line shows the raycast (approximately) d
+            var temp = (Vector2)transform.position + feetPosition;
+            Gizmos.color = Color.blue;
+            Gizmos.DrawLine(temp, new Vector2(temp.x, temp.y - radius));
         }
     }
 }
