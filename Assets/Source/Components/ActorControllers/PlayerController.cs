@@ -131,6 +131,11 @@ namespace Assets.Source.Components.ActorControllers
         {
             HorizontalInput = inputValue.Get<Vector2>().x;
         }
+
+        private void OnPickup(InputValue inputValue) 
+        {
+            playerAnimator.Pickup();                        
+        }
         #endregion
     }
 }

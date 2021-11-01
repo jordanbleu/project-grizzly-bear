@@ -13,10 +13,6 @@ namespace Assets.Source.Components.Animators
         [Tooltip("Drag the spine mecanim component here")]
         private Animator animator;
 
-
-        [SerializeField]
-        private SpriteRenderer face;
-
         public float HorizontalSpeed { get; set; }
 
         public bool IsHoldingItem { get; set; }
@@ -54,10 +50,14 @@ namespace Assets.Source.Components.Animators
             }
 
             IsFlipped = (skeleton.Skeleton.ScaleX < 0);
-            face.flipX = IsFlipped;
+            
         }
 
         private float BoolToFloat(bool val) => val ? 1 : 0;
 
+        public void Pickup()
+        {
+            animator.SetTrigger("pickup");
+        }
     }
 }
