@@ -15,7 +15,7 @@ namespace Assets.Source.Components.Animators
 
         public float HorizontalSpeed { get; set; }
 
-        public bool IsHoldingItem { get; set; }
+        public bool IsHoldingItem { get; set; } = false; // todo remove
 
         public float Direction { get; set; } = 1;
 
