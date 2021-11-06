@@ -15,8 +15,9 @@ namespace Assets.Source.Components.Animators
 
         public float HorizontalSpeed { get; set; }
 
-        public bool IsHoldingItem { get; set; } = false; // todo remove
+        public bool IsHoldingItem { get; set; }
 
+        /// <summary>Values greater than 0 are treated as facing right, less than zero are left.</summary>
         public float Direction { get; set; } = 1;
 
         /// <summary>
@@ -30,7 +31,9 @@ namespace Assets.Source.Components.Animators
 
         private void Update()
         {
+            
             HandleFlip();
+
             animator.SetFloat("horizontal-speed", HorizontalSpeed);
             // we use floats as a hack so we can use blend trees in our animator controller, which simplifies the animation logic a ton
             animator.SetFloat("is-holding-item", BoolToFloat(IsHoldingItem));
@@ -55,9 +58,14 @@ namespace Assets.Source.Components.Animators
 
         private float BoolToFloat(bool val) => val ? 1 : 0;
 
-        public void Pickup()
-        {
+        public void Pickup() =>        
             animator.SetTrigger("pickup");
-        }
+
+        public void Throw() =>
+            animator.SetTrigger("throw");
+
+        public void PutDown() =>
+            animator.SetTrigger("put-down");
+
     }
 }
