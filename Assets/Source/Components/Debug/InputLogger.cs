@@ -17,9 +17,7 @@ namespace Assets.Source.Components.Debug
 
         [SerializeField]
         private float yAxis = 0f;
-        
-
-
+ 
         public void LogButtonInput(InputAction.CallbackContext context) {
             UnityEngine.Debug.Log($"Button {context.action.name} - phase {context.phase}");
         }
