@@ -76,7 +76,7 @@ namespace Assets.Source.Components.ActorControllers
 
             var skeletonRot = skeleton.gameObject.transform.rotation;
 
-            if (groundDetector.GroundNormal.x > 0)
+            if (groundDetector.GroundNormal.x > 0.1f)
             {
                 // on a slope going down facing left
                 if (playerAnimator.IsFlipped)
@@ -91,7 +91,7 @@ namespace Assets.Source.Components.ActorControllers
                     skeleton.gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, -45));
                 }
             }
-            else if (groundDetector.GroundNormal.x < 0)
+            else if (groundDetector.GroundNormal.x < -0.1f)
             {
                 // slope going upwards, facing left
                 if (playerAnimator.IsFlipped)
