@@ -8,7 +8,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - 
@@ -36,7 +36,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Ignore All Collisions
   m_SortingLayers:
   - name: Default
     uniqueID: 0
@@ -74,6 +74,12 @@ TagManager:
   - name: Actors-FG
     uniqueID: 1389262085
     locked: 0
+  - name: Tilemap-OverActors
+    uniqueID: 1715228511
+    locked: 0
   - name: Always-On-Top
     uniqueID: 503341987
+    locked: 0
+  - name: UI
+    uniqueID: 250556225
     locked: 0
