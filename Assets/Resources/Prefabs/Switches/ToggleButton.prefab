@@ -168,7 +168,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3932957870381658128}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.336, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3932957869556655027}
@@ -187,7 +187,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.30497074, y: 0.37613058}
+  m_Offset: {x: 0.0009422302, y: 0.21777797}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -198,7 +198,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.4066277, y: 0.6137037}
+  m_Size: {x: 0.69712067, y: 0.3730302}
   m_EdgeRadius: 0
 --- !u!114 &3932957870381658134
 MonoBehaviour:
@@ -395,7 +395,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8273617446806857702}
   - component: {fileID: 576589677495928091}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: Button-Top-Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

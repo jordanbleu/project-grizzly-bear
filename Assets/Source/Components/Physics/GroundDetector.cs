@@ -1,5 +1,6 @@
 ﻿using Assets.Editor.Attributes;
 using Assets.Source.Math;
+using Assets.Source.Unity;
 using UnityEngine;
 
 namespace Assets.Source.Components.Physics
@@ -59,7 +60,7 @@ namespace Assets.Source.Components.Physics
 
             // This stops the player from rotating his whole body when passing over smaller obstacles, like rocks, etc.
             // So, the player will only rotate towards an incline if the height of the ground is above this value
-            if (raycast.collider.bounds.size.y < 2) {
+            if (UnityUtils.Exists(raycast.collider) && raycast.collider.bounds.size.y < 2) {
                 return Vector2.zero;                
             }            
 
