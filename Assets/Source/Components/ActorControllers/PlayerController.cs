@@ -26,9 +26,9 @@ namespace Assets.Source.Components.ActorControllers
         // the player's maximum movement speed
         private const float MAX_SPEED = 8;        
         // How much your throw speed is affected by your movement velocity
-        private const float THROW_SPEED_MULTIPLIER = 1.5f;
+        private const float THROW_SPEED_MULTIPLIER = 5f;
         // Base velocity is the speed that you throw things without moving
-        private const float THROW_SPEED_BASE = 5;
+        private const float THROW_SPEED_BASE = 200;
 
         [SerializeField]
         private Rigidbody2D rigidBody;
@@ -57,6 +57,11 @@ namespace Assets.Source.Components.ActorControllers
         [ReadOnly]
         private GameObject carriedItem;
 
+        private void Awake()
+        {
+            carriedItem = null;
+        }
+
         private void Update()
         {
             HandleMovement();
@@ -76,7 +81,7 @@ namespace Assets.Source.Components.ActorControllers
 
             var skeletonRot = skeleton.gameObject.transform.rotation;
 
-            if (groundDetector.GroundNormal.x > 0.1f)
+            if (groundDetector.GroundNormal.x > 0.5f)
             {
                 // on a slope going down facing left
                 if (playerAnimator.IsFlipped)
@@ -91,7 +96,7 @@ namespace Assets.Source.Components.ActorControllers
                     skeleton.gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, -45));
                 }
             }
-            else if (groundDetector.GroundNormal.x < -0.1f)
+            else if (groundDetector.GroundNormal.x < -0.5f)
             {
                 // slope going upwards, facing left
                 if (playerAnimator.IsFlipped)

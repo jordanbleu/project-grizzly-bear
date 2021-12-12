@@ -57,6 +57,12 @@ namespace Assets.Source.Components.Physics
 
             var raycast = Physics2D.Raycast((Vector2)transform.position+feetPosition, -transform.up, radius*2, groundLayers, -9999, 9999);
 
+            // This stops the player from rotating his whole body when passing over smaller obstacles, like rocks, etc.
+            // So, the player will only rotate towards an incline if the height of the ground is above this value
+            if (raycast.collider.bounds.size.y < 2) {
+                return Vector2.zero;                
+            }            
+
             return raycast.normal;
   
         }
