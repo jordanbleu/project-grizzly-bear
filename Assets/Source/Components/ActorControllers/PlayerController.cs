@@ -57,6 +57,8 @@ namespace Assets.Source.Components.ActorControllers
         [ReadOnly]
         private GameObject carriedItem;
 
+        private bool isMovementLocked = false;
+
         private void Awake()
         {
             carriedItem = null;
@@ -73,11 +75,14 @@ namespace Assets.Source.Components.ActorControllers
         {
             playerAnimator.IsGrounded = groundDetector.IsGrounded;
             playerAnimator.IsHoldingItem = UnityUtils.Exists(carriedItem);
-            if (HorizontalInput != 0) { 
-                playerAnimator.Direction = HorizontalInput;
-            }
 
-            playerAnimator.HorizontalSpeed = HorizontalInput;
+            if (!isMovementLocked) { 
+                if (HorizontalInput != 0) { 
+                    playerAnimator.Direction = HorizontalInput;
+                }
+
+                playerAnimator.HorizontalSpeed = HorizontalInput;
+            }        
 
             var skeletonRot = skeleton.gameObject.transform.rotation;
 
@@ -122,16 +127,22 @@ namespace Assets.Source.Components.ActorControllers
         // Updates the user speed
         private void HandleMovement()
         {
-            // Accelerate
-            HorizontalSpeed += (HorizontalInput * HORIZONTAL_ACCELERATION);
+            if (!isMovementLocked)
+            {
+                // Accelerate
+                HorizontalSpeed += (HorizontalInput * HORIZONTAL_ACCELERATION);
 
-            // Decelerate
-            HorizontalSpeed = HorizontalSpeed.Stabilize(HORIZONTAL_DECELERATION, 0);
+                // Decelerate
+                HorizontalSpeed = HorizontalSpeed.Stabilize(HORIZONTAL_DECELERATION, 0);
 
-            // Clamp Max Speed
-            HorizontalSpeed = Mathf.Clamp(HorizontalSpeed, -MAX_SPEED, MAX_SPEED);
+                // Clamp Max Speed
+                HorizontalSpeed = Mathf.Clamp(HorizontalSpeed, -MAX_SPEED, MAX_SPEED);
 
-            rigidBody.velocity = CombineVelocities();
+                rigidBody.velocity = CombineVelocities();
+            }
+            else {
+                rigidBody.velocity = Vector2.zero;
+            }
         }
 
         // Combines all velocities into one final velocity
@@ -186,6 +197,10 @@ namespace Assets.Source.Components.ActorControllers
         }
 
         #endregion
+
+        public void ToggleMovementLock(bool isLocked) {
+            isMovementLocked = isLocked;
+        }
 
 
         #region Animator Callbacks

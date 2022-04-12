@@ -15,12 +15,14 @@ namespace Assets.Source.Strings
             // kbm controls
             { "jump-tutorial-kbm", "Press [Space] to jump" },
             { "pickup-tutorial-kbm", "Press [LMB] to pick things up" },
-            { "drop-tutorial-kbm", "Press [LMB] again to drop things" },
+            { "drop-tutorial-kbm", "Press [LMB] again to drop items" },
+            { "throw-tutorial-kbm", "Press [RMB] to throw items" },
 
             // xbox controls
             { "jump-tutorial-xbox", @"Press <sprite=""Xbox-button-prompts"" index=0> to jump" },
             { "pickup-tutorial-xbox", @"Press <sprite=""Xbox-button-prompts"" index=2> to pick things up" },
-            { "drop-tutorial-xbox", @"Press <sprite=""Xbox-button-prompts"" index=2> again to drop things" },
+            { "drop-tutorial-xbox", @"Press <sprite=""Xbox-button-prompts"" index=2> again to drop items" },
+            { "throw-tutorial-xbox", "Press (Y) to throw items" },
 
         };
 

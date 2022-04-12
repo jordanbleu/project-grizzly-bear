@@ -1,15 +1,16 @@
-﻿using UnityEngine;
+﻿using Assets.Source.Math;
+using UnityEngine;
 
 namespace Assets.Source.Components.Triggers
 {
     /// <summary>
-    /// Handles seamless transition from one frame to another.
-    /// While the player is inside the attached trigger, both frames are enabled.  Upon exiting the left or right 
-    /// frame will be enabled depending on the position of the player.  
+    /// Manages seamless transitions between logical portions of a scene.
     /// 
-    /// For this reason, the frames should overlap a tiny bit.
+    /// The box collider is used to trigger the transition.  On Exiting the collider, the player's position will be evaluated
+    /// against this object's world position (the green line in the editor).  For this reason make sure the collider surrounds
+    /// the green line or wierd things will happen (aka it won't work)    ///
     /// </summary>
-    [RequireComponent(typeof(Collider2D))]
+    [RequireComponent(typeof(BoxCollider2D))]
     public class HorizontalFrameTransition : MonoBehaviour
     {
 
@@ -23,21 +24,16 @@ namespace Assets.Source.Components.Triggers
         private GameObject rightFrame;
 
 
-        private void OnTriggerEnter2D(Collider2D collision)
-        {
-            //if (collision.gameObject.CompareTag("Player"))
-            //{
-            //    leftFrame.gameObject.SetActive(false);
-            //    rightFrame.gameObject.SetActive(false);
-            //}
-        }
-
         // Note that the transition width should be wider than the player or this code causes issues.
         private void OnTriggerExit2D(Collider2D collision)
         {
+            
             if (collision.gameObject.CompareTag("Player")) {
 
-                if (collision.gameObject.transform.position.x < transform.position.x)
+                var transitionWorldCenterPoint = transform.GetWorldPosition();
+                var playerWorldPosition = collision.gameObject.transform.GetWorldPosition();
+
+                if (playerWorldPosition.x < transitionWorldCenterPoint.x)
                 {
                     leftFrame.SetActive(true);
                     rightFrame.SetActive(false);
@@ -50,6 +46,16 @@ namespace Assets.Source.Components.Triggers
             }            
         }
 
+        private void OnDrawGizmosSelected()
+        {
+            // draw an epic line that represents the transition
+            Gizmos.color = Color.green;
+            Gizmos.DrawLine(
+                new Vector3(transform.position.x, transform.position.y - 100, transform.position.z), 
+                new Vector3(transform.position.x, transform.position.y + 100, transform.position.z)
+            );
+            
+        }
 
     }
 }

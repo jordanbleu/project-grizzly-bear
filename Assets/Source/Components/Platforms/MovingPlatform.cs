@@ -222,7 +222,7 @@ namespace Assets.Source.Components.Platforms
 
         private void OnDrawGizmosSelected()
         {
-            if (instructions.Any())
+            if (instructions != null && instructions.Any())
             {
 
                 var collider = GetComponent<Collider2D>();
