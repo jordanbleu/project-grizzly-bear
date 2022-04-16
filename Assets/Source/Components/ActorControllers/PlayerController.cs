@@ -202,6 +202,11 @@ namespace Assets.Source.Components.ActorControllers
             isMovementLocked = isLocked;
         }
 
+        public void ReleaseCarriedItem() {
+            if (UnityUtils.Exists(carriedItem)) {
+                carriedItem = null;
+            }
+        }
 
         #region Animator Callbacks
         // The below callbacks are invoked via the PlayerAnimationHook
@@ -214,7 +219,7 @@ namespace Assets.Source.Components.ActorControllers
             {
                 var movable = carriedItem.GetComponent<Movable>();
                 movable.Drop(Vector2.zero);
-                carriedItem = null;
+                ReleaseCarriedItem();
             }
             else { 
                 var item = pickupTrigger.CurrentItems.FirstOrDefault();
@@ -240,7 +245,7 @@ namespace Assets.Source.Components.ActorControllers
             if (UnityUtils.Exists(carriedItem)) { 
                 var movable = carriedItem.GetComponent<Movable>();
                 movable.Drop(CalculateThrowSpeed());
-                carriedItem = null;
+                ReleaseCarriedItem();
             }
         }
 

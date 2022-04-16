@@ -1,6 +1,7 @@
 ﻿using Assets.Editor.Attributes;
 using Assets.Source.Math;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Assets.Source.Components.Items
 {
@@ -14,6 +15,9 @@ namespace Assets.Source.Components.Items
 
         [SerializeField]
         private OutOfBoundsAction action = OutOfBoundsAction.DoNothing;
+
+        [SerializeField]
+        private UnityEvent OnOutOfBounds = new UnityEvent();
 
 
         // Used for easier maths
@@ -34,6 +38,7 @@ namespace Assets.Source.Components.Items
         {
             if (!square.SurroundsPoint(transform.position))
             {
+
                 if (action == OutOfBoundsAction.Destroy)
                 {
                     Destroy(gameObject);
@@ -48,7 +53,9 @@ namespace Assets.Source.Components.Items
 
                 }
 
-                // todo: invoke custom unity event here (if we need that)
+                // Invoked when the object goes out of bounds.  For example,
+                // used by movable objects to tell the player to stop carrying the object
+                OnOutOfBounds?.Invoke();
 
             }
         }
@@ -67,7 +74,6 @@ namespace Assets.Source.Components.Items
         {
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireCube(boundaryCenter, boundarySize);
-
         }
         
 
