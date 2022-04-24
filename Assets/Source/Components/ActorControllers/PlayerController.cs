@@ -26,9 +26,9 @@ namespace Assets.Source.Components.ActorControllers
         // the player's maximum movement speed
         private const float MAX_SPEED = 8;        
         // How much your throw speed is affected by your movement velocity
-        private const float THROW_SPEED_MULTIPLIER = 1.5f;
+        private const float THROW_SPEED_MULTIPLIER = 5f;
         // Base velocity is the speed that you throw things without moving
-        private const float THROW_SPEED_BASE = 5;
+        private const float THROW_SPEED_BASE = 200;
 
         [SerializeField]
         private Rigidbody2D rigidBody;
@@ -57,6 +57,13 @@ namespace Assets.Source.Components.ActorControllers
         [ReadOnly]
         private GameObject carriedItem;
 
+        private bool isMovementLocked = false;
+
+        private void Awake()
+        {
+            carriedItem = null;
+        }
+
         private void Update()
         {
             HandleMovement();
@@ -68,15 +75,18 @@ namespace Assets.Source.Components.ActorControllers
         {
             playerAnimator.IsGrounded = groundDetector.IsGrounded;
             playerAnimator.IsHoldingItem = UnityUtils.Exists(carriedItem);
-            if (HorizontalInput != 0) { 
-                playerAnimator.Direction = HorizontalInput;
-            }
 
-            playerAnimator.HorizontalSpeed = HorizontalInput;
+            if (!isMovementLocked) { 
+                if (HorizontalInput != 0) { 
+                    playerAnimator.Direction = HorizontalInput;
+                }
+
+                playerAnimator.HorizontalSpeed = HorizontalInput;
+            }        
 
             var skeletonRot = skeleton.gameObject.transform.rotation;
 
-            if (groundDetector.GroundNormal.x > 0)
+            if (groundDetector.GroundNormal.x > 0.5f)
             {
                 // on a slope going down facing left
                 if (playerAnimator.IsFlipped)
@@ -91,7 +101,7 @@ namespace Assets.Source.Components.ActorControllers
                     skeleton.gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, -45));
                 }
             }
-            else if (groundDetector.GroundNormal.x < 0)
+            else if (groundDetector.GroundNormal.x < -0.5f)
             {
                 // slope going upwards, facing left
                 if (playerAnimator.IsFlipped)
@@ -117,16 +127,22 @@ namespace Assets.Source.Components.ActorControllers
         // Updates the user speed
         private void HandleMovement()
         {
-            // Accelerate
-            HorizontalSpeed += (HorizontalInput * HORIZONTAL_ACCELERATION);
+            if (!isMovementLocked)
+            {
+                // Accelerate
+                HorizontalSpeed += (HorizontalInput * HORIZONTAL_ACCELERATION);
 
-            // Decelerate
-            HorizontalSpeed = HorizontalSpeed.Stabilize(HORIZONTAL_DECELERATION, 0);
+                // Decelerate
+                HorizontalSpeed = HorizontalSpeed.Stabilize(HORIZONTAL_DECELERATION, 0);
 
-            // Clamp Max Speed
-            HorizontalSpeed = Mathf.Clamp(HorizontalSpeed, -MAX_SPEED, MAX_SPEED);
+                // Clamp Max Speed
+                HorizontalSpeed = Mathf.Clamp(HorizontalSpeed, -MAX_SPEED, MAX_SPEED);
 
-            rigidBody.velocity = CombineVelocities();
+                rigidBody.velocity = CombineVelocities();
+            }
+            else {
+                rigidBody.velocity = Vector2.zero;
+            }
         }
 
         // Combines all velocities into one final velocity
@@ -182,6 +198,15 @@ namespace Assets.Source.Components.ActorControllers
 
         #endregion
 
+        public void ToggleMovementLock(bool isLocked) {
+            isMovementLocked = isLocked;
+        }
+
+        public void ReleaseCarriedItem() {
+            if (UnityUtils.Exists(carriedItem)) {
+                carriedItem = null;
+            }
+        }
 
         #region Animator Callbacks
         // The below callbacks are invoked via the PlayerAnimationHook
@@ -194,7 +219,7 @@ namespace Assets.Source.Components.ActorControllers
             {
                 var movable = carriedItem.GetComponent<Movable>();
                 movable.Drop(Vector2.zero);
-                carriedItem = null;
+                ReleaseCarriedItem();
             }
             else { 
                 var item = pickupTrigger.CurrentItems.FirstOrDefault();
@@ -220,7 +245,7 @@ namespace Assets.Source.Components.ActorControllers
             if (UnityUtils.Exists(carriedItem)) { 
                 var movable = carriedItem.GetComponent<Movable>();
                 movable.Drop(CalculateThrowSpeed());
-                carriedItem = null;
+                ReleaseCarriedItem();
             }
         }
 

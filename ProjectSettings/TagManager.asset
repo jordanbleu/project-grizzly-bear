@@ -8,7 +8,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - 
@@ -36,8 +36,50 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Ignore All Collisions
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Parallax-Back
+    uniqueID: 1267462543
+    locked: 0
+  - name: Parallax-Middle
+    uniqueID: 2773710557
+    locked: 0
+  - name: Parallax-Front
+    uniqueID: 2698731867
+    locked: 0
+  - name: Tiles-Far-2
+    uniqueID: 3927843789
+    locked: 0
+  - name: Tiles-Far-1
+    uniqueID: 4250015603
+    locked: 0
+  - name: Tiles-Middle
+    uniqueID: 1053181373
+    locked: 0
+  - name: Tiles-Close-1
+    uniqueID: 4221411197
+    locked: 0
+  - name: Tiles-Close-2
+    uniqueID: 2398179893
+    locked: 0
+  - name: Actors-BG
+    uniqueID: 1784738803
+    locked: 0
+  - name: Actors-Middle
+    uniqueID: 3850285115
+    locked: 0
+  - name: Actors-FG
+    uniqueID: 1389262085
+    locked: 0
+  - name: Tilemap-OverActors
+    uniqueID: 1715228511
+    locked: 0
+  - name: Always-On-Top
+    uniqueID: 503341987
+    locked: 0
+  - name: UI
+    uniqueID: 250556225
     locked: 0
