@@ -25,10 +25,6 @@ namespace Assets.Source.Components.ActorControllers
         private const float HORIZONTAL_DECELERATION = 0.25f;
         // the player's maximum movement speed
         private const float MAX_SPEED = 8;        
-        // How much your throw speed is affected by your movement velocity
-        private const float THROW_SPEED_MULTIPLIER = 5f;
-        // Base velocity is the speed that you throw things without moving
-        private const float THROW_SPEED_BASE = 200;
 
         [SerializeField]
         private Rigidbody2D rigidBody;
@@ -153,11 +149,10 @@ namespace Assets.Source.Components.ActorControllers
 
         // an overly complicated way to calculate throw strength
         private Vector2 CalculateThrowSpeed() {
-            float xs = 0f;
-            float ys = 0f;
+            var THROW_SPEED_MULTIPLIER = 15;
 
-            xs = (rigidBody.velocity.x * THROW_SPEED_MULTIPLIER) + (Mathf.Sign(playerAnimator.Direction) * (THROW_SPEED_BASE));
-            ys = THROW_SPEED_BASE + (Mathf.Abs(rigidBody.velocity.y) * THROW_SPEED_MULTIPLIER);
+            var xs = (THROW_SPEED_MULTIPLIER * rigidBody.velocity.x) + (playerAnimator.Direction * 100);
+            var ys = 200;
 
             return new Vector2(xs, ys);
         }
