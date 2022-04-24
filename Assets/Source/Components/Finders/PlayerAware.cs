@@ -12,17 +12,6 @@ namespace Assets.Source.Components.Finders
         [SerializeField]
         private GameObject player;
 
-        [SerializeField]
-        private bool isRequired = false;
-
-
-        private void Start()
-        {
-            if (isRequired && !UnityUtils.Exists(player)) {
-                throw new UnityException($"Object {gameObject.name} has the PlayerAware component but not player reference");
-            }
-        }
-
         public GameObject Player { get => player; }
 
     }

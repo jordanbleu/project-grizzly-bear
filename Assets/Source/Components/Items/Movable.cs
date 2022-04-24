@@ -2,6 +2,7 @@
 using Assets.Source.Components.ActorControllers;
 using Assets.Source.Components.Finders;
 using Spine.Unity;
+using System.Collections;
 using UnityEngine;
 
 namespace Assets.Source.Components.Items
@@ -70,12 +71,14 @@ namespace Assets.Source.Components.Items
             // this is a hack to fix a bug in the bone follower component where even if
             // it's inactive it will still mess up the object position.
             boneFollower.boneName = string.Empty;
-            rigidBody.AddForce(velocity, ForceMode2D.Impulse);
             attachedCollider.enabled = true;
+            
+            
             boneFollower.enabled = false;
             rigidBody.gravityScale = 1;
             // When you release an item, the rigid body constraints go back to what they were by default
             rigidBody.constraints = rigidBodyStartingConstraints;
+            rigidBody.AddForce(velocity, ForceMode2D.Impulse);
         }
 
         /// <summary>
@@ -84,13 +87,13 @@ namespace Assets.Source.Components.Items
         /// </summary>
         public void Uncarry()
         {
+
             // this is a hack to fix a bug in the bone follower component where even if
             // it's inactive it will still mess up the object position.
             boneFollower.boneName = string.Empty;
-            attachedCollider.enabled = true;
             boneFollower.enabled = false;
             rigidBody.gravityScale = 1;
-            
+            attachedCollider.enabled = true;
             // Force the player to drop the item.  Usually this would be done in the player controller.
             player.ReleaseCarriedItem();
 
@@ -102,6 +105,7 @@ namespace Assets.Source.Components.Items
         {
             Uncarry();            
         }
+
 
     }
 }
