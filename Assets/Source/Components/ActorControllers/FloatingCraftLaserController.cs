@@ -1,9 +1,4 @@
 ﻿using Cinemachine;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Assets.Source.Components.ActorControllers
@@ -34,7 +29,7 @@ namespace Assets.Source.Components.ActorControllers
         {
             IsAttackEnabled = true;
             boxCollider.enabled = true;
-            cameraImpulseSource.GenerateImpulse();
+            cameraImpulseSource.GenerateImpulse(0.5f);
         }
 
 
@@ -54,7 +49,7 @@ namespace Assets.Source.Components.ActorControllers
             if (IsAttackEnabled && collision.gameObject.name == "Player") { 
                 // end the attack early
                 OnAttackDisable();
-                cameraImpulseSource.GenerateImpulse(10);
+                cameraImpulseSource.GenerateImpulse(2);
             }
             
         }
