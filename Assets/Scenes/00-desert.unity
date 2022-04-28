@@ -526,6 +526,28 @@ PrefabInstance:
     - {fileID: 5408205580111225682, guid: d8aa534866cc9a24fb6c79130eef7728, type: 3}
     - {fileID: 5408205580111225676, guid: d8aa534866cc9a24fb6c79130eef7728, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d8aa534866cc9a24fb6c79130eef7728, type: 3}
+--- !u!1 &62366072 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3796745216522234743, guid: 39c0f0d32779a0749abd0b4e3f9a6425, type: 3}
+  m_PrefabInstance: {fileID: 220600012}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &62366073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 62366072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e03d9f5fb101d5479120ca8f56b29cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &62366074 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3796745216522234738, guid: 39c0f0d32779a0749abd0b4e3f9a6425, type: 3}
+  m_PrefabInstance: {fileID: 220600012}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &83932680
 GameObject:
   m_ObjectHideFlags: 0
@@ -1388,6 +1410,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3796745216367196206, guid: 39c0f0d32779a0749abd0b4e3f9a6425, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796745216367196206, guid: 39c0f0d32779a0749abd0b4e3f9a6425, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796745216367196206, guid: 39c0f0d32779a0749abd0b4e3f9a6425, type: 3}
+      propertyPath: m_Color.r
+      value: 0.13333334
+      objectReference: {fileID: 0}
     - target: {fileID: 3796745216498416512, guid: 39c0f0d32779a0749abd0b4e3f9a6425, type: 3}
       propertyPath: radius
       value: 0.5
@@ -1456,9 +1490,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3796745216498416519, guid: 39c0f0d32779a0749abd0b4e3f9a6425, type: 3}
+      propertyPath: faceAnimator
+      value: 
+      objectReference: {fileID: 62366074}
     - target: {fileID: 3796745216498416570, guid: 39c0f0d32779a0749abd0b4e3f9a6425, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796745216522234736, guid: 39c0f0d32779a0749abd0b4e3f9a6425, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796745216522234736, guid: 39c0f0d32779a0749abd0b4e3f9a6425, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796745216522234736, guid: 39c0f0d32779a0749abd0b4e3f9a6425, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.73
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796745216522234737, guid: 39c0f0d32779a0749abd0b4e3f9a6425, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796745216522234737, guid: 39c0f0d32779a0749abd0b4e3f9a6425, type: 3}
+      propertyPath: m_Color.b
+      value: 0.7176471
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796745216522234737, guid: 39c0f0d32779a0749abd0b4e3f9a6425, type: 3}
+      propertyPath: m_Color.g
+      value: 0.7176471
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796745216522234737, guid: 39c0f0d32779a0749abd0b4e3f9a6425, type: 3}
+      propertyPath: m_Color.r
+      value: 0.25490198
       objectReference: {fileID: 0}
     - target: {fileID: 3796745216774083173, guid: 39c0f0d32779a0749abd0b4e3f9a6425, type: 3}
       propertyPath: m_Layer
@@ -37572,6 +37638,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12d11a17e6f1e134c838f1b41bed43b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerAware: {fileID: 1128101716}
+  laserDamage: 4
 --- !u!95 &530969647
 Animator:
   serializedVersion: 3
@@ -52532,6 +52600,11 @@ PolygonCollider2D:
       - {x: 2.7143435, y: -2.0798528}
       - {x: 3.4906125, y: -2.075135}
       - {x: 3.4912424, y: 1.3532946}
+--- !u!198 &944836893 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5772159441353978508, guid: 39c0f0d32779a0749abd0b4e3f9a6425, type: 3}
+  m_PrefabInstance: {fileID: 220600012}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &948188505
 GameObject:
   m_ObjectHideFlags: 0
@@ -57836,6 +57909,7 @@ GameObject:
   - component: {fileID: 1128101715}
   - component: {fileID: 1128101717}
   - component: {fileID: 1128101718}
+  - component: {fileID: 1128101719}
   m_Layer: 0
   m_Name: FloatingHovercraftEnemy
   m_TagString: Untagged
@@ -57929,6 +58003,23 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1128101719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1128101713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d62c6e347386e6941b1d8aa052d18d54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
+  maxHealth: 1
+  onHealthDecreased:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1166564067
 GameObject:
   m_ObjectHideFlags: 0
@@ -79789,6 +79880,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf3f4badbf96b4a46a764c3b13f53515, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1993742655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1993742648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d62c6e347386e6941b1d8aa052d18d54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
+  maxHealth: 10
+  onHealthDecreased:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 62366073}
+        m_TargetAssemblyTypeName: Assets.Source.Components.Animators.AnimatorTriggerHook,
+          grizzly-bear
+        m_MethodName: SetAnimatorTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: damage
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 944836893}
+        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2014988931
 GameObject:
   m_ObjectHideFlags: 0

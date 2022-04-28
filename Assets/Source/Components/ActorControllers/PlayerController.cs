@@ -32,6 +32,10 @@ namespace Assets.Source.Components.ActorControllers
         [SerializeField]
         private PlayerAnimator playerAnimator;
 
+
+        [SerializeField]
+        private Animator faceAnimator;
+
         [SerializeField]
         private GroundDetector groundDetector;
 
@@ -43,6 +47,8 @@ namespace Assets.Source.Components.ActorControllers
 
         [SerializeField]
         private CapsuleCollider2D attachedCollider;
+
+        private Destructible destructible;
 
         /// <summary> The horizontal input axis from the player </summary>
         public float HorizontalInput { get; set; } = 0f;
@@ -60,6 +66,12 @@ namespace Assets.Source.Components.ActorControllers
             carriedItem = null;
         }
 
+        private void Start()
+        {
+            destructible = GetComponent<Destructible>(); 
+        }
+
+
         private void Update()
         {
             HandleMovement();
@@ -69,6 +81,8 @@ namespace Assets.Source.Components.ActorControllers
         // Apply animations
         private void UpdateAnimations()
         {
+            faceAnimator.SetFloat("health-percentage", ((float)destructible.Health / destructible.MaxHealth));
+
             playerAnimator.IsGrounded = groundDetector.IsGrounded;
             playerAnimator.IsHoldingItem = UnityUtils.Exists(carriedItem);
 

@@ -1,4 +1,5 @@
-﻿using Cinemachine;
+﻿using Assets.Source.Components.Finders;
+using Cinemachine;
 using UnityEngine;
 
 namespace Assets.Source.Components.ActorControllers
@@ -12,12 +13,21 @@ namespace Assets.Source.Components.ActorControllers
         private Animator animator;
         private BoxCollider2D boxCollider;
         private CinemachineImpulseSource cameraImpulseSource;
+        private Destructible playerDestructible;
+        
+        [SerializeField]
+        private PlayerAware playerAware;
+
+        [SerializeField]
+        private int laserDamage = 4;
 
         private void Start()
         {   
             animator = GetComponent<Animator>();            
             boxCollider = GetComponent<BoxCollider2D>();
-            cameraImpulseSource = GetComponent<CinemachineImpulseSource>(); 
+            cameraImpulseSource = GetComponent<CinemachineImpulseSource>();
+
+            playerDestructible = playerAware.Player.GetComponent<Destructible>();
         }
 
 
@@ -50,6 +60,7 @@ namespace Assets.Source.Components.ActorControllers
                 // end the attack early
                 OnAttackDisable();
                 cameraImpulseSource.GenerateImpulse(2);
+                playerDestructible.DecreaseHealth(laserDamage);
             }
             
         }
