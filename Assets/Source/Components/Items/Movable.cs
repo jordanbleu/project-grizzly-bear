@@ -39,6 +39,15 @@ namespace Assets.Source.Components.Items
             player = playerAware.Player.GetComponent<PlayerController>();
         }
 
+        private void Update()
+        {
+            // if this item is being held, negate all forces
+            // affecting it. 
+            if (boneFollower.enabled) {
+                rigidBody.velocity = Vector2.zero;
+            }
+        }
+
         [SerializeField]
         private Rigidbody2D rigidBody;
 
@@ -56,7 +65,7 @@ namespace Assets.Source.Components.Items
             attachedCollider.enabled = false;
             boneFollower.enabled = true;
             rigidBody.gravityScale = 0;
-            rigidBody.mass = 0f;
+            //rigidBody.mass = 0f;
             rigidBody.velocity = Vector3.zero;
             // When you pick up an item, its z position is always frozen.
             rigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
@@ -67,7 +76,7 @@ namespace Assets.Source.Components.Items
         /// </summary>
         /// <param name="velocity"></param>
         public void Drop(Vector2 velocity) {
-            rigidBody.mass = startingMass;
+            //rigidBody.mass = startingMass;
             // this is a hack to fix a bug in the bone follower component where even if
             // it's inactive it will still mess up the object position.
             boneFollower.boneName = string.Empty;
