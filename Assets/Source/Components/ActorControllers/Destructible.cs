@@ -14,6 +14,7 @@ namespace Assets.Source.Components.ActorControllers
         private int maxHealth = 10;
         public int MaxHealth { get => maxHealth; }
 
+        public bool IsAlive { get => health > 0; }
 
         [SerializeField]
         private UnityEvent onHealthDecreased = new UnityEvent();
