@@ -35,10 +35,10 @@ namespace Assets.Source.Components.Platforms
 
 
         private int index;
+        public int Index { get => index; } 
+
         private int indexDirection = 1;
         private bool wasAtDestination = false;
-
-
 
         private void Start()
         {
@@ -137,6 +137,8 @@ namespace Assets.Source.Components.Platforms
         {
             index = instructions.Count() - 1;
         }
+
+        public void CycleIndex(int index) => this.index = index;
 
         private bool IsNearDestination(PlatformInstruction currentInstruction) =>
             (transform.position.x.IsWithin(POSITION_TOLERANCE, currentInstruction.Position.x)) &&

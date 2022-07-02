@@ -1,6 +1,7 @@
 ﻿using Assets.Editor.Attributes;
 using Assets.Source.Components.ActorControllers;
 using Assets.Source.Components.Finders;
+using Assets.Source.Unity;
 using Spine.Unity;
 using System.Collections;
 using UnityEngine;
@@ -18,6 +19,11 @@ namespace Assets.Source.Components.Items
 
         private void Start()
         {
+
+            if (!UnityUtils.Exists(boneFollower.SkeletonRenderer)) {
+                throw new UnityException("!! Please assign the player skeleton to the bone follower please");
+            }
+
             rigidBodyStartingConstraints = rigidBody.constraints;
 
             /*
@@ -37,6 +43,8 @@ namespace Assets.Source.Components.Items
 
             var playerAware = GetComponent<PlayerAware>();
             player = playerAware.Player.GetComponent<PlayerController>();
+
+            
         }
 
         private void Update()

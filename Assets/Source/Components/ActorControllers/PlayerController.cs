@@ -3,6 +3,7 @@ using Assets.Source.Components.ActorControllers.Interfaces;
 using Assets.Source.Components.Animators;
 using Assets.Source.Components.Items;
 using Assets.Source.Components.Physics;
+using Assets.Source.Components.Switches;
 using Assets.Source.Math;
 using Assets.Source.Unity;
 using Spine.Unity;
@@ -43,7 +44,7 @@ namespace Assets.Source.Components.ActorControllers
         private SkeletonMecanim skeleton;
 
         [SerializeField]
-        private PlayerPickupTrigger pickupTrigger;
+        private PlayerInteractionTrigger interactionTrigger;
 
         [SerializeField]
         private CapsuleCollider2D attachedCollider;
@@ -204,7 +205,7 @@ namespace Assets.Source.Components.ActorControllers
             {
                 playerAnimator.PutDown();
             }
-            else if (pickupTrigger.CurrentItems.Any()) { 
+            else if (interactionTrigger.CarryableItems.Any()) { 
                 playerAnimator.Pickup();
             }
         }
@@ -216,9 +217,28 @@ namespace Assets.Source.Components.ActorControllers
             }
         }
 
+        private void OnInteract(InputValue inputValue) {
+
+            if (interactionTrigger.InteractibleItems.Any()) {
+                
+                // just pick the first one if there are multiple (there usually shouldn't be)
+                var item = interactionTrigger.InteractibleItems.FirstOrDefault();
+
+                if (UnityUtils.Exists(item) && item.TryGetComponent<IInteract>(out var interact)) {
+                    interact?.OnInteract();
+                }
+            
+            }
+            
+        }
+
         #endregion
 
         public void ToggleMovementLock(bool isLocked) {
+
+            HorizontalInput = 0;
+            playerAnimator.HorizontalSpeed = 0;
+            HorizontalSpeed = 0;
             isMovementLocked = isLocked;
         }
 
@@ -242,7 +262,7 @@ namespace Assets.Source.Components.ActorControllers
                 ReleaseCarriedItem();
             }
             else { 
-                var item = pickupTrigger.CurrentItems.FirstOrDefault();
+                var item = interactionTrigger.CarryableItems.FirstOrDefault();
 
                 if (UnityUtils.Exists(item)) {
                 
