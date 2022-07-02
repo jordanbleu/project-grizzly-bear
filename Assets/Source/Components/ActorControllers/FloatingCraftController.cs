@@ -12,7 +12,7 @@ namespace Assets.Source.Components.ActorControllers
         private GameObject player;
         private Rigidbody2D rigidBody;
         private Animator animator;
-        
+        private Destructible destructible;
 
         private float xVelocity = 0f;
         private float yVelocity = 0f;
@@ -44,6 +44,8 @@ namespace Assets.Source.Components.ActorControllers
             player = GetComponent<PlayerAware>().Player;            
             rigidBody = GetComponent<Rigidbody2D>();
             animator = GetComponent<Animator>();
+            destructible = GetComponent<Destructible>(); 
+
         }
 
         private void Update()
@@ -56,7 +58,8 @@ namespace Assets.Source.Components.ActorControllers
         {
             if (!laserController.IsAnimating && 
                 xVelocity.IsWithin(acceleration, 0) &&
-                transform.position.x.IsWithin(attackRange, player.transform.position.x)) {
+                transform.position.x.IsWithin(attackRange, player.transform.position.x) &&
+                destructible.IsAlive) {
                 laserController.FireLaser();                
             }
         }

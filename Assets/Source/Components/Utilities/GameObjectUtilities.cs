@@ -4,6 +4,12 @@ namespace Assets.Source.Components.Utilities
 {
     public class GameObjectUtilities : MonoBehaviour
     {
+        private Vector3 originalPosition;
+
+        private void Start()
+        {
+            originalPosition = transform.position;
+        }
 
         /// <summary>
         /// Destroys the game object this component is attached to
@@ -36,6 +42,8 @@ namespace Assets.Source.Components.Utilities
         {
             Instantiate(gameObj);
         }
+
+        public void ResetPosition() => transform.position = originalPosition;
 
     }
 }

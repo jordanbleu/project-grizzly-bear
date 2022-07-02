@@ -3,6 +3,7 @@ using Assets.Source.Components.ActorControllers.Interfaces;
 using Assets.Source.Components.Animators;
 using Assets.Source.Components.Items;
 using Assets.Source.Components.Physics;
+using Assets.Source.Components.Switches;
 using Assets.Source.Math;
 using Assets.Source.Unity;
 using Spine.Unity;
@@ -18,7 +19,7 @@ namespace Assets.Source.Components.ActorControllers
     public class PlayerController : MonoBehaviour, IActorController
     {
         // How high the player jumps
-        private const int JUMP_FORCE = 10;
+        private const int JUMP_FORCE = 50;
         // How quickly the player accelerates to max speed
         private const float HORIZONTAL_ACCELERATION = 1;
         // How quickly the player decelerates to zero
@@ -32,6 +33,10 @@ namespace Assets.Source.Components.ActorControllers
         [SerializeField]
         private PlayerAnimator playerAnimator;
 
+
+        [SerializeField]
+        private Animator faceAnimator;
+
         [SerializeField]
         private GroundDetector groundDetector;
 
@@ -39,10 +44,12 @@ namespace Assets.Source.Components.ActorControllers
         private SkeletonMecanim skeleton;
 
         [SerializeField]
-        private PlayerPickupTrigger pickupTrigger;
+        private PlayerInteractionTrigger interactionTrigger;
 
         [SerializeField]
         private CapsuleCollider2D attachedCollider;
+
+        private Destructible destructible;
 
         /// <summary> The horizontal input axis from the player </summary>
         public float HorizontalInput { get; set; } = 0f;
@@ -60,6 +67,12 @@ namespace Assets.Source.Components.ActorControllers
             carriedItem = null;
         }
 
+        private void Start()
+        {
+            destructible = GetComponent<Destructible>(); 
+        }
+
+
         private void Update()
         {
             HandleMovement();
@@ -69,6 +82,8 @@ namespace Assets.Source.Components.ActorControllers
         // Apply animations
         private void UpdateAnimations()
         {
+            faceAnimator.SetFloat("health-percentage", ((float)destructible.Health / destructible.MaxHealth));
+
             playerAnimator.IsGrounded = groundDetector.IsGrounded;
             playerAnimator.IsHoldingItem = UnityUtils.Exists(carriedItem);
 
@@ -147,12 +162,15 @@ namespace Assets.Source.Components.ActorControllers
             return new Vector2(HorizontalSpeed, rigidBody.velocity.y);
         }
 
-        // an overly complicated way to calculate throw strength
+        // an overly complicated way to calculate throw strength.
+        // these are literally just random numbers that happened to work.
+        // for best results movables should have rigid body mass between 1 and 10 
+        // otherwise the player wont be able to throw the object far at all
         private Vector2 CalculateThrowSpeed() {
-            var THROW_SPEED_MULTIPLIER = 15;
+            var THROW_SPEED_MULTIPLIER = 2;
 
-            var xs = (THROW_SPEED_MULTIPLIER * rigidBody.velocity.x) + (playerAnimator.Direction * 100);
-            var ys = 200;
+            var xs = (THROW_SPEED_MULTIPLIER * rigidBody.velocity.x) + (playerAnimator.Direction * 25);
+            var ys = 25;
 
             return new Vector2(xs, ys);
         }
@@ -160,8 +178,16 @@ namespace Assets.Source.Components.ActorControllers
         #region Input Callbacks - invoked via PlayerInput component.
         private void OnJump(InputValue inputValue)
         {
-            if (groundDetector.IsGrounded) { 
-                rigidBody.AddForce(new Vector2(0, JUMP_FORCE), ForceMode2D.Impulse);
+            if (groundDetector.IsGrounded) {
+
+                float carriedItemWeight = 0;
+                // carrying heavier items affects jump height
+                if (UnityUtils.Exists(carriedItem)) {
+                    var carriedItemRigidBody = carriedItem.GetComponent<Rigidbody2D>();
+                    carriedItemWeight = Mathf.Clamp(carriedItemRigidBody.mass/2, 0f, 7f);
+                }
+
+                rigidBody.AddForce(new Vector2(0, JUMP_FORCE - carriedItemWeight), ForceMode2D.Impulse);
                 playerAnimator.Jump();
             }
         }
@@ -179,7 +205,7 @@ namespace Assets.Source.Components.ActorControllers
             {
                 playerAnimator.PutDown();
             }
-            else if (pickupTrigger.CurrentItems.Any()) { 
+            else if (interactionTrigger.CarryableItems.Any()) { 
                 playerAnimator.Pickup();
             }
         }
@@ -191,9 +217,28 @@ namespace Assets.Source.Components.ActorControllers
             }
         }
 
+        private void OnInteract(InputValue inputValue) {
+
+            if (interactionTrigger.InteractibleItems.Any()) {
+                
+                // just pick the first one if there are multiple (there usually shouldn't be)
+                var item = interactionTrigger.InteractibleItems.FirstOrDefault();
+
+                if (UnityUtils.Exists(item) && item.TryGetComponent<IInteract>(out var interact)) {
+                    interact?.OnInteract();
+                }
+            
+            }
+            
+        }
+
         #endregion
 
         public void ToggleMovementLock(bool isLocked) {
+
+            HorizontalInput = 0;
+            playerAnimator.HorizontalSpeed = 0;
+            HorizontalSpeed = 0;
             isMovementLocked = isLocked;
         }
 
@@ -217,7 +262,7 @@ namespace Assets.Source.Components.ActorControllers
                 ReleaseCarriedItem();
             }
             else { 
-                var item = pickupTrigger.CurrentItems.FirstOrDefault();
+                var item = interactionTrigger.CarryableItems.FirstOrDefault();
 
                 if (UnityUtils.Exists(item)) {
                 

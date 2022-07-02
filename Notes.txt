@@ -1,0 +1,23 @@
+Story
+
+1. Player robot suddenly jolts awake after being disabled in an error state
+2. Player moves forward through the junk yard, finding weird other robots following him around
+3. Player falls down a large shaft into a hidden laboratory (the elevator is broken)
+4. Player comes across a human, who pulls a gun quickly, but then runs away
+
+5. Player moves through the lab, it is mostly abandoned 
+6. There are occasionally humans who run away
+7. Player comes across a large room where a human is holding a switch.  The only way to get past is to
+kill the human.  Multiple robots are watching the player 
+8. As the player tosses the rock, the human suddenly disintegrates before it gets hit and the door opens
+
+9. You exit the lab and find a group of humans who begin shooting at You
+10. The bullets do nothing to you.  The humans run away as you pass.
+11. You find that another robot like you has been captured
+12. You rescue the robot, and he begins shooting at people with lasers
+13. you stop the robot
+14. The humans capture you
+15. The game ends with 'experiment concluded'
+16. The camera zooms out to reveal a scientist looking at a screen, with your robot plugged in
+17. He unplugs the robot and walks away
+18. Credits roll

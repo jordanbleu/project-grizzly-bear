@@ -11,9 +11,9 @@ TagManager:
   - Player
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Enemy
+  - Environment
+  - Interact
   - 
   - 
   - 
@@ -49,6 +49,9 @@ TagManager:
     locked: 0
   - name: Parallax-Front
     uniqueID: 2698731867
+    locked: 0
+  - name: Tiles-Farthest
+    uniqueID: 360683847
     locked: 0
   - name: Tiles-Far-2
     uniqueID: 3927843789

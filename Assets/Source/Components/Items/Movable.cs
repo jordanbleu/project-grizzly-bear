@@ -1,6 +1,7 @@
 ﻿using Assets.Editor.Attributes;
 using Assets.Source.Components.ActorControllers;
 using Assets.Source.Components.Finders;
+using Assets.Source.Unity;
 using Spine.Unity;
 using System.Collections;
 using UnityEngine;
@@ -18,6 +19,11 @@ namespace Assets.Source.Components.Items
 
         private void Start()
         {
+
+            if (!UnityUtils.Exists(boneFollower.SkeletonRenderer)) {
+                throw new UnityException("!! Please assign the player skeleton to the bone follower please");
+            }
+
             rigidBodyStartingConstraints = rigidBody.constraints;
 
             /*
@@ -37,6 +43,17 @@ namespace Assets.Source.Components.Items
 
             var playerAware = GetComponent<PlayerAware>();
             player = playerAware.Player.GetComponent<PlayerController>();
+
+            
+        }
+
+        private void Update()
+        {
+            // if this item is being held, negate all forces
+            // affecting it. 
+            if (boneFollower.enabled) {
+                rigidBody.velocity = Vector2.zero;
+            }
         }
 
         [SerializeField]
@@ -56,7 +73,7 @@ namespace Assets.Source.Components.Items
             attachedCollider.enabled = false;
             boneFollower.enabled = true;
             rigidBody.gravityScale = 0;
-            rigidBody.mass = 0f;
+            //rigidBody.mass = 0f;
             rigidBody.velocity = Vector3.zero;
             // When you pick up an item, its z position is always frozen.
             rigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
@@ -67,7 +84,7 @@ namespace Assets.Source.Components.Items
         /// </summary>
         /// <param name="velocity"></param>
         public void Drop(Vector2 velocity) {
-            rigidBody.mass = startingMass;
+            //rigidBody.mass = startingMass;
             // this is a hack to fix a bug in the bone follower component where even if
             // it's inactive it will still mess up the object position.
             boneFollower.boneName = string.Empty;

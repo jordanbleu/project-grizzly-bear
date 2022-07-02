@@ -20,6 +20,9 @@ namespace Assets.Source.Components.Animators
 
         public void DisbaleAnimatorBool(string parameterName) => animator.SetBool(parameterName, false);
 
+        public void SetInt(string parameterName, int value)
+            => animator.SetInteger(parameterName, value);
+
 
     }
 }
