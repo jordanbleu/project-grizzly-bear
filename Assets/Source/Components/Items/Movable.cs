@@ -3,7 +3,6 @@ using Assets.Source.Components.ActorControllers;
 using Assets.Source.Components.Finders;
 using Assets.Source.Unity;
 using Spine.Unity;
-using System.Collections;
 using UnityEngine;
 
 namespace Assets.Source.Components.Items

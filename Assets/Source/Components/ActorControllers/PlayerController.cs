@@ -1,6 +1,7 @@
 ﻿using Assets.Editor.Attributes;
 using Assets.Source.Components.ActorControllers.Interfaces;
 using Assets.Source.Components.Animators;
+using Assets.Source.Components.Audio;
 using Assets.Source.Components.Items;
 using Assets.Source.Components.Physics;
 using Assets.Source.Components.Switches;
@@ -25,14 +26,15 @@ namespace Assets.Source.Components.ActorControllers
         // How quickly the player decelerates to zero
         private const float HORIZONTAL_DECELERATION = 0.25f;
         // the player's maximum movement speed
-        private const float MAX_SPEED = 8;        
+        private const float MAX_SPEED = 8;
+        // the rate at which engine audio rises
+        private const float ENGINE_REV_SPEED = 0.1f;
 
         [SerializeField]
         private Rigidbody2D rigidBody;
 
         [SerializeField]
         private PlayerAnimator playerAnimator;
-
 
         [SerializeField]
         private Animator faceAnimator;
@@ -48,6 +50,15 @@ namespace Assets.Source.Components.ActorControllers
 
         [SerializeField]
         private CapsuleCollider2D attachedCollider;
+
+        [SerializeField]
+        private AcceleratedAudioPlayer engineAudio;
+
+        [SerializeField]
+        private AnimatorTriggerHook jumpAnimatorHook;
+
+        [SerializeField]
+        private PlayerSoundEffects soundEffects;
 
         private Destructible destructible;
 
@@ -76,7 +87,50 @@ namespace Assets.Source.Components.ActorControllers
         private void Update()
         {
             HandleMovement();
+            UpdateEngineAudio();
             UpdateAnimations();
+        }
+
+        private void UpdateEngineAudio()
+        {
+            var absSpeed = Mathf.Abs(HorizontalSpeed);
+
+            if (groundDetector.IsGrounded)
+            {
+
+                if (absSpeed > 0f)
+                {
+                    if (engineAudio.AudioVelocity < 1f)
+                    {
+                        engineAudio.AudioVelocity += ENGINE_REV_SPEED;
+                    }
+
+                    engineAudio.AudioVelocity = engineAudio.AudioVelocity.Snap(ENGINE_REV_SPEED, 1f);
+
+                }
+                else
+                {
+                    if (engineAudio.AudioVelocity > 0f)
+                    {
+                        engineAudio.AudioVelocity -= ENGINE_REV_SPEED;
+                    }
+                    engineAudio.AudioVelocity = engineAudio.AudioVelocity.Snap(ENGINE_REV_SPEED, 0f);
+                }
+
+                engineAudio.AudioVelocity = Mathf.Clamp(engineAudio.AudioVelocity, 0, 1f);
+            }
+            else {
+                // if we are not grounded, engine is at full blast or zero because we have no ground resistance
+                if (absSpeed > 0f)
+                {
+                    engineAudio.AudioVelocity = 1.25f;
+                }
+                else
+                {
+                    engineAudio.AudioVelocity = 0;
+                }
+            }
+
         }
 
         // Apply animations
@@ -148,7 +202,7 @@ namespace Assets.Source.Components.ActorControllers
 
                 // Clamp Max Speed
                 HorizontalSpeed = Mathf.Clamp(HorizontalSpeed, -MAX_SPEED, MAX_SPEED);
-
+                
                 rigidBody.velocity = CombineVelocities();
             }
             else {
@@ -189,6 +243,8 @@ namespace Assets.Source.Components.ActorControllers
 
                 rigidBody.AddForce(new Vector2(0, JUMP_FORCE - carriedItemWeight), ForceMode2D.Impulse);
                 playerAnimator.Jump();
+                soundEffects.PlayJumpSound();
+                jumpAnimatorHook.SetAnimatorTrigger("jump");
             }
         }
 

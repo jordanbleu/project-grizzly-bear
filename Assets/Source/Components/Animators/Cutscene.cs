@@ -11,6 +11,9 @@ namespace Assets.Source.Components.Animators
         [SerializeField]
         private AnimatorTriggerHook cinematicBarObject;
 
+        [SerializeField]
+        private AnimatorTriggerHook whiteOutObject;
+
         private PlayerAware playerAware;
         private void Start()
         {
@@ -28,6 +31,10 @@ namespace Assets.Source.Components.Animators
 
         public void UnlockPlayerMovement() =>
             playerAware.Player.GetComponent<PlayerController>().ToggleMovementLock(false);
+
+        public void TriggerShortWhiteOut() =>
+            whiteOutObject.SetAnimatorTrigger("white-out-short");
+
 
 
     }

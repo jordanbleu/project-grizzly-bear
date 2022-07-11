@@ -48,5 +48,15 @@
 
             return newValue;
         }
+
+        /// <summary>
+        /// if the value is within 1 unit of the toValue, returns the toValue.  Else returns value.
+        /// </summary>
+        public static float Snap(this float value, float units, float toValue) {
+            if (value.IsWithin(units, toValue)) {
+                return toValue;
+            }
+            return value;
+        }
     }
 }
