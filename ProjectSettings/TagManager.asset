@@ -41,6 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Parallax-Farthest
+    uniqueID: 3249971183
+    locked: 0
   - name: Parallax-Back
     uniqueID: 1267462543
     locked: 0

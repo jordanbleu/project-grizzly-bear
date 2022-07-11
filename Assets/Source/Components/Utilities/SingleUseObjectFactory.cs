@@ -23,6 +23,7 @@ namespace Assets.Source.Components.Utilities
 
         private Deferred<GameObject> cameraImpulsePrefab = new Deferred<GameObject>(() => Resources.Load<GameObject>("Prefabs/SingleUseObjects/CAMERA-IMPULSE-SOURCE"));
         private Deferred<GameObject> musicBoxPrefab = new Deferred<GameObject>(() => Resources.Load<GameObject>("Prefabs/SingleUseObjects/MUSIC-BOX"));
+        private Deferred<GameObject> soundPrefab = new Deferred<GameObject>(() => Resources.Load<GameObject>("Prefabs/SingleUseObjects/SOUND"));
 
         public void InstantiateCameraImpulse(float impulseAmount) {
 
@@ -35,7 +36,7 @@ namespace Assets.Source.Components.Utilities
         
         }
 
-
+        // todo:  why did i write this?  
         public void PlayMusic(AudioClip musicClip) {
 
             var musicBoxInst = Instantiate(musicBoxPrefab.Value);
@@ -45,7 +46,13 @@ namespace Assets.Source.Components.Utilities
             audioSource.PlayOneShot(musicClip);
 
             musicBoxInst.GetComponent<DestroyAfterAudioClip>().IsActive = true;
+        }
 
+        public void PlaySound(AudioClip clip) {
+            var soundInst = Instantiate(soundPrefab.Value);
+            var audioSource = soundInst.GetComponent<AudioSource>();
+            audioSource.PlayOneShot(clip);
+            soundInst.GetComponent<DestroyAfterAudioClip>().IsActive = true;
         }
 
 
