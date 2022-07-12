@@ -48,6 +48,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -304,6 +305,15 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      vac-bot_5: 4183462364546784672
+      vac-bot_2: -6982409398566861116
+      vac-bot_6: -1406324032799009058
+      vac-bot_0: 5400752370420858537
+      vac-bot_3: -1599548859386092794
+      vac-bot_4: -2728783924937356789
+      vac-bot_1: 5314827649253320223
+      vac-bot_7: 8066318477001277374
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

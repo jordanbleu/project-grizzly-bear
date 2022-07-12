@@ -96,6 +96,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -688,6 +689,31 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      elevatorShaft_16: -4088052543797390595
+      elevatorShaft_11: 2599714596629866626
+      elevatorShaft_14: -7036240723735619143
+      elevatorShaft_3: 3469899070905505173
+      elevatorShaft_20: 842315064465811864
+      elevatorShaft_18: 1100644496009774911
+      elevatorShaft_9: 339155567294846407
+      elevatorShaft_22: 6076638570835028474
+      elevatorShaft_10: -6769769984301712557
+      elevatorShaft_21: -9133517337157301497
+      elevatorShaft_12: 7221469950159010704
+      elevatorShaft_15: -2774449136890379914
+      elevatorShaft_1: 5182838823293768939
+      elevatorShaft_23: -6358250537341886801
+      elevatorShaft_17: 218711442884610427
+      elevatorShaft_19: 5152946748933366818
+      elevatorShaft_4: -3981816473463235905
+      elevatorShaft_7: -1354692342965131342
+      elevatorShaft_13: -8931253952681490367
+      elevatorShaft_2: -3745747819536563344
+      elevatorShaft_6: -2096880953588703539
+      elevatorShaft_5: 9165824509953945417
+      elevatorShaft_0: 6252169374391077467
+      elevatorShaft_8: -3536770125747085979
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

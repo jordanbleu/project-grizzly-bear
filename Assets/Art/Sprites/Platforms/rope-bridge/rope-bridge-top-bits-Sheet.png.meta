@@ -54,6 +54,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -352,6 +353,17 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      rope-bridge-top-bits-Sheet_5: -4275941086053922784
+      rope-bridge-top-bits-Sheet_4: 903049708266030029
+      rope-bridge-top-bits-Sheet_7: 2826630276910052748
+      rope-bridge-top-bits-Sheet_3: -7953729838400277986
+      rope-bridge-top-bits-Sheet_9: -9185708705162863294
+      rope-bridge-top-bits-Sheet_0: -3190931634326364586
+      rope-bridge-top-bits-Sheet_2: 2548677593701435959
+      rope-bridge-top-bits-Sheet_1: 8043719495052138607
+      rope-bridge-top-bits-Sheet_6: 7501688152093100168
+      rope-bridge-top-bits-Sheet_8: 209871131713846311
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

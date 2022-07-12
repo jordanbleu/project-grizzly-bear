@@ -66,6 +66,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -448,6 +449,21 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      holographic-door-effect1_9: 5444339251488342548
+      holographic-door-effect1_4: -6247174776787963698
+      holographic-door-effect1_10: 8982785224286050504
+      holographic-door-effect1_11: 1397042158681538098
+      holographic-door-effect1_7: -7770871036834197773
+      holographic-door-effect1_3: 3307703342828913313
+      holographic-door-effect1_8: 4737232930722346529
+      holographic-door-effect1_5: 6084990057023629978
+      holographic-door-effect1_13: 1085026765225794038
+      holographic-door-effect1_2: -8098866238923901145
+      holographic-door-effect1_1: -4965643215496855829
+      holographic-door-effect1_6: 2769719628095250478
+      holographic-door-effect1_0: -4363657881690183006
+      holographic-door-effect1_12: 497224549832887016
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

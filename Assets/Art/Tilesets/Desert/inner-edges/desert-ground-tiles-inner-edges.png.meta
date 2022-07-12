@@ -36,6 +36,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -208,6 +209,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      desert-ground-tiles-inner-edges_2: -5118555066180918833
+      desert-ground-tiles-inner-edges_3: -8202440140937934072
+      desert-ground-tiles-inner-edges_0: -4698131352730109560
+      desert-ground-tiles-inner-edges_1: -1899326729918265585
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

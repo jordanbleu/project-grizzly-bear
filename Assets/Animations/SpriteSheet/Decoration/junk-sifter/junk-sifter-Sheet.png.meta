@@ -54,6 +54,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -352,6 +353,17 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      junk-sifter-Sheet_2: 2226444698552015790
+      junk-sifter-Sheet_5: 5928620796688280661
+      junk-sifter-Sheet_0: 508577948836225986
+      junk-sifter-Sheet_1: 1929754527048356505
+      junk-sifter-Sheet_4: 4543382094861567014
+      junk-sifter-Sheet_7: 6284136075472527975
+      junk-sifter-Sheet_3: 123550209014082734
+      junk-sifter-Sheet_6: 4881719221919195402
+      junk-sifter-Sheet_9: 9200372003398144927
+      junk-sifter-Sheet_8: -804029187225317160
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

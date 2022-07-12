@@ -99,6 +99,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -712,6 +713,32 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      desert-ground-tiles-edges_3: -7191340993241896257
+      desert-ground-tiles-edges_4: -3447005718941915390
+      desert-ground-tiles-edges_5: 9091245773676436723
+      desert-ground-tiles-edges_19: -983873544426944566
+      desert-ground-tiles-edges_9: -2751571009872219158
+      desert-ground-tiles-edges_23: 8057725776262618140
+      desert-ground-tiles-edges_1: 7722947677096058283
+      desert-ground-tiles-edges_12: 3240477870636102067
+      desert-ground-tiles-edges_8: 9198220011636899997
+      desert-ground-tiles-edges_10: 5928220643057736361
+      desert-ground-tiles-edges_16: 5075637913765640588
+      desert-ground-tiles-edges_18: 2123536286540283923
+      desert-ground-tiles-edges_7: -8902859535075395225
+      desert-ground-tiles-edges_6: 1396929052347680404
+      desert-ground-tiles-edges_24: 5353484330674697759
+      desert-ground-tiles-edges_15: 5535522391472356124
+      desert-ground-tiles-edges_2: 4041730192337348492
+      desert-ground-tiles-edges_14: -6191211608458781536
+      desert-ground-tiles-edges_0: 4817511212435894094
+      desert-ground-tiles-edges_20: 9004801867298139604
+      desert-ground-tiles-edges_22: -8188450389646933087
+      desert-ground-tiles-edges_13: 5961160228812831203
+      desert-ground-tiles-edges_21: -1728178992205473995
+      desert-ground-tiles-edges_17: 9195385282938871809
+      desert-ground-tiles-edges_11: 5959778940921472914
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

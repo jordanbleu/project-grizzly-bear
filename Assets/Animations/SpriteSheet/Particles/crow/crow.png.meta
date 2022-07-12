@@ -57,6 +57,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -376,6 +377,18 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      crow_5: 8492760901463939888
+      crow_2: 1439467775636262878
+      crow_8: -3577614718421649619
+      crow_1: 3383179551821478391
+      crow_10: -9125684307672564483
+      crow_3: -2254700722442048173
+      crow_9: 3080734444409211320
+      crow_4: -5564360847722458869
+      crow_7: -6325352560927846457
+      crow_6: -1715617321614242205
+      crow_0: 1388154641894931755
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

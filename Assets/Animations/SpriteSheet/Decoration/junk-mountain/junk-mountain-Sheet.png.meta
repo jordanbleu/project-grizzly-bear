@@ -72,6 +72,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -496,6 +497,23 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      junk-mountain-Sheet_11: -6619119509163138205
+      junk-mountain-Sheet_14: 6114125102728007015
+      junk-mountain-Sheet_7: 5313243127143889453
+      junk-mountain-Sheet_5: 2141874894856572401
+      junk-mountain-Sheet_4: 4065211052882424959
+      junk-mountain-Sheet_6: 2101164352118458172
+      junk-mountain-Sheet_2: -1797582148321722136
+      junk-mountain-Sheet_3: 4683158333796157135
+      junk-mountain-Sheet_10: 4513463401822248542
+      junk-mountain-Sheet_15: 6958381960128377645
+      junk-mountain-Sheet_8: 1491270822000464719
+      junk-mountain-Sheet_9: 5105071414803040824
+      junk-mountain-Sheet_13: 8597055976919189242
+      junk-mountain-Sheet_1: 1147205705543067328
+      junk-mountain-Sheet_12: 9028495026708618692
+      junk-mountain-Sheet_0: 6793408729360956863
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
