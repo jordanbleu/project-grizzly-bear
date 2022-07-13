@@ -54,6 +54,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -352,6 +353,17 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      rope-bridge-platforms-Sheet_0: -7887998151688819822
+      rope-bridge-platforms-Sheet_1: 4692962872826714086
+      rope-bridge-platforms-Sheet_5: -4454966663467192058
+      rope-bridge-platforms-Sheet_8: -4008884378302103092
+      rope-bridge-platforms-Sheet_9: 2502377780677394886
+      rope-bridge-platforms-Sheet_2: -1046121552446755771
+      rope-bridge-platforms-Sheet_4: -971628561524451090
+      rope-bridge-platforms-Sheet_7: 7368686939271362682
+      rope-bridge-platforms-Sheet_3: 9008632307442167231
+      rope-bridge-platforms-Sheet_6: -658659220358634475
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

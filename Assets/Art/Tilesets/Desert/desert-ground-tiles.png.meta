@@ -219,6 +219,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -1672,6 +1673,72 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      desert-ground-tiles_18: 2442809750747900716
+      desert-ground-tiles_27: 1844277133490942834
+      desert-ground-tiles_25: -7943853425567605680
+      desert-ground-tiles_46: -2434612132492941379
+      desert-ground-tiles_49: 116307237709774021
+      desert-ground-tiles_37: 8690727174488502714
+      desert-ground-tiles_28: -836701829603416245
+      desert-ground-tiles_8: 8026553083287031403
+      desert-ground-tiles_15: 5481370291963091319
+      desert-ground-tiles_11: 2203659188250584460
+      desert-ground-tiles_43: -6535692806061616961
+      desert-ground-tiles_31: -4872590658856524339
+      desert-ground-tiles_29: 5560224004440081280
+      desert-ground-tiles_62: 525700754075792238
+      desert-ground-tiles_44: -495266195677885555
+      desert-ground-tiles_59: -102979250013428564
+      desert-ground-tiles_14: 4791831641699062578
+      desert-ground-tiles_23: 8711566795265960519
+      desert-ground-tiles_61: 6539964483894472979
+      desert-ground-tiles_21: 8278538766136005372
+      desert-ground-tiles_32: -1509470167619123978
+      desert-ground-tiles_7: -2155653079746238151
+      desert-ground-tiles_1: 8451862885920138501
+      desert-ground-tiles_64: -4805033738986606274
+      desert-ground-tiles_38: 6868958432091892150
+      desert-ground-tiles_56: 340288163208926028
+      desert-ground-tiles_51: -6958346563020557395
+      desert-ground-tiles_52: 6871803791643708729
+      desert-ground-tiles_55: -5394650171251454806
+      desert-ground-tiles_4: -4096716340081002164
+      desert-ground-tiles_47: 685460126931137954
+      desert-ground-tiles_17: -2016883050080275781
+      desert-ground-tiles_16: -497727197389845153
+      desert-ground-tiles_35: -5282926518154306646
+      desert-ground-tiles_54: -4152986428523096299
+      desert-ground-tiles_63: 3200646357972117934
+      desert-ground-tiles_48: -3769041733891559916
+      desert-ground-tiles_41: -8310284917118055995
+      desert-ground-tiles_3: 1559225100415009979
+      desert-ground-tiles_30: 1390142915983452200
+      desert-ground-tiles_36: -8704491178695971372
+      desert-ground-tiles_2: -3989090865110928500
+      desert-ground-tiles_53: 1763725024677235441
+      desert-ground-tiles_34: -5848815552275423674
+      desert-ground-tiles_13: -612386076027963600
+      desert-ground-tiles_12: -4273018869058038133
+      desert-ground-tiles_24: -4657646854923817127
+      desert-ground-tiles_6: -2791164589404998063
+      desert-ground-tiles_58: -1964085184458974213
+      desert-ground-tiles_0: -5627714511351725621
+      desert-ground-tiles_33: -5125461130343278841
+      desert-ground-tiles_10: -480497267005370498
+      desert-ground-tiles_20: -8994314394786707067
+      desert-ground-tiles_42: -4602720380513738526
+      desert-ground-tiles_9: -2188508445428026693
+      desert-ground-tiles_39: 2081223999052660892
+      desert-ground-tiles_45: 7715945250146412186
+      desert-ground-tiles_60: 9174486352497974253
+      desert-ground-tiles_40: -9220267436878252813
+      desert-ground-tiles_22: 6430538542341732181
+      desert-ground-tiles_57: 6207881244561236126
+      desert-ground-tiles_5: -8813704177497129744
+      desert-ground-tiles_19: 2001855455405498755
+      desert-ground-tiles_26: 3325013971550023862
+      desert-ground-tiles_50: 1942973528097300621
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

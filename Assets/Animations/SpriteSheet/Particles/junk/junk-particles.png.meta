@@ -54,6 +54,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -352,6 +353,17 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      junk-particles_3: -607316015610178374
+      junk-particles_6: 6627555421300082841
+      junk-particles_4: 705190184552505300
+      junk-particles_5: 4272125998930032405
+      junk-particles_9: -7346170300175631047
+      junk-particles_2: 6611454582195329879
+      junk-particles_1: 3532294384245353431
+      junk-particles_8: -8304544222744736468
+      junk-particles_0: 7647700765018015737
+      junk-particles_7: 3038429960163438439
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

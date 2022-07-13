@@ -303,6 +303,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -2344,6 +2345,100 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      skyscraper-tiles_61: -6770681162302954012
+      skyscraper-tiles_24: 4440120448196332250
+      skyscraper-tiles_0: 6912397523987927663
+      skyscraper-tiles_41: 7301063306680600088
+      skyscraper-tiles_32: -3236272006955302152
+      skyscraper-tiles_72: -1562887849325995246
+      skyscraper-tiles_42: -3085814482357666210
+      skyscraper-tiles_56: -4336494758496527849
+      skyscraper-tiles_38: 7897134486378997125
+      skyscraper-tiles_71: 3930660687353655286
+      skyscraper-tiles_4: -943604417588511749
+      skyscraper-tiles_35: 6633628825347976875
+      skyscraper-tiles_37: -3353215337846337336
+      skyscraper-tiles_8: 621713586459494993
+      skyscraper-tiles_40: -6979440784152901625
+      skyscraper-tiles_91: -1808238818799617570
+      skyscraper-tiles_31: 8054917191856232065
+      skyscraper-tiles_2: 7273215405416071539
+      skyscraper-tiles_22: 4505003862228058947
+      skyscraper-tiles_57: -1655098447998836968
+      skyscraper-tiles_17: -2071806843869810844
+      skyscraper-tiles_48: 3154734953929367230
+      skyscraper-tiles_88: -4657922193224039074
+      skyscraper-tiles_43: 434063801303351120
+      skyscraper-tiles_13: 4355721006606175111
+      skyscraper-tiles_39: 3606314352895898256
+      skyscraper-tiles_3: -43973466660823823
+      skyscraper-tiles_64: 8743700042479153635
+      skyscraper-tiles_23: -1786555093575578636
+      skyscraper-tiles_69: -7286071700369384505
+      skyscraper-tiles_54: -5740715088090433581
+      skyscraper-tiles_86: -2081229036397823136
+      skyscraper-tiles_49: -8536992857706051482
+      skyscraper-tiles_85: 1691680997775506238
+      skyscraper-tiles_87: -2862661154984246921
+      skyscraper-tiles_47: 1588843873653984590
+      skyscraper-tiles_66: 6512585093888819385
+      skyscraper-tiles_53: -7906077069047114579
+      skyscraper-tiles_59: 8294477116082934632
+      skyscraper-tiles_25: -4172415459440965793
+      skyscraper-tiles_44: -6885302164448337988
+      skyscraper-tiles_52: -273366114520198276
+      skyscraper-tiles_5: 7995590102513566426
+      skyscraper-tiles_1: -2887597292864443064
+      skyscraper-tiles_84: -8433447104319590743
+      skyscraper-tiles_76: -722289559415944425
+      skyscraper-tiles_79: -6092316715721339064
+      skyscraper-tiles_15: 6152416273013779557
+      skyscraper-tiles_30: 6692169269096978252
+      skyscraper-tiles_60: 929345215225157761
+      skyscraper-tiles_92: 8703210124267791275
+      skyscraper-tiles_7: -5896443800939350964
+      skyscraper-tiles_20: -9116913320459725360
+      skyscraper-tiles_81: 799460316997459871
+      skyscraper-tiles_78: 7566361587814344199
+      skyscraper-tiles_89: -3713980821930789542
+      skyscraper-tiles_36: 5635891312978768828
+      skyscraper-tiles_28: -7234396336892578527
+      skyscraper-tiles_65: 2223967950001108063
+      skyscraper-tiles_12: -6723386543319743653
+      skyscraper-tiles_45: 4948646864354459086
+      skyscraper-tiles_10: -878713994756166406
+      skyscraper-tiles_90: 6722120389900999855
+      skyscraper-tiles_6: 77671585638966843
+      skyscraper-tiles_11: -8386476471477711826
+      skyscraper-tiles_46: -646903346822484937
+      skyscraper-tiles_68: -1874020098512087237
+      skyscraper-tiles_70: -6938594688375680111
+      skyscraper-tiles_33: -1288828106418749202
+      skyscraper-tiles_9: 8784126706305739801
+      skyscraper-tiles_19: -6860278867853541459
+      skyscraper-tiles_34: 8565923763575553003
+      skyscraper-tiles_51: 5004625528523636271
+      skyscraper-tiles_27: 364350003209889468
+      skyscraper-tiles_50: 455315237338805994
+      skyscraper-tiles_77: -11132173156741163
+      skyscraper-tiles_67: -422884816344294847
+      skyscraper-tiles_62: -6461657351673656664
+      skyscraper-tiles_73: -3556712733109739590
+      skyscraper-tiles_29: -5834359293158273923
+      skyscraper-tiles_55: 4100522199781343187
+      skyscraper-tiles_82: 9062140567076001488
+      skyscraper-tiles_16: -6522842375930707170
+      skyscraper-tiles_26: -8986640510371542776
+      skyscraper-tiles_63: -381503478457023331
+      skyscraper-tiles_58: 9069427525049013081
+      skyscraper-tiles_18: -5919115920451513726
+      skyscraper-tiles_74: 2839418856774478131
+      skyscraper-tiles_75: 3697685536064461348
+      skyscraper-tiles_21: -8688746910591718893
+      skyscraper-tiles_83: -7248653522749964445
+      skyscraper-tiles_80: 2509898405510041412
+      skyscraper-tiles_14: 6071425920767818812
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

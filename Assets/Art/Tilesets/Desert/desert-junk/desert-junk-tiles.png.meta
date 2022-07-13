@@ -150,6 +150,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -1120,6 +1121,49 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      desert-junk-tiles_19: -2987879972586029772
+      desert-junk-tiles_33: 5650691623108975692
+      desert-junk-tiles_36: -8135702203696223451
+      desert-junk-tiles_17: 2689648155836974330
+      desert-junk-tiles_37: 8204310565174704563
+      desert-junk-tiles_40: -3533632073009551837
+      desert-junk-tiles_14: -65253762966909224
+      desert-junk-tiles_11: 8958440964858646027
+      desert-junk-tiles_1: 562413276641330383
+      desert-junk-tiles_2: 1998591718923732127
+      desert-junk-tiles_13: 4253827337665929744
+      desert-junk-tiles_7: 1567069645479645739
+      desert-junk-tiles_41: 8594120267343717904
+      desert-junk-tiles_23: 5231564847547878659
+      desert-junk-tiles_29: 6697368935936610620
+      desert-junk-tiles_28: 5199323172573903546
+      desert-junk-tiles_22: -3719503497033705458
+      desert-junk-tiles_3: -4605402099619745136
+      desert-junk-tiles_18: -434206214578823046
+      desert-junk-tiles_20: 114476322225187488
+      desert-junk-tiles_12: 1895040760884506453
+      desert-junk-tiles_5: 2652691575512211489
+      desert-junk-tiles_0: 4157199944737755575
+      desert-junk-tiles_8: -3182362449721969745
+      desert-junk-tiles_10: 1974167984609536193
+      desert-junk-tiles_31: 6011338476978145222
+      desert-junk-tiles_27: -6113725349185266261
+      desert-junk-tiles_34: 5625756670876784971
+      desert-junk-tiles_32: 866461951985960929
+      desert-junk-tiles_4: -8331867407428957489
+      desert-junk-tiles_6: -8166267699020160854
+      desert-junk-tiles_38: 5373538353146820794
+      desert-junk-tiles_21: 1425474409930596005
+      desert-junk-tiles_35: 5075735978254912881
+      desert-junk-tiles_26: -2510844383939561357
+      desert-junk-tiles_39: 153293484063723312
+      desert-junk-tiles_9: 6834623542865039439
+      desert-junk-tiles_15: -1239886989770959466
+      desert-junk-tiles_30: 359689791338319541
+      desert-junk-tiles_24: -3977067140504828226
+      desert-junk-tiles_16: 3202815214636401692
+      desert-junk-tiles_25: -4646295907746922250
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
