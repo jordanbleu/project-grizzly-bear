@@ -1,4 +1,5 @@
-﻿using Assets.Source.Unity;
+﻿using Assets.Source.Components.Animators;
+using Assets.Source.Unity;
 using UnityEngine;
 
 namespace Assets.Source.Components.Finders
@@ -34,7 +35,6 @@ namespace Assets.Source.Components.Finders
                 return player;
             }
         }
-
 
 
     }
