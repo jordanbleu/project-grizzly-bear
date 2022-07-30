@@ -2,6 +2,7 @@
 using Assets.Source.Components.ActorControllers.Interfaces;
 using Assets.Source.Components.Animators;
 using Assets.Source.Components.Audio;
+using Assets.Source.Components.Input;
 using Assets.Source.Components.Items;
 using Assets.Source.Components.Physics;
 using Assets.Source.Components.Switches;
@@ -11,6 +12,7 @@ using Spine.Unity;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 namespace Assets.Source.Components.ActorControllers
 {
@@ -29,6 +31,9 @@ namespace Assets.Source.Components.ActorControllers
         private const float MAX_SPEED = 8;
         // the rate at which engine audio rises
         private const float ENGINE_REV_SPEED = 0.1f;
+
+        [SerializeField]
+        private InputReceiverHook[] inputReceivers;
 
         [SerializeField]
         private Rigidbody2D rigidBody;
@@ -232,19 +237,35 @@ namespace Assets.Source.Components.ActorControllers
         #region Input Callbacks - invoked via PlayerInput component.
         private void OnJump(InputValue inputValue)
         {
-            if (groundDetector.IsGrounded) {
+            if (!isMovementLocked)
+            {
+                if (groundDetector.IsGrounded)
+                {
 
-                float carriedItemWeight = 0;
-                // carrying heavier items affects jump height
-                if (UnityUtils.Exists(carriedItem)) {
-                    var carriedItemRigidBody = carriedItem.GetComponent<Rigidbody2D>();
-                    carriedItemWeight = Mathf.Clamp(carriedItemRigidBody.mass/2, 0f, 7f);
+                    float carriedItemWeight = 0;
+                    // carrying heavier items affects jump height
+                    if (UnityUtils.Exists(carriedItem))
+                    {
+                        var carriedItemRigidBody = carriedItem.GetComponent<Rigidbody2D>();
+                        carriedItemWeight = Mathf.Clamp(carriedItemRigidBody.mass / 2, 0f, 7f);
+                    }
+
+                    rigidBody.AddForce(new Vector2(0, JUMP_FORCE - carriedItemWeight), ForceMode2D.Impulse);
+                    playerAnimator.Jump();
+                    soundEffects.PlayJumpSound();
+                    jumpAnimatorHook.SetAnimatorTrigger("jump");
                 }
+            }
 
-                rigidBody.AddForce(new Vector2(0, JUMP_FORCE - carriedItemWeight), ForceMode2D.Impulse);
-                playerAnimator.Jump();
-                soundEffects.PlayJumpSound();
-                jumpAnimatorHook.SetAnimatorTrigger("jump");
+            // broadcast to receiver hooks
+            if (inputReceivers == null) return;
+            
+            foreach (var hook in inputReceivers)
+            {
+                if (UnityUtils.ActiveAndExists(hook) && UnityUtils.ActiveAndExists(hook.gameObject))
+                {
+                    hook.JumpButtonPressed();
+                }
             }
         }
 

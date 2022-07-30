@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 namespace Assets.Source.Components.UI
 {
@@ -7,14 +8,17 @@ namespace Assets.Source.Components.UI
 
         private Animator animator;
 
+        [SerializeField]
+        private UnityEvent onMenuDismissed = new UnityEvent();
+
         private void Start()
         {
             animator = GetComponent<Animator>();
-            
         }
 
-        // called from Player Input component
+        // This is actually only the jump button that invokes this, not any key
         public void OnAnyKey() {
+            onMenuDismissed?.Invoke();
             animator.SetTrigger("dismiss");
         }
 
