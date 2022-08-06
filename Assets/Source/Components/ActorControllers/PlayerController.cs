@@ -28,7 +28,7 @@ namespace Assets.Source.Components.ActorControllers
         // How quickly the player decelerates to zero
         private const float HORIZONTAL_DECELERATION = 0.25f;
         // the player's maximum movement speed
-        private const float MAX_SPEED = 8;
+        private const float MAX_SPEED = 6;
         // the rate at which engine audio rises
         private const float ENGINE_REV_SPEED = 0.1f;
 

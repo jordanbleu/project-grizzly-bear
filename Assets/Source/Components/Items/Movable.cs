@@ -14,29 +14,41 @@ namespace Assets.Source.Components.Items
         [ReadOnly]
         private float startingMass = 0f;
 
+        [SerializeField]
+        private SkeletonRenderer skeletonRenderer;
+
         private PlayerController player;
+
+        private void Awake()
+        {
+            //
+            // Create the bone follower component
+            // We can't do this the normal way because there's a bug that causes issues
+            // where the rock constantly teleports to the player in editor mode
+            //
+            boneFollower = gameObject.AddComponent<BoneFollower>();
+            boneFollower.enabled = false;
+            boneFollower.SkeletonRenderer = skeletonRenderer;
+            boneFollower.followBoneRotation = true;
+            boneFollower.followXYPosition = true;
+            boneFollower.followZPosition = true;
+            boneFollower.followSkeletonFlip = true;
+        }
 
         private void Start()
         {
+
+            if (!attachedCollider.enabled) {
+                throw new UnityException("The attachedCollider on the movable component is not enabled.  Please enable it or drag the right one");
+            }
+
+            boneFollower.SetBone("ItemBone");
 
             if (!UnityUtils.Exists(boneFollower.SkeletonRenderer)) {
                 throw new UnityException("!! Please assign the player skeleton to the bone follower please");
             }
 
             rigidBodyStartingConstraints = rigidBody.constraints;
-
-            /*
-             * There's some sort of bug where sometimes when the 
-             * game is NOT playing where the bone follower will activate
-             * itself randomly and reset positions to zero.  So far, this
-             * has been the best hack to fix that. 
-             * 
-             * Note that bone follower requires a ton of hacks :(
-             */
-            boneFollower.followBoneRotation = true;
-            boneFollower.followXYPosition = true;
-            boneFollower.followZPosition = true;
-            boneFollower.followSkeletonFlip = true;
 
             startingMass = rigidBody.mass;
 
@@ -58,7 +70,6 @@ namespace Assets.Source.Components.Items
         [SerializeField]
         private Rigidbody2D rigidBody;
 
-        [SerializeField]
         private BoneFollower boneFollower;
 
         [SerializeField]

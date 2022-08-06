@@ -7,6 +7,7 @@ namespace Assets.Source.Components.Items
 {
     public class BoundaryChecker : MonoBehaviour
     {
+        [Tooltip("The center in world space, generally just use the object's position.")]
         [SerializeField]
         private Vector2 boundaryCenter;
 
