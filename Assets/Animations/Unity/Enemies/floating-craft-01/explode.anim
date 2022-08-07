@@ -1805,7 +1805,7 @@ AnimationClip:
     floatParameter: 2
     intParameter: 0
     messageOptions: 0
-  - time: 1.9
+  - time: 1.9166666
     functionName: InstantiateAtMe
     data: 
     objectReferenceParameter: {fileID: 1179873300846019783, guid: ebe0f9fc34fde0d49af13404b2a2ec0c, type: 3}

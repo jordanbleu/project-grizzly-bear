@@ -1,5 +1,6 @@
 ﻿using Assets.Source.Components.Animators;
 using Assets.Source.Components.Finders;
+using Assets.Source.Components.Timer;
 using Assets.Source.Math;
 using Assets.Source.Unity;
 using UnityEngine;
@@ -13,6 +14,7 @@ namespace Assets.Source.Components.ActorControllers
         private Rigidbody2D rigidBody;
         private Animator animator;
         private Destructible destructible;
+        private GameTimer preAttackTimer;
 
         private float xVelocity = 0f;
         private float yVelocity = 0f;
@@ -41,6 +43,7 @@ namespace Assets.Source.Components.ActorControllers
 
         private void Start()
         {
+            preAttackTimer = GetComponent<GameTimer>();
             player = GetComponent<PlayerAware>().Player;            
             rigidBody = GetComponent<Rigidbody2D>();
             animator = GetComponent<Animator>();
@@ -56,7 +59,7 @@ namespace Assets.Source.Components.ActorControllers
 
         private void ShootPlayer()
         {
-            if (!laserController.IsAnimating && 
+            if (!preAttackTimer.IsActive && !laserController.IsAnimating && 
                 xVelocity.IsWithin(acceleration, 0) &&
                 transform.position.x.IsWithin(attackRange, player.transform.position.x) &&
                 destructible.IsAlive) {
