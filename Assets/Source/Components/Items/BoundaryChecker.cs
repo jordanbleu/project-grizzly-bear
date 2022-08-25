@@ -33,6 +33,12 @@ namespace Assets.Source.Components.Items
         {
             resetPosition = transform.position;
             square = new Square(boundaryCenter, boundarySize);
+
+            if (!square.SurroundsPoint(transform.position))
+            {
+                UnityEngine.Debug.LogWarning($"Hey, the object '{gameObject.name}' is out of bounds" +
+                                             $" before the game even started.  It's probably gonna act weird.");
+            }
         }
 
         private void Update()

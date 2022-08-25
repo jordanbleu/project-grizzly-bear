@@ -274,8 +274,10 @@ namespace Assets.Source.Components.ActorControllers
             HorizontalInput = inputValue.Get<Vector2>().x;
         }
 
-        private void OnPickup(InputValue inputValue) 
+        private void OnPickup(InputValue inputValue)
         {
+            if (isMovementLocked) return;
+
             // if the user presses the pickup button, we either pick up an
             // item or drop the current item.
             if (UnityUtils.Exists(carriedItem))
@@ -287,26 +289,27 @@ namespace Assets.Source.Components.ActorControllers
             }
         }
 
-        private void OnThrow(InputValue inputValue) {
+        private void OnThrow(InputValue inputValue)
+        {
+            if (isMovementLocked) return;
+            
             if (UnityUtils.Exists(carriedItem))
             {
                 playerAnimator.Throw();
             }
         }
 
-        private void OnInteract(InputValue inputValue) {
-
-            if (interactionTrigger.InteractibleItems.Any()) {
-                
-                // just pick the first one if there are multiple (there usually shouldn't be)
-                var item = interactionTrigger.InteractibleItems.FirstOrDefault();
-
-                if (UnityUtils.Exists(item) && item.TryGetComponent<IInteract>(out var interact)) {
-                    interact?.OnInteract();
-                }
+        private void OnInteract(InputValue inputValue)
+        {
+            if (isMovementLocked) return;
+            if (!interactionTrigger.InteractibleItems.Any()) return;
             
+            // just pick the first one if there are multiple (there usually shouldn't be)
+            var item = interactionTrigger.InteractibleItems.FirstOrDefault();
+
+            if (UnityUtils.Exists(item) && item.TryGetComponent<IInteract>(out var interact)) {
+                interact?.OnInteract();
             }
-            
         }
 
         #endregion
