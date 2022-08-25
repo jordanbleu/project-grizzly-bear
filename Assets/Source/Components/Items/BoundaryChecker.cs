@@ -7,6 +7,7 @@ namespace Assets.Source.Components.Items
 {
     public class BoundaryChecker : MonoBehaviour
     {
+        [Tooltip("The center in world space, generally just use the object's position.")]
         [SerializeField]
         private Vector2 boundaryCenter;
 
@@ -32,6 +33,12 @@ namespace Assets.Source.Components.Items
         {
             resetPosition = transform.position;
             square = new Square(boundaryCenter, boundarySize);
+
+            if (!square.SurroundsPoint(transform.position))
+            {
+                UnityEngine.Debug.LogWarning($"Hey, the object '{gameObject.name}' is out of bounds" +
+                                             $" before the game even started.  It's probably gonna act weird.");
+            }
         }
 
         private void Update()

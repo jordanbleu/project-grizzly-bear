@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Source.Unity;
+using UnityEngine;
 
 namespace Assets.Source.Components.Animators
 {
@@ -14,11 +15,11 @@ namespace Assets.Source.Components.Animators
             animator = GetComponent<Animator>();
         }
 
-        public void SetAnimatorTrigger(string triggerName) => animator.SetTrigger(triggerName);
+        public void SetAnimatorTrigger(string triggerName) { if (UnityUtils.Exists(animator)) animator.SetTrigger(triggerName); }
 
-        public void EnableAnimatorBool(string parameterName) => animator.SetBool(parameterName, true);
+        public void EnableAnimatorBool(string parameterName) { if (UnityUtils.Exists(animator)) animator.SetBool(parameterName, true); }
 
-        public void DisbaleAnimatorBool(string parameterName) => animator.SetBool(parameterName, false);
+        public void DisableAnimatorBool(string parameterName) { if (UnityUtils.Exists(animator)) animator.SetBool(parameterName, false); }
 
         public void SetInt(string parameterName, int value)
             => animator.SetInteger(parameterName, value);

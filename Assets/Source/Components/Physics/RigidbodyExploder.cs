@@ -14,7 +14,7 @@ namespace Assets.Source.Components.Physics
         }
         public void RecieveDamage(GameObject sender, int amount, Vector2 force)
         {
-            rigidBody.AddForceAtPosition(sender.transform.position, force);
+            rigidBody.AddForceAtPosition(sender.transform.position, force/10);
         }
 
     }

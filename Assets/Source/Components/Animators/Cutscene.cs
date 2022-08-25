@@ -14,6 +14,9 @@ namespace Assets.Source.Components.Animators
         [SerializeField]
         private AnimatorTriggerHook whiteOutObject;
 
+        [SerializeField]
+        private AnimatorTriggerHook blackOutObject;
+
         private PlayerAware playerAware;
         private void Start()
         {
@@ -35,6 +38,26 @@ namespace Assets.Source.Components.Animators
         public void TriggerShortWhiteOut() =>
             whiteOutObject.SetAnimatorTrigger("white-out-short");
 
+        public void EnableGlitchedFace() =>
+            playerAware.Player.GetComponent<PlayerAnimator>().IsFaceGlitched = true;
+
+        public void DisableGlitchedFace() =>
+            playerAware.Player.GetComponent<PlayerAnimator>().IsFaceGlitched = false;
+
+        public void EnableCutsceneMode() =>
+            playerAware.GetComponent<CutscenePlayerController>().enabled = true;
+
+        public void DisableCutsceneMode() =>
+           playerAware.GetComponent<CutscenePlayerController>().enabled = false;
+
+        public void EnablePlayerDeadAnimation() =>
+            playerAware.Player.GetComponent<PlayerAnimator>().IsDead = true;
+
+        public void DisablePlayerDeadAnimation() =>
+            playerAware.Player.GetComponent<PlayerAnimator>().IsDead = false;
+
+        public void FadeInfromBlack() =>
+            blackOutObject.SetAnimatorTrigger("fade-in");
 
 
     }

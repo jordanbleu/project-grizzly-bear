@@ -13,6 +13,10 @@ namespace Assets.Source.Components.Animators
         [Tooltip("Drag the spine mecanim component here")]
         private Animator animator;
 
+        [SerializeField]
+        [Tooltip("drag the face animator here")]
+        private Animator faceAnimator;
+
         public float HorizontalSpeed { get; set; }
 
         public bool IsHoldingItem { get; set; }
@@ -29,6 +33,10 @@ namespace Assets.Source.Components.Animators
 
         public void Jump() => animator.SetTrigger("jump");
 
+        public bool IsFaceGlitched { get; set; }
+
+        public bool IsDead { get; set; }
+
         private void Update()
         {
             
@@ -38,6 +46,8 @@ namespace Assets.Source.Components.Animators
             // we use floats as a hack so we can use blend trees in our animator controller, which simplifies the animation logic a ton
             animator.SetFloat("is-holding-item", BoolToFloat(IsHoldingItem));
             animator.SetBool("is-grounded", IsGrounded);
+            animator.SetBool("is-dead", IsDead);
+            faceAnimator.SetBool("is-glitched", IsFaceGlitched);
         }
 
         private void HandleFlip()

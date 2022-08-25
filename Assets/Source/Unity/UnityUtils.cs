@@ -18,6 +18,11 @@ namespace Assets.Source.Unity
         /// <param name="unityObject">Object to check</param>
         public static bool Exists(UnityEngine.Object unityObject) => unityObject != null && !unityObject.Equals(null);
 
+        public static bool ActiveAndExists(GameObject unityObject) => Exists(unityObject) && unityObject.activeSelf;
+
+        public static bool ActiveAndExists(MonoBehaviour unityComponent) =>
+            Exists(unityComponent) && unityComponent.isActiveAndEnabled;
+
         /// <summary>
         /// Creates a color from actual RGB values rather than floats because that is stupid.
         /// </summary>

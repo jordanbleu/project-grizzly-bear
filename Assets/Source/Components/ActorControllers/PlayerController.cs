@@ -2,6 +2,7 @@
 using Assets.Source.Components.ActorControllers.Interfaces;
 using Assets.Source.Components.Animators;
 using Assets.Source.Components.Audio;
+using Assets.Source.Components.Input;
 using Assets.Source.Components.Items;
 using Assets.Source.Components.Physics;
 using Assets.Source.Components.Switches;
@@ -11,6 +12,7 @@ using Spine.Unity;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 namespace Assets.Source.Components.ActorControllers
 {
@@ -26,9 +28,12 @@ namespace Assets.Source.Components.ActorControllers
         // How quickly the player decelerates to zero
         private const float HORIZONTAL_DECELERATION = 0.25f;
         // the player's maximum movement speed
-        private const float MAX_SPEED = 8;
+        private const float MAX_SPEED = 6;
         // the rate at which engine audio rises
         private const float ENGINE_REV_SPEED = 0.1f;
+
+        [SerializeField]
+        private InputReceiverHook[] inputReceivers;
 
         [SerializeField]
         private Rigidbody2D rigidBody;
@@ -232,19 +237,35 @@ namespace Assets.Source.Components.ActorControllers
         #region Input Callbacks - invoked via PlayerInput component.
         private void OnJump(InputValue inputValue)
         {
-            if (groundDetector.IsGrounded) {
+            if (!isMovementLocked)
+            {
+                if (groundDetector.IsGrounded)
+                {
 
-                float carriedItemWeight = 0;
-                // carrying heavier items affects jump height
-                if (UnityUtils.Exists(carriedItem)) {
-                    var carriedItemRigidBody = carriedItem.GetComponent<Rigidbody2D>();
-                    carriedItemWeight = Mathf.Clamp(carriedItemRigidBody.mass/2, 0f, 7f);
+                    float carriedItemWeight = 0;
+                    // carrying heavier items affects jump height
+                    if (UnityUtils.Exists(carriedItem))
+                    {
+                        var carriedItemRigidBody = carriedItem.GetComponent<Rigidbody2D>();
+                        carriedItemWeight = Mathf.Clamp(carriedItemRigidBody.mass / 2, 0f, 7f);
+                    }
+
+                    rigidBody.AddForce(new Vector2(0, JUMP_FORCE - carriedItemWeight), ForceMode2D.Impulse);
+                    playerAnimator.Jump();
+                    soundEffects.PlayJumpSound();
+                    jumpAnimatorHook.SetAnimatorTrigger("jump");
                 }
+            }
 
-                rigidBody.AddForce(new Vector2(0, JUMP_FORCE - carriedItemWeight), ForceMode2D.Impulse);
-                playerAnimator.Jump();
-                soundEffects.PlayJumpSound();
-                jumpAnimatorHook.SetAnimatorTrigger("jump");
+            // broadcast to receiver hooks
+            if (inputReceivers == null) return;
+            
+            foreach (var hook in inputReceivers)
+            {
+                if (UnityUtils.ActiveAndExists(hook) && UnityUtils.ActiveAndExists(hook.gameObject))
+                {
+                    hook.JumpButtonPressed();
+                }
             }
         }
 
@@ -253,8 +274,10 @@ namespace Assets.Source.Components.ActorControllers
             HorizontalInput = inputValue.Get<Vector2>().x;
         }
 
-        private void OnPickup(InputValue inputValue) 
+        private void OnPickup(InputValue inputValue)
         {
+            if (isMovementLocked) return;
+
             // if the user presses the pickup button, we either pick up an
             // item or drop the current item.
             if (UnityUtils.Exists(carriedItem))
@@ -266,26 +289,27 @@ namespace Assets.Source.Components.ActorControllers
             }
         }
 
-        private void OnThrow(InputValue inputValue) {
+        private void OnThrow(InputValue inputValue)
+        {
+            if (isMovementLocked) return;
+            
             if (UnityUtils.Exists(carriedItem))
             {
                 playerAnimator.Throw();
             }
         }
 
-        private void OnInteract(InputValue inputValue) {
-
-            if (interactionTrigger.InteractibleItems.Any()) {
-                
-                // just pick the first one if there are multiple (there usually shouldn't be)
-                var item = interactionTrigger.InteractibleItems.FirstOrDefault();
-
-                if (UnityUtils.Exists(item) && item.TryGetComponent<IInteract>(out var interact)) {
-                    interact?.OnInteract();
-                }
+        private void OnInteract(InputValue inputValue)
+        {
+            if (isMovementLocked) return;
+            if (!interactionTrigger.InteractibleItems.Any()) return;
             
+            // just pick the first one if there are multiple (there usually shouldn't be)
+            var item = interactionTrigger.InteractibleItems.FirstOrDefault();
+
+            if (UnityUtils.Exists(item) && item.TryGetComponent<IInteract>(out var interact)) {
+                interact?.OnInteract();
             }
-            
         }
 
         #endregion
