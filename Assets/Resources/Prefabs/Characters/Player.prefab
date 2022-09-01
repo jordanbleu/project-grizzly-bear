@@ -865,6 +865,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf3f4badbf96b4a46a764c3b13f53515, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputReceivers: []
   rigidBody: {fileID: 4883225519147869219}
   playerAnimator: {fileID: 4883225519147869213}
   faceAnimator: {fileID: 4883225519159244010}
@@ -1229,7 +1230,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.058499992, y: -0.7185}
+  m_AnchoredPosition: {x: 0.05847168, y: -0.71849823}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4883225519591371708
