@@ -9,6 +9,7 @@ using Assets.Source.Components.Switches;
 using Assets.Source.Math;
 using Assets.Source.Unity;
 using Spine.Unity;
+using System;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -65,6 +66,9 @@ namespace Assets.Source.Components.ActorControllers
         [SerializeField]
         private PlayerSoundEffects soundEffects;
 
+        [SerializeField]
+        private PlayerIconAnimator playerIconAnimator;
+
         private Destructible destructible;
 
         /// <summary> The horizontal input axis from the player </summary>
@@ -94,6 +98,36 @@ namespace Assets.Source.Components.ActorControllers
             HandleMovement();
             UpdateEngineAudio();
             UpdateAnimations();
+            UpdatePlayerIcon();
+        }
+
+        private void UpdatePlayerIcon()
+        {
+            if (interactionTrigger.InteractibleItems.Any())
+            {
+                playerIconAnimator.ShowButtonPrompt = true;
+            }
+            else
+            {
+                playerIconAnimator.ShowButtonPrompt = false;
+            }
+
+            if (!UnityUtils.Exists(carriedItem))
+            {
+                if (interactionTrigger.CarryableItems.Any())
+                {
+                    playerIconAnimator.ShowPickupPrompt = true;
+                }
+                else
+                {
+                    playerIconAnimator.ShowPickupPrompt = false;
+                }
+            }
+            else 
+            {
+                playerIconAnimator.ShowPickupPrompt = false;
+            }            
+
         }
 
         private void UpdateEngineAudio()
