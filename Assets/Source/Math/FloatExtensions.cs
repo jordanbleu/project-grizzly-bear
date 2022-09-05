@@ -58,5 +58,16 @@
             }
             return value;
         }
+
+        /// <summary>
+        /// Returns whether the value is between two other values. 
+        /// </summary>
+        public static bool IsBetween(this float value, float min, float max, bool inclusive = false) {
+            if (inclusive)
+            {
+                return (value >= min && value <= max);
+            }
+            return (value > min && value < max);
+        }
     }
 }

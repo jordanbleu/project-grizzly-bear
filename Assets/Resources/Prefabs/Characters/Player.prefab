@@ -1249,7 +1249,7 @@ MonoBehaviour:
   radius: 0.5
   groundLayers:
     serializedVersion: 2
-    m_Bits: 31
+    m_Bits: 543
   isGrounded: 0
   groundNormal: {x: 0, y: 0}
 --- !u!114 &4883225519147869210

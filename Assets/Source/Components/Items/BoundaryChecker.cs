@@ -67,6 +67,11 @@ namespace Assets.Source.Components.Items
             }
         }
 
+        // triggers the boundary reset logic 
+        public void TriggerBoundaryExit() {
+            transform.position = new Vector2(square.Left - 1, square.Top + 1);
+        }
+
 
         public enum OutOfBoundsAction { 
             [Tooltip("Object won't do anything.")]
