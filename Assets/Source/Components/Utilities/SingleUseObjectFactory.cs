@@ -32,8 +32,6 @@ namespace Assets.Source.Components.Utilities
             var impulse = impulseObj.GetComponent<CinemachineImpulseSource>();
 
             impulse.GenerateImpulse(impulseAmount);
-
-        
         }
 
         // todo:  why did i write this?  

@@ -1,4 +1,5 @@
-﻿using Assets.Editor.Attributes;
+﻿using System.Linq;
+using Assets.Editor.Attributes;
 using Assets.Source.Math;
 using Assets.Source.Unity;
 using UnityEngine;
@@ -56,8 +57,10 @@ namespace Assets.Source.Components.Physics
 
         private Vector2 CalculateNormal() {
 
-            var raycast = Physics2D.Raycast((Vector2)transform.position+feetPosition, -transform.up, radius*2, groundLayers, -9999, 9999);
+            var raycasts = Physics2D.RaycastAll((Vector2)transform.position+feetPosition, -transform.up, radius*2, groundLayers, -9999, 9999);
 
+            var raycast = raycasts.Where(r => !r.collider.isTrigger).FirstOrDefault();
+           
             // This stops the player from rotating his whole body when passing over smaller obstacles, like rocks, etc.
             // So, the player will only rotate towards an incline if the height of the ground is above this value
             if (UnityUtils.Exists(raycast.collider) && raycast.collider.bounds.size.y < 2) {

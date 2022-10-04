@@ -1,11 +1,4 @@
-﻿using Assets.Source.Components.ActorControllers;
-using Cinemachine;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.Source.Components.Behavior
 {

@@ -19,7 +19,7 @@ namespace Assets.Source.Components.PuzzleControllers
 
 
         [SerializeField]
-        private AnimatorTriggerHook elevatorIndicatorAnimator;
+        private AnimatorTriggerHook[] elevatorIndicatorAnimators;
 
         [SerializeField]
         [Tooltip("Drag platform here")]
@@ -48,7 +48,10 @@ namespace Assets.Source.Components.PuzzleControllers
                 }
             }
 
-            elevatorIndicatorAnimator.SetInt("level", platform.Index);
+            foreach (var elevatorIndicatorAnimator in elevatorIndicatorAnimators)
+            {
+                elevatorIndicatorAnimator.SetInt("level", platform.Index);
+            }
         }
 
         public void AddToggle() => totalToggles++;

@@ -1,11 +1,6 @@
 ﻿using Assets.Editor.Attributes;
 using Assets.Source.Math;
 using Assets.Source.Unity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Assets.Source.Components.Behavior
