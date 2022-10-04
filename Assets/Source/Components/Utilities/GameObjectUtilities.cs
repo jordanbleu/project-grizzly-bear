@@ -34,6 +34,13 @@ namespace Assets.Source.Components.Utilities
             inst.transform.position = transform.position;
         }
 
+        public void InstantiateAtMeAndEnable(GameObject gameObj)
+        {
+            var inst = Instantiate(gameObj, transform.parent);
+            inst.transform.position = transform.position;
+            inst.SetActive(true);
+        }
+
         /// <summary>
         /// Instantiates the object but leaves its position at the default prefab location
         /// </summary>
@@ -45,5 +52,6 @@ namespace Assets.Source.Components.Utilities
 
         public void ResetPosition() => transform.position = originalPosition;
 
+        public void SetPosition(Vector2 position) => transform.position = position;
     }
 }

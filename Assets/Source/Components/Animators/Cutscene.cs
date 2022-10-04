@@ -59,6 +59,9 @@ namespace Assets.Source.Components.Animators
         public void FadeInfromBlack() =>
             blackOutObject.SetAnimatorTrigger("fade-in");
 
+        public void FadeToBlack() =>
+            blackOutObject.SetAnimatorTrigger("fade-out");
+
 
     }
 }
