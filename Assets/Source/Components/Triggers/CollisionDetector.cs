@@ -39,7 +39,7 @@ namespace Assets.Source.Components.Triggers
                     {
                         UnityEngine.Debug.Log($"CollisionDetector -> OnTriggerStay2D -> {collision.gameObject.name} collided with {gameObject.name}");
                     }
-                    onEnter.Invoke();
+                    onEnter?.Invoke();
                     wasTriggered = true;
                 }
             }
@@ -56,7 +56,7 @@ namespace Assets.Source.Components.Triggers
                 {
                     UnityEngine.Debug.Log($"CollisionDetector -> OnTriggerExit2D -> {collision.gameObject.name} exited collision with {gameObject.name}");
                 }
-                onExit.Invoke();
+                onExit?.Invoke();
                 wasTriggered = false;
             }
         }

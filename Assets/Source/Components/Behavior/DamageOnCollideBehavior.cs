@@ -9,7 +9,7 @@ namespace Assets.Source.Components.Behavior
         [SerializeField]
         private int damage = 1;
         
-        private void OnCollisionEnter(Collision collision)
+        private void OnCollisionEnter2D(Collision2D collision)
         {
             if (collision.gameObject.TryGetComponent<Destructible>(out var destructible))
             {
@@ -17,12 +17,15 @@ namespace Assets.Source.Components.Behavior
             }
         }
 
-        private void OnTriggerEnter(Collider other)
+
+        private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.gameObject.TryGetComponent<Destructible>(out var destructible))
             {
                 destructible.DecreaseHealth(damage);   
             }
+            
         }
+
     }
 }

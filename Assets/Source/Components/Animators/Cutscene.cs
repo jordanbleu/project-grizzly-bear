@@ -1,5 +1,6 @@
 ﻿using Assets.Source.Components.ActorControllers;
 using Assets.Source.Components.Finders;
+using Assets.Source.Unity;
 using UnityEngine;
 
 namespace Assets.Source.Components.Animators
@@ -21,6 +22,15 @@ namespace Assets.Source.Components.Animators
         private void Start()
         {
             playerAware = GetComponent<PlayerAware>();
+        }
+
+        private void Awake()
+        {
+            // this is hacks because Unity is stupid.
+            if (!UnityUtils.Exists(playerAware))
+            {
+                playerAware = GetComponent<PlayerAware>();
+            }
         }
 
         public void EnableCinematicBars() =>
