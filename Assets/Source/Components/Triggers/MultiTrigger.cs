@@ -9,7 +9,7 @@ namespace Assets.Source.Components.Triggers
 {
     public class MultiTrigger : MonoBehaviour
     {
-        private bool wasEnabled = false;
+        private bool wasEnabled;
         
         [SerializeField]
         private bool[] triggers;

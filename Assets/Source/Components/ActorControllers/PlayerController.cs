@@ -75,6 +75,7 @@ namespace Assets.Source.Components.ActorControllers
         public float HorizontalInput { get; set; } = 0f;
 
         public float HorizontalSpeed { get; set; } = 0f;
+        private Vector2 externalForceVelocity = Vector2.zero;
 
         [SerializeField]
         [ReadOnly]
@@ -252,7 +253,7 @@ namespace Assets.Source.Components.ActorControllers
         // Combines all velocities into one final velocity
         private Vector2 CombineVelocities()
         {
-            return new Vector2(HorizontalSpeed, rigidBody.velocity.y);
+            return new Vector2(HorizontalSpeed + externalForceVelocity.x, rigidBody.velocity.y + externalForceVelocity.y);
         }
 
         // an overly complicated way to calculate throw strength.
@@ -266,6 +267,22 @@ namespace Assets.Source.Components.ActorControllers
             var ys = 25;
 
             return new Vector2(xs, ys);
+        }
+
+        private void OnTriggerEnter2D(Collider2D col)
+        {
+            if (col.gameObject.TryGetComponent<RigidBodyVelocityEffector>(out var rbve))
+            {
+                externalForceVelocity += rbve.EffectVelocity;
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D other)
+        {
+            if (other.gameObject.TryGetComponent<RigidBodyVelocityEffector>(out var rbve))
+            {
+                externalForceVelocity -= rbve.EffectVelocity;
+            }
         }
 
         #region Input Callbacks - invoked via PlayerInput component.

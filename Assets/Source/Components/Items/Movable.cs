@@ -7,6 +7,7 @@ using UnityEngine;
 
 namespace Assets.Source.Components.Items
 {
+    [RequireComponent(typeof(Movable))]
     public class Movable : MonoBehaviour
     {
         private RigidbodyConstraints2D rigidBodyStartingConstraints;

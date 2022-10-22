@@ -47,6 +47,9 @@ namespace Assets.Source.Components.Animators
 
         public void TriggerShortWhiteOut() =>
             whiteOutObject.SetAnimatorTrigger("white-out-short");
+        
+        public void TriggerWhiteFlash() =>
+            whiteOutObject.SetAnimatorTrigger("white-out-flash");
 
         public void EnableGlitchedFace() =>
             playerAware.Player.GetComponent<PlayerAnimator>().IsFaceGlitched = true;

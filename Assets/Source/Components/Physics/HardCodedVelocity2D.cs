@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.Source.Components.Physics
 {
@@ -14,14 +9,24 @@ namespace Assets.Source.Components.Physics
         [Tooltip("Determines starting velocity for the RigidBody2D")]
         private Vector2 velocity;
 
+        [SerializeField]
+        private bool isConstant = true;
+        
         private Rigidbody2D rigidBody;
         public void Start() {
             rigidBody = GetComponent<Rigidbody2D>();
+            if (!isConstant)
+            {
+                rigidBody.velocity = velocity;
+            }
         }
 
         private void Update()
         {
-            rigidBody.velocity = velocity;
+            if (isConstant)
+            {
+                rigidBody.velocity = velocity;
+            }
         }
 
 

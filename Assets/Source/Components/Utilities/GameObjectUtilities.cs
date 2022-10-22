@@ -23,7 +23,7 @@ namespace Assets.Source.Components.Utilities
         {
             gameObject.SetActive(false);
         }
-
+        
         /// <summary>
         /// Instantiates a game object at this object's position
         /// </summary>
@@ -31,12 +31,14 @@ namespace Assets.Source.Components.Utilities
         public void InstantiateAtMe(GameObject gameObj)
         {
             var inst = Instantiate(gameObj, transform.parent);
+            
             inst.transform.position = transform.position;
         }
 
         public void InstantiateAtMeAndEnable(GameObject gameObj)
         {
             var inst = Instantiate(gameObj, transform.parent);
+
             inst.transform.position = transform.position;
             inst.SetActive(true);
         }
