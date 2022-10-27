@@ -21,7 +21,7 @@ namespace Assets.Source.Components.Hooks
                 var ev = unityEvents
                     .First(e => string.Equals(id, e.id, StringComparison.OrdinalIgnoreCase));
                 
-                ev.unityEvent.Invoke();
+                ev.unityEvent?.Invoke();
             }
             else
             {

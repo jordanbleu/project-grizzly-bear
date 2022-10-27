@@ -1,6 +1,8 @@
-﻿using Assets.Source.Components.Finders;
+﻿using System;
+using Assets.Source.Components.Finders;
 using Assets.Source.Components.Memory;
 using Assets.Source.Lambda;
+using Assets.Source.Unity;
 using Cinemachine;
 using UnityEngine;
 
@@ -17,7 +19,15 @@ namespace Assets.Source.Components.Utilities
 
         private void Start()
         {
-            playerAware = GetComponent<PlayerAware>();    
+            if (!UnityUtils.Exists(playerAware))
+            {
+                playerAware = GetComponent<PlayerAware>();    
+            }
+        }
+
+        private void Awake()
+        {
+            playerAware = GetComponent<PlayerAware>(); 
         }
 
 

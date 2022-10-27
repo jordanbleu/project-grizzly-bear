@@ -55,5 +55,23 @@ namespace Assets.Source.Components.Utilities
         public void ResetPosition() => transform.position = originalPosition;
 
         public void SetPosition(Vector2 position) => transform.position = position;
+
+        /// <summary>
+        /// Zeros out velocity and deactivates collider / rigid body
+        /// </summary>
+        public void DeactivateColliderAndRigidBody()
+        {
+            if (TryGetComponent<Rigidbody2D>(out var rigidBod))
+            {
+                rigidBod.velocity = Vector2.zero;
+                rigidBod.gravityScale = 0f;
+                rigidBod.freezeRotation = true;
+            }
+
+            if (TryGetComponent<Collider2D>(out var col))
+            {
+                col.enabled = false;
+            }
+        }
     }
 }

@@ -12,7 +12,7 @@ namespace Assets.Source.Components.Utilities
         [SerializeField]
         private Vector2 positionForPlayer;
 
-        private void Start()
+        private void Awake()
         {
             playerAware = GetComponent<PlayerAware>();
         }
