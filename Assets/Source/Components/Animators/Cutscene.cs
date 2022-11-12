@@ -18,6 +18,7 @@ namespace Assets.Source.Components.Animators
         [SerializeField]
         private AnimatorTriggerHook blackOutObject;
 
+        [SerializeField]
         private PlayerAware playerAware;
         private void Start()
         {
@@ -25,6 +26,15 @@ namespace Assets.Source.Components.Animators
         }
 
         private void Awake()
+        {
+            // this is hacks because Unity is stupid.
+            if (!UnityUtils.Exists(playerAware))
+            {
+                playerAware = GetComponent<PlayerAware>();
+            }
+        }
+        
+        private void OnEnable()
         {
             // this is hacks because Unity is stupid.
             if (!UnityUtils.Exists(playerAware))
@@ -51,6 +61,11 @@ namespace Assets.Source.Components.Animators
         public void TriggerWhiteFlash() =>
             whiteOutObject.SetAnimatorTrigger("white-out-flash");
 
+        public void TriggerBadEnding() =>
+            whiteOutObject.SetAnimatorTrigger("bad-ending");
+        public void TriggerGoodEnding() =>
+            whiteOutObject.SetAnimatorTrigger("good-ending");
+        
         public void EnableGlitchedFace() =>
             playerAware.Player.GetComponent<PlayerAnimator>().IsFaceGlitched = true;
 
