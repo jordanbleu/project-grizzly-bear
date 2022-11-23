@@ -19,6 +19,7 @@ namespace Assets.Source.Strings
             { "throw-tutorial-kbm", "Press [RMB] to throw items" },
             { "interact-tutorial-kbm", "Press [F] to interact" },
             { "drop-tutorial2-kbm", "Press [LMB] to drop items" },
+            { "press-jump-to-begin-kbm", "Press [Space] to begin"},
 
 
             // xbox controls
@@ -28,6 +29,7 @@ namespace Assets.Source.Strings
             { "drop-tutorial2-xbox", @"Press <sprite=""Xbox-button-prompts"" index=2> to drop items" },
             { "throw-tutorial-xbox", "Press (Y) to throw items" },
             { "interact-tutorial-xbox", "Press (B) to interact" },
+            { "press-jump-to-begin-xbox", @"Press  <sprite=""Xbox-button-prompts"" index=0> to begin"},
 
         };
 
