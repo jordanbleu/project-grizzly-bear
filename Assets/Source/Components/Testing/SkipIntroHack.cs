@@ -11,12 +11,18 @@ namespace DefaultNamespace
         [SerializeField] private GameObject cutsceneObject;
         [SerializeField] private GameObject mainMenuObject;
         [SerializeField] private PlayerController playerController;
+
+        [SerializeField]
+        private bool shouldUnlockPlayer = true;
         
         protected override void Apply()
         {
             Destroy(cutsceneObject);
             mainMenuObject.SetActive(false);
-            playerController.ToggleMovementLock(false);
+            if (shouldUnlockPlayer)
+            {
+                playerController.ToggleMovementLock(false);
+            }
         }
     }
 }

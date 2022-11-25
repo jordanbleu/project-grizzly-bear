@@ -11,7 +11,7 @@ namespace Assets.Source.Components.Animators
     public class AnimationSelector : MonoBehaviour
     {
 
-
+        [Tooltip("This is the name of the int field that should be named 'index'")]
         [SerializeField]
         private int animationIndex = 0;
 

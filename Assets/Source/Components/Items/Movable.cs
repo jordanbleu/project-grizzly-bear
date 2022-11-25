@@ -7,6 +7,7 @@ using UnityEngine;
 
 namespace Assets.Source.Components.Items
 {
+    
     public class Movable : MonoBehaviour
     {
         private RigidbodyConstraints2D rigidBodyStartingConstraints;
@@ -42,14 +43,12 @@ namespace Assets.Source.Components.Items
                 throw new UnityException("The attachedCollider on the movable component is not enabled.  Please enable it or drag the right one");
             }
 
-            boneFollower.SetBone("ItemBone");
-
-            if (!UnityUtils.Exists(boneFollower.SkeletonRenderer)) {
+            if (!UnityUtils.Exists(boneFollower) || !UnityUtils.Exists(boneFollower.SkeletonRenderer)) {
                 throw new UnityException("!! Please assign the player skeleton to the bone follower please");
             }
-
+            
+            boneFollower.SetBone("ItemBone");
             rigidBodyStartingConstraints = rigidBody.constraints;
-
             startingMass = rigidBody.mass;
 
             var playerAware = GetComponent<PlayerAware>();

@@ -1,5 +1,6 @@
 ﻿using Assets.Source.Components.ActorControllers;
 using Assets.Source.Components.Finders;
+using Assets.Source.Unity;
 using UnityEngine;
 
 namespace Assets.Source.Components.Animators
@@ -17,10 +18,29 @@ namespace Assets.Source.Components.Animators
         [SerializeField]
         private AnimatorTriggerHook blackOutObject;
 
+        [SerializeField]
         private PlayerAware playerAware;
         private void Start()
         {
             playerAware = GetComponent<PlayerAware>();
+        }
+
+        private void Awake()
+        {
+            // this is hacks because Unity is stupid.
+            if (!UnityUtils.Exists(playerAware))
+            {
+                playerAware = GetComponent<PlayerAware>();
+            }
+        }
+        
+        private void OnEnable()
+        {
+            // this is hacks because Unity is stupid.
+            if (!UnityUtils.Exists(playerAware))
+            {
+                playerAware = GetComponent<PlayerAware>();
+            }
         }
 
         public void EnableCinematicBars() =>
@@ -37,7 +57,15 @@ namespace Assets.Source.Components.Animators
 
         public void TriggerShortWhiteOut() =>
             whiteOutObject.SetAnimatorTrigger("white-out-short");
+        
+        public void TriggerWhiteFlash() =>
+            whiteOutObject.SetAnimatorTrigger("white-out-flash");
 
+        public void TriggerBadEnding() =>
+            whiteOutObject.SetAnimatorTrigger("bad-ending");
+        public void TriggerGoodEnding() =>
+            whiteOutObject.SetAnimatorTrigger("good-ending");
+        
         public void EnableGlitchedFace() =>
             playerAware.Player.GetComponent<PlayerAnimator>().IsFaceGlitched = true;
 

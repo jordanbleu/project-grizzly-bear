@@ -5,7 +5,8 @@ namespace Assets.Source.Components.UI
 {
     public class MainMenuController : MonoBehaviour
     {
-
+        private bool isReadyForDismiss;
+        
         private Animator animator;
 
         [SerializeField]
@@ -18,9 +19,16 @@ namespace Assets.Source.Components.UI
 
         // This is actually only the jump button that invokes this, not any key
         public void OnAnyKey() {
-            onMenuDismissed?.Invoke();
-            animator.SetTrigger("dismiss");
+            if (isReadyForDismiss)
+            {
+                onMenuDismissed?.Invoke();
+                animator.SetTrigger("dismiss");
+            }
         }
+
+        public void ReadyForDismiss() => isReadyForDismiss = true;
+
+
 
 
     }

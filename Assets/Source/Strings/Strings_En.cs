@@ -14,17 +14,22 @@ namespace Assets.Source.Strings
             // todo: use sprites here, i think we can use the rich text tags in textmesh pro
             // kbm controls
             { "jump-tutorial-kbm", "Press [Space] to jump" },
-            { "pickup-tutorial-kbm", "Press [LMB] to pick things up" },
+            { "pickup-tutorial-kbm", "Press [LMB] to pick up / drop items" },
             { "drop-tutorial-kbm", "Press [LMB] again to drop items" },
             { "throw-tutorial-kbm", "Press [RMB] to throw items" },
             { "interact-tutorial-kbm", "Press [F] to interact" },
+            { "drop-tutorial2-kbm", "Press [LMB] to drop items" },
+            { "press-jump-to-begin-kbm", "Press [Space] to begin"},
+
 
             // xbox controls
             { "jump-tutorial-xbox", @"Press <sprite=""Xbox-button-prompts"" index=0> to jump" },
-            { "pickup-tutorial-xbox", @"Press <sprite=""Xbox-button-prompts"" index=2> to pick things up" },
+            { "pickup-tutorial-xbox", @"Press <sprite=""Xbox-button-prompts"" index=2>  to pick up / drop items" },
             { "drop-tutorial-xbox", @"Press <sprite=""Xbox-button-prompts"" index=2> again to drop items" },
+            { "drop-tutorial2-xbox", @"Press <sprite=""Xbox-button-prompts"" index=2> to drop items" },
             { "throw-tutorial-xbox", "Press (Y) to throw items" },
             { "interact-tutorial-xbox", "Press (B) to interact" },
+            { "press-jump-to-begin-xbox", @"Press  <sprite=""Xbox-button-prompts"" index=0> to begin"},
 
         };
 

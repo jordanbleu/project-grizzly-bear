@@ -9,6 +9,8 @@ namespace Assets.Source.Components.Triggers
 {
     public class MultiTrigger : MonoBehaviour
     {
+        private bool wasEnabled;
+        
         [SerializeField]
         private bool[] triggers;
 
@@ -16,6 +18,9 @@ namespace Assets.Source.Components.Triggers
         [Tooltip("Triggered when a trigger is enabled and all triggers are active.")]
         private UnityEvent onAllTriggersEnabled = new UnityEvent();
 
+        [SerializeField]
+        [Tooltip("Triggered when all triggers are active for the first time.")]
+        private UnityEvent onAllTriggersEnabledFirstTime = new UnityEvent();
         public void EnableTriggerById(int index)
         {
             if (index > triggers.Length-1)
@@ -40,9 +45,14 @@ namespace Assets.Source.Components.Triggers
 
         private void Refresh()
         {
-            if (!triggers.Any(t => t == false))
+            if (triggers.All(t => t))
             {
-                onAllTriggersEnabled?.Invoke();   
+                onAllTriggersEnabled?.Invoke();
+                if (!wasEnabled)
+                {
+                    wasEnabled = true;
+                    onAllTriggersEnabledFirstTime?.Invoke();
+                }
             }
         }
     }

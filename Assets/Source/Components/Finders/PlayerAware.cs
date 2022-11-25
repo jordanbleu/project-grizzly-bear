@@ -1,4 +1,5 @@
-﻿using Assets.Source.Components.Animators;
+﻿using System;
+using Assets.Source.Components.Animators;
 using Assets.Source.Unity;
 using UnityEngine;
 
@@ -18,6 +19,13 @@ namespace Assets.Source.Components.Finders
         [SerializeField]
         [Tooltip("You can drag the player object here to make lookup faster.")]
         private GameObject player;
+
+        private void Awake()
+        {
+            if (requirePlayerReference && !UnityUtils.Exists(player)) {
+                throw new UnityException($"PlayerAware object is missing a reference to the player object please add that to object '{gameObject.name}'.");
+            }
+        }
 
         private void Start()
         {

@@ -10,8 +10,6 @@ namespace Assets.Source.Components.EventHooks
 {
     public class StartEventHook : MonoBehaviour
     {
-
-
         [SerializeField]
         private UnityEvent onStart = new UnityEvent();
 
