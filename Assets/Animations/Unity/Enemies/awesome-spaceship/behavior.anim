@@ -1451,6 +1451,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 12.833333
+    functionName: TriggerEventById
+    data: on-disable-door-collider
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 16.083334
     functionName: TriggerEventById
     data: on-zap
@@ -1461,6 +1468,13 @@ AnimationClip:
   - time: 16.516666
     functionName: TriggerEventById
     data: on-begin-leaving
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 16.75
+    functionName: TriggerEventById
+    data: on-enable-door-collider
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0

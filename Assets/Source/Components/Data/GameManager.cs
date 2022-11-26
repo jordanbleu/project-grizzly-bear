@@ -1,4 +1,5 @@
 using System;
+using Assets.Editor.Attributes;
 using Assets.Source.Components.ActorControllers;
 using Assets.Source.Components.Finders;
 using Assets.Source.Data;
@@ -29,6 +30,10 @@ namespace Source.Components.Data
      
         [SerializeField] private GameObject cutsceneObject;
         [SerializeField] private GameObject mainMenuObject;
+
+        [SerializeField]
+        [ReadOnly]
+        private float totalElapsedTime;
         
         private void Start()
         {
@@ -155,9 +160,10 @@ namespace Source.Components.Data
         public void SetCheckpoint(int checkpoint) => InMemoryGameData.LastCheckpoint = (Checkpoint)checkpoint;
 
         public void AddDeath() => InMemoryGameData.Deaths++;
-        
-        
 
-
+        private void Update()
+        {
+            totalElapsedTime = Time.realtimeSinceStartup;
+        }
     }
 }
