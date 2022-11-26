@@ -56,7 +56,6 @@ namespace Source.Components.Data
             {
                 case Checkpoint.Frame1_Start:
                 default:
-                    player.transform.position = new Vector3(0, -0.5f, 0);
                     break;
                 
                 case Checkpoint.Frame1_AfterLaser:

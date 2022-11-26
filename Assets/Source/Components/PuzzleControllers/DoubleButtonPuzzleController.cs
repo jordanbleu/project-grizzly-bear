@@ -1,63 +1,64 @@
-﻿using Assets.Editor.Attributes;
+using System;
 using Assets.Source.Components.Animators;
 using Assets.Source.Components.Platforms;
 using UnityEngine;
 
 namespace Assets.Source.Components.PuzzleControllers
 {
-    /// <summary>
-    /// This puzzle is solved by having two buttons pressed at the same time.  
-    /// </summary>
-    internal class DoubleButtonPuzzleController : MonoBehaviour
+    public class DoubleButtonPuzzleController : MonoBehaviour
     {
-        private bool isCompleted = false;
-
-        [SerializeField]
-        [ReadOnly]
-        [Tooltip("How many buttons are active currently")]
-        private int totalToggles = 0;
-
-
-        [SerializeField]
-        private AnimatorTriggerHook[] elevatorIndicatorAnimators;
-
         [SerializeField]
         [Tooltip("Drag platform here")]
         private MovingPlatform platform;
 
+        [SerializeField]
+        private AnimatorTriggerHook[] elevatorIndicatorAnimators;
+
+        private bool isTopButtonPressed = false;
+        
+        private bool isBottomButtonPressed = false;
+
         private void Update()
         {
-            if (!isCompleted)
+            var level = 0;
+
+            if (isBottomButtonPressed)
             {
-                totalToggles = Mathf.Clamp(totalToggles, 0, 2);
-                
-                // if both buttons are pressed, go to the bottom
-                if (totalToggles == 2)
-                {
-                    platform.CycleIndex(2);
-                }
-                // if only one button is pressed, go to the top
-                else if (totalToggles == 1)
-                {
-                    platform.CycleIndex(0);
-                }
-                // otherwise go to the middle
-                else
-                {
-                    platform.CycleIndex(1);
-                }
+                level++;
             }
 
+            if (isTopButtonPressed)
+            {
+                level++;
+            }
+            
             foreach (var elevatorIndicatorAnimator in elevatorIndicatorAnimators)
             {
-                elevatorIndicatorAnimator.SetInt("level", platform.Index);
+                elevatorIndicatorAnimator.SetInt("level", level);
             }
+            
+            // if both buttons are pressed, go to the bottom
+            if (level == 2)
+            {
+                platform.CycleIndex(2);
+            }
+            // if only one button is pressed, go to the top
+            else if (level == 1)
+            {
+                platform.CycleIndex(0);
+            }
+            // otherwise go to the middle
+            else
+            {
+                platform.CycleIndex(1);
+            }
+
         }
-
-        public void AddToggle() => totalToggles++;
-
-        public void RemoveToggle() => totalToggles--;
-
+        
+        public void TopButtonToggleTrue() => isTopButtonPressed = true;
+        public void TopButtonToggleFalse() => isTopButtonPressed = false;
+        public void BottomButtonToggleTrue() => isBottomButtonPressed = true;
+        public void BottomButtonToggleFalse() => isBottomButtonPressed = false;
 
     }
 }
