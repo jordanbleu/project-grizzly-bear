@@ -1958,14 +1958,21 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 1.8833333
+  - time: 1.65
     functionName: InstantiateCameraImpulse
     data: 
     objectReferenceParameter: {fileID: 0}
-    floatParameter: 2
+    floatParameter: 6
     intParameter: 0
     messageOptions: 0
-  - time: 1.9166666
+  - time: 1.7166667
+    functionName: TriggerEventById
+    data: flash
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.8
     functionName: InstantiateAtMe
     data: 
     objectReferenceParameter: {fileID: 1179873300846019783, guid: ebe0f9fc34fde0d49af13404b2a2ec0c, type: 3}
