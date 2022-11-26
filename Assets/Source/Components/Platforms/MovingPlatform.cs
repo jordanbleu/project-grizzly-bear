@@ -1,5 +1,6 @@
 ﻿using Assets.Editor.Attributes;
 using Assets.Source.Components.Timer;
+using Assets.Source.Components.Utilities;
 using Assets.Source.Math;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,10 @@ namespace Assets.Source.Components.Platforms
         [SerializeField]
         [ReadOnly]
         private PlatformInstruction current;
+
+        [SerializeField] private SingleUseObjectFactory objectFactory;
+        [SerializeField] AudioClip elevatorArriveSound;
+        [SerializeField] AudioSource audioSource;
 
         [SerializeField]
         private Rigidbody2D rigidBody;
@@ -108,7 +113,6 @@ namespace Assets.Source.Components.Platforms
 
         public void CycleNext()
         {
-
             index += 1;
 
             if (index > (instructions.Count() - 1))
@@ -117,6 +121,7 @@ namespace Assets.Source.Components.Platforms
             }
 
         }
+
 
         public void CyclePrev()
         {
@@ -138,7 +143,10 @@ namespace Assets.Source.Components.Platforms
             index = instructions.Count() - 1;
         }
 
-        public void CycleIndex(int index) => this.index = index;
+        public void CycleIndex(int index)
+        {
+            this.index = index;
+        }
 
         private bool IsNearDestination(PlatformInstruction currentInstruction) =>
             (transform.position.x.IsWithin(POSITION_TOLERANCE, currentInstruction.Position.x)) &&
@@ -185,6 +193,18 @@ namespace Assets.Source.Components.Platforms
             else
             {
                 yp = currentInstruction.Position.y;
+            }
+
+            if (xv != 0f || yv != 0f)
+            {
+                if (!audioSource.isPlaying)
+                {
+                    audioSource.Play();
+                }
+            }
+            else
+            {
+                audioSource.Stop();
             }
 
             rigidBody.position = new Vector2(xp, yp);

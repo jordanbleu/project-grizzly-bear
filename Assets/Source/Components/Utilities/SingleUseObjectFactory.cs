@@ -57,7 +57,8 @@ namespace Assets.Source.Components.Utilities
         }
 
         public void PlaySound(AudioClip clip) {
-            var soundInst = Instantiate(soundPrefab.Value);
+            var soundInst = Instantiate(soundPrefab.Value,transform.position, Quaternion.identity);
+            soundInst.name = $"SND-{clip.name}<-{gameObject.name}";
             var audioSource = soundInst.GetComponent<AudioSource>();
             audioSource.PlayOneShot(clip);
             soundInst.GetComponent<DestroyAfterAudioClip>().IsActive = true;

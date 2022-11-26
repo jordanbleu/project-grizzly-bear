@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Source.Components.Utilities;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace Assets.Source.Components.Switches
@@ -15,7 +16,10 @@ namespace Assets.Source.Components.Switches
         private UnityEvent onPressFirstTime = new UnityEvent();
 
         [SerializeField] private bool isEnabled = true;
-        
+
+        [SerializeField] private SingleUseObjectFactory objectFactory;
+        [SerializeField] AudioClip errorSound;
+
         private void Start()
         {
             animator = GetComponent<Animator>(); 
@@ -25,8 +29,12 @@ namespace Assets.Source.Components.Switches
         {
             // play the press animation even if its disabled.
             animator.SetTrigger("press");
-            
-            if (!isEnabled) return;
+
+            if (!isEnabled)
+            {
+                objectFactory.PlaySound(errorSound);
+                return;
+            }
             
             onPress?.Invoke();
 

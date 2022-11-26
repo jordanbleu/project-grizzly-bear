@@ -295,6 +295,7 @@ namespace Assets.Source.Components.ActorControllers
         {
             if (!isMovementLocked)
             {
+                soundEffects.PlayResetSound();
                 playerResetter.TriggerReset();
             }
         }
@@ -348,8 +349,10 @@ namespace Assets.Source.Components.ActorControllers
             if (UnityUtils.Exists(carriedItem))
             {
                 playerAnimator.PutDown();
+                soundEffects.PlayPickupSound();
             }
-            else if (interactionTrigger.CarryableItems.Any()) { 
+            else if (interactionTrigger.CarryableItems.Any()) {
+                soundEffects.PlayPickupSound();
                 playerAnimator.Pickup();
             }
         }
@@ -360,6 +363,7 @@ namespace Assets.Source.Components.ActorControllers
             
             if (UnityUtils.Exists(carriedItem))
             {
+                soundEffects.PlayThrowSound();
                 playerAnimator.Throw();
             }
         }
@@ -373,6 +377,7 @@ namespace Assets.Source.Components.ActorControllers
             var item = interactionTrigger.InteractibleItems.FirstOrDefault();
 
             if (UnityUtils.Exists(item) && item.TryGetComponent<IInteract>(out var interact)) {
+                soundEffects.PlaySwitchSOund();
                 interact?.OnInteract();
             }
         }
