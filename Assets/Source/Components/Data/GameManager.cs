@@ -30,6 +30,9 @@ namespace Source.Components.Data
 
         [SerializeField] private GameObject cutsceneObject;
         [SerializeField] private GameObject mainMenuObject;
+        [SerializeField] private GameObject birdEmitter;
+        [SerializeField] private GameObject tumbleweedEmitter;
+
 
         [SerializeField]
         [ReadOnly]
@@ -49,6 +52,13 @@ namespace Source.Components.Data
                 playerAware.Player.GetComponent<PlayerController>().ToggleMovementLock(false);
                 
             }
+
+            if (!isOnFirstFrame)
+            {
+                birdEmitter.SetActive(false);
+                tumbleweedEmitter.SetActive(false);
+            }
+
             ApplyCheckpoint();
             
         }
