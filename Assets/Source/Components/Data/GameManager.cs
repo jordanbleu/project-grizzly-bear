@@ -42,25 +42,15 @@ namespace Source.Components.Data
 
             // if the player has died before, disable the intro cutscene
             // this is hacky but it works 
-            if (isOnFirstFrame)
+            if (isOnFirstFrame && InMemoryGameData.Deaths > 0)
             {
-                if (InMemoryGameData.Deaths > 0)
-                {
-                    Destroy(cutsceneObject);
-                    mainMenuObject.SetActive(false);
-                    playerAware.Player.GetComponent<PlayerController>().ToggleMovementLock(false);
-                }
-                else
-                {
-                    ApplyCheckpoint();
-                }
+                Destroy(cutsceneObject);
+                mainMenuObject.SetActive(false);
+                playerAware.Player.GetComponent<PlayerController>().ToggleMovementLock(false);
+                
             }
-            else 
-            {
-                // not on the first frame
-
-                ApplyCheckpoint();
-            }
+            ApplyCheckpoint();
+            
         }
 
         // this method is called when the scene begins or is restarted.
@@ -76,7 +66,7 @@ namespace Source.Components.Data
                     break;
                 
                 case Checkpoint.Frame1_AfterLaser:
-                    player.transform.position = new Vector3(314, -3.64f, 0);
+                    player.transform.position = new Vector3(309, -3.64f, 0);
                     break;
                 
                 case Checkpoint.Frame2_Start:

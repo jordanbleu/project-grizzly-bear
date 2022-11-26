@@ -22,6 +22,7 @@ namespace Assets.Source.Strings
             { "press-jump-to-begin-kbm", "Press [Space] to begin"},
             { "press-again-to-reset-kbm", "Press [F5] again to self-destruct.\nWarning! Progress will be lost."},
             { "reset-tutorial-kbm", "If you get stuck, press [F5] twice to reset."},
+            { "checkpoint-kbm", "Checkpoint reached"},
 
             // xbox controls
             { "jump-tutorial-xbox", @"Press <sprite=""Xbox-button-prompts"" index=0> to jump" },
@@ -33,6 +34,7 @@ namespace Assets.Source.Strings
             { "press-jump-to-begin-xbox", @"Press  <sprite=""Xbox-button-prompts"" index=0> to begin"},
             { "press-again-to-reset-xbox", @"Press <sprite=""Xbox-button-prompts"" index=3> again to self-destruct. \nWarning! Progress will be lost."},
             { "reset-tutorial-xbox", @"If you get stuck, press <sprite=""Xbox-button-prompts"" index=3> twice to reset."},
+            { "checkpoint-xbox", "Checkpoint reached"},
 
 
 
