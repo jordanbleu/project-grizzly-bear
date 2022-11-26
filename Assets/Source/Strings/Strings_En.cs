@@ -20,7 +20,8 @@ namespace Assets.Source.Strings
             { "interact-tutorial-kbm", "Press [F] to interact" },
             { "drop-tutorial2-kbm", "Press [LMB] to drop items" },
             { "press-jump-to-begin-kbm", "Press [Space] to begin"},
-
+            { "press-again-to-reset-kbm", "Press [F5] again to self-destruct.\nWarning! Progress will be lost."},
+            { "reset-tutorial-kbm", "If you get stuck, press [F5] twice to reset."},
 
             // xbox controls
             { "jump-tutorial-xbox", @"Press <sprite=""Xbox-button-prompts"" index=0> to jump" },
@@ -30,6 +31,10 @@ namespace Assets.Source.Strings
             { "throw-tutorial-xbox", "Press (Y) to throw items" },
             { "interact-tutorial-xbox", "Press (B) to interact" },
             { "press-jump-to-begin-xbox", @"Press  <sprite=""Xbox-button-prompts"" index=0> to begin"},
+            { "press-again-to-reset-xbox", @"Press <sprite=""Xbox-button-prompts"" index=3> again to self-destruct. \nWarning! Progress will be lost."},
+            { "reset-tutorial-xbox", @"If you get stuck, press <sprite=""Xbox-button-prompts"" index=3> twice to reset."},
+
+
 
         };
 

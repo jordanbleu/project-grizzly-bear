@@ -11,6 +11,7 @@ using Assets.Source.Unity;
 using Spine.Unity;
 using System;
 using System.Linq;
+using Assets.Source.Components.UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -69,6 +70,9 @@ namespace Assets.Source.Components.ActorControllers
         [SerializeField]
         private PlayerIconAnimator playerIconAnimator;
 
+        [SerializeField]
+        private PlayerResetterController playerResetter;
+        
         private Destructible destructible;
 
         /// <summary> The horizontal input axis from the player </summary>
@@ -286,6 +290,16 @@ namespace Assets.Source.Components.ActorControllers
         }
 
         #region Input Callbacks - invoked via PlayerInput component.
+
+        private void OnReset()
+        {
+            if (!isMovementLocked)
+            {
+                playerResetter.TriggerReset();
+            }
+        }
+
+
         private void OnJump(InputValue inputValue)
         {
             if (!isMovementLocked)

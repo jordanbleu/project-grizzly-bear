@@ -28,5 +28,7 @@ namespace Assets.Source.Components.Behavior
             }
         }
 
+        public void ResetScene() => StartCoroutine(BeginLoadingScene(SceneManager.GetActiveScene().name));
+
     }
 }
