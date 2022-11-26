@@ -27,9 +27,12 @@ namespace Source.Components.Data
         
         [SerializeField]
         private GameObject framePrison;
-     
+
         [SerializeField] private GameObject cutsceneObject;
         [SerializeField] private GameObject mainMenuObject;
+        [SerializeField] private GameObject birdEmitter;
+        [SerializeField] private GameObject tumbleweedEmitter;
+
 
         [SerializeField]
         [ReadOnly]
@@ -37,18 +40,27 @@ namespace Source.Components.Data
         
         private void Start()
         {
+
+            var isOnFirstFrame = (InMemoryGameData.LastCheckpoint == Checkpoint.Frame1_Start || InMemoryGameData.LastCheckpoint == Checkpoint.Frame1_AfterLaser);
+
             // if the player has died before, disable the intro cutscene
             // this is hacky but it works 
-            if (InMemoryGameData.Deaths > 0 && (InMemoryGameData.LastCheckpoint == Checkpoint.Frame1_Start || InMemoryGameData.LastCheckpoint==Checkpoint.Frame1_AfterLaser))
+            if (isOnFirstFrame && InMemoryGameData.Deaths > 0)
             {
                 Destroy(cutsceneObject);
                 mainMenuObject.SetActive(false);
                 playerAware.Player.GetComponent<PlayerController>().ToggleMovementLock(false);
+                
             }
-            else
+
+            if (!isOnFirstFrame)
             {
-                ApplyCheckpoint();
+                birdEmitter.SetActive(false);
+                tumbleweedEmitter.SetActive(false);
             }
+
+            ApplyCheckpoint();
+            
         }
 
         // this method is called when the scene begins or is restarted.
@@ -64,7 +76,7 @@ namespace Source.Components.Data
                     break;
                 
                 case Checkpoint.Frame1_AfterLaser:
-                    player.transform.position = new Vector3(314, -3.64f, 0);
+                    player.transform.position = new Vector3(309, -3.64f, 0);
                     break;
                 
                 case Checkpoint.Frame2_Start:
