@@ -27,7 +27,7 @@ namespace Source.Components.Data
         
         [SerializeField]
         private GameObject framePrison;
-     
+
         [SerializeField] private GameObject cutsceneObject;
         [SerializeField] private GameObject mainMenuObject;
 
@@ -37,16 +37,28 @@ namespace Source.Components.Data
         
         private void Start()
         {
+
+            var isOnFirstFrame = (InMemoryGameData.LastCheckpoint == Checkpoint.Frame1_Start || InMemoryGameData.LastCheckpoint == Checkpoint.Frame1_AfterLaser);
+
             // if the player has died before, disable the intro cutscene
             // this is hacky but it works 
-            if (InMemoryGameData.Deaths > 0 && (InMemoryGameData.LastCheckpoint == Checkpoint.Frame1_Start || InMemoryGameData.LastCheckpoint==Checkpoint.Frame1_AfterLaser))
+            if (isOnFirstFrame)
             {
-                Destroy(cutsceneObject);
-                mainMenuObject.SetActive(false);
-                playerAware.Player.GetComponent<PlayerController>().ToggleMovementLock(false);
+                if (InMemoryGameData.Deaths > 0)
+                {
+                    Destroy(cutsceneObject);
+                    mainMenuObject.SetActive(false);
+                    playerAware.Player.GetComponent<PlayerController>().ToggleMovementLock(false);
+                }
+                else
+                {
+                    ApplyCheckpoint();
+                }
             }
-            else
+            else 
             {
+                // not on the first frame
+
                 ApplyCheckpoint();
             }
         }
