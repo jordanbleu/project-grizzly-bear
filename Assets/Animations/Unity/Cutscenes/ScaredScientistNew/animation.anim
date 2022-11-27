@@ -651,6 +651,13 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0
+    functionName: FlipSkeleton
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0
     functionName: LockPlayerMovement
     data: 
     objectReferenceParameter: {fileID: 0}
@@ -664,16 +671,37 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0
-    functionName: FlipSkeleton
-    data: 
+  - time: 0.18333334
+    functionName: TriggerEventById
+    data: stop-typing-sound
     objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.33333334
+    functionName: TriggerEventById
+    data: play-thud-sound
+    objectReferenceParameter: {fileID: 8300000, guid: 63d64d4d1ffef324c94a1906d7e26f52, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.4333333
+    functionName: TriggerEventById
+    data: play-gun-cock-sound
+    objectReferenceParameter: {fileID: 8300000, guid: 854ec22899a8eeb4599bebd70207f255, type: 3}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 8.05
     functionName: SetAnimation
     data: slow-walk-pointing-gun
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 17.783333
+    functionName: TriggerEventById
+    data: play-run-away-sound
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0

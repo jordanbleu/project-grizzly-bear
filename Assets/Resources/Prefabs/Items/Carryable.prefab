@@ -310,4 +310,4 @@ MonoBehaviour:
   highVelocityThud: {fileID: 8300000, guid: 86f9e054a2623bc41b71011546298e2d, type: 3}
   collisionLayers:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 991
