@@ -294,7 +294,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0
-    functionName: PlaySound
+    functionName: PlaySound2D
     data: 
     objectReferenceParameter: {fileID: 8300000, guid: bd07914a20c15784887ecc85e6e98f7b, type: 3}
     floatParameter: 0
