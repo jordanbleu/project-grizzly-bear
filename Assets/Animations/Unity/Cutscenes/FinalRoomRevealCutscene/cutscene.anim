@@ -712,6 +712,34 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 2.0333333
+    functionName: PlaySound2D
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: ff3ba200c9cdd314c8d339c95f6dd466, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 5.05
+    functionName: PlaySound2D
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: ff3ba200c9cdd314c8d339c95f6dd466, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 7.983333
+    functionName: PlaySound2D
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: ff3ba200c9cdd314c8d339c95f6dd466, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 20.233334
+    functionName: PlaySound2D
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: 92636b41af3ad7b4b81ab3261fd45d09, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 38.2
     functionName: DisableCinematicBars
     data: 
