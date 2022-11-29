@@ -160,6 +160,13 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0
+    functionName: PlaySound2D
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: d92063d81030e9b46847fa04832ee3d9, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0
     functionName: TriggerEventById
     data: drop-bomb
     objectReferenceParameter: {fileID: 0}

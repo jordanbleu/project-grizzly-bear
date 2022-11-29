@@ -15,6 +15,7 @@ using Assets.Source.Components.UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 namespace Assets.Source.Components.ActorControllers
 {
@@ -33,6 +34,8 @@ namespace Assets.Source.Components.ActorControllers
         private const float MAX_SPEED = 6;
         // the rate at which engine audio rises
         private const float ENGINE_REV_SPEED = 0.1f;
+
+        private Dictionary<int, Vector2> externalEffectors = new Dictionary<int, Vector2>();
 
         [SerializeField]
         private InputReceiverHook[] inputReceivers;
@@ -79,7 +82,7 @@ namespace Assets.Source.Components.ActorControllers
         public float HorizontalInput { get; set; } = 0f;
 
         public float HorizontalSpeed { get; set; } = 0f;
-        private Vector2 externalForceVelocity = Vector2.zero;
+
 
         [SerializeField]
         [ReadOnly]
@@ -257,7 +260,9 @@ namespace Assets.Source.Components.ActorControllers
         // Combines all velocities into one final velocity
         private Vector2 CombineVelocities()
         {
-            return new Vector2(HorizontalSpeed + externalForceVelocity.x, rigidBody.velocity.y + externalForceVelocity.y);
+            var externalForceVelocityX = externalEffectors.Sum(kvp => kvp.Value.x);
+            var externalForceVelocityY = externalEffectors.Sum(kvp => kvp.Value.y);
+            return new Vector2(HorizontalSpeed + externalForceVelocityX, rigidBody.velocity.y + externalForceVelocityY);
         }
 
         // an overly complicated way to calculate throw strength.
@@ -277,7 +282,15 @@ namespace Assets.Source.Components.ActorControllers
         {
             if (col.gameObject.TryGetComponent<RigidBodyVelocityEffector>(out var rbve))
             {
-                externalForceVelocity += rbve.EffectVelocity;
+                var instid = rbve.GetInstanceID();
+                if (externalEffectors.TryGetValue(rbve.GetInstanceID(), out _))
+                {
+                    externalEffectors[instid] = rbve.EffectVelocity;
+                }
+                else
+                {
+                    externalEffectors.Add(instid, rbve.EffectVelocity);
+                }
             }
         }
 
@@ -285,7 +298,11 @@ namespace Assets.Source.Components.ActorControllers
         {
             if (other.gameObject.TryGetComponent<RigidBodyVelocityEffector>(out var rbve))
             {
-                externalForceVelocity -= rbve.EffectVelocity;
+                var instid = rbve.GetInstanceID();
+                if (externalEffectors.ContainsKey(instid))
+                {
+                    externalEffectors.Remove(instid);
+                }
             }
         }
 
