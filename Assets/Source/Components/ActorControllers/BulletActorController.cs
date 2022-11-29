@@ -16,6 +16,8 @@ namespace Assets.Source.Components.ActorControllers
         [SerializeField]
         private GameObject lightObject;
 
+        [SerializeField] private AudioClip explosionSound;
+
         private bool isDead = false;
         
         private void Start()
@@ -34,6 +36,7 @@ namespace Assets.Source.Components.ActorControllers
                 particles.Play();
                 lightObject.SetActive(false);
                 objectFactory.InstantiateCameraImpulse(0.25f);
+                objectFactory.PlaySound(explosionSound);
                 isDead = true;
             }
 

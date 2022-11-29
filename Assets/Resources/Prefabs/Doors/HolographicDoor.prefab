@@ -231,6 +231,8 @@ GameObject:
   - component: {fileID: 8782576751001170108}
   - component: {fileID: 1283633793428383983}
   - component: {fileID: 5318088671239471106}
+  - component: {fileID: 5406301201804044026}
+  - component: {fileID: 6185084664740448938}
   m_Layer: 0
   m_Name: HolographicDoor
   m_TagString: Untagged
@@ -291,6 +293,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOpen: 0
+--- !u!114 &5406301201804044026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450583569936706644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 609a8a211c0241f46b4fa68b9f9f7164, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  requirePlayerReference: 0
+  player: {fileID: 0}
+--- !u!114 &6185084664740448938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450583569936706644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 447b8047bc6b4604abc8cd1d87e6e1ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3207189940111754832
 GameObject:
   m_ObjectHideFlags: 0

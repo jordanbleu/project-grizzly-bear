@@ -11,6 +11,9 @@ GameObject:
   - component: {fileID: 4947404453267440277}
   - component: {fileID: 4947404453267440299}
   - component: {fileID: 4947404453267440298}
+  - component: {fileID: 6905718438487317134}
+  - component: {fileID: 5039573414057906186}
+  - component: {fileID: 3586704759124681545}
   m_Layer: 0
   m_Name: water
   m_TagString: Untagged
@@ -80,6 +83,68 @@ MonoBehaviour:
   layers:
     serializedVersion: 2
     m_Bits: 8
+--- !u!114 &6905718438487317134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4947404453267440278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dc58e280cb8422448f068f9303e76c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isContinuous: 0
+  onExit:
+    m_PersistentCalls:
+      m_Calls: []
+  onEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3586704759124681545}
+        m_TargetAssemblyTypeName: Assets.Source.Components.Utilities.SingleUseObjectFactory,
+          grizzly-bear
+        m_MethodName: PlaySound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 75f905d05723cae45b9f6a7962eb1406, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  colliderLayers:
+    serializedVersion: 2
+    m_Bits: 8
+  logCollisions: 0
+--- !u!114 &5039573414057906186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4947404453267440278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 609a8a211c0241f46b4fa68b9f9f7164, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  requirePlayerReference: 0
+  player: {fileID: 0}
+--- !u!114 &3586704759124681545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4947404453267440278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 447b8047bc6b4604abc8cd1d87e6e1ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4947404453779059243
 GameObject:
   m_ObjectHideFlags: 0

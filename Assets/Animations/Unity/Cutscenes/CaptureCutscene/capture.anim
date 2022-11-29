@@ -1067,6 +1067,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 3.8666666
+    functionName: PlaySound2D
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: ff3ba200c9cdd314c8d339c95f6dd466, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 3.9833333
     functionName: EnableCinematicBars
     data: 
@@ -1075,9 +1082,23 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 3.9833333
+    functionName: PlaySound2D
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: 05f450010592cbb4ab6c1c9a204eb074, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 4.1666665
     functionName: TriggerEventById
     data: enable-light
     objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 10.016666
+    functionName: PlaySound2D
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: 22e7578f72c7de142b0719e5649c9c8b, type: 3}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0

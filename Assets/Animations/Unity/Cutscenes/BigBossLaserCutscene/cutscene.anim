@@ -3119,6 +3119,27 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 12.016666
+    functionName: PlaySound2D
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: 476f93450defef3408d0d571117c1db5, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 15.033334
+    functionName: PlaySound2D
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: d92063d81030e9b46847fa04832ee3d9, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 19.6
+    functionName: PlaySound2D
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: e264ac01101928548a0893e73f361cd0, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 19.933332
     functionName: TriggerWhiteFlash
     data: 

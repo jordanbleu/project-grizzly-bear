@@ -91,6 +91,8 @@ GameObject:
   - component: {fileID: 418690184823932612}
   - component: {fileID: 418690184823932610}
   - component: {fileID: 418690184823932611}
+  - component: {fileID: 2008757041031300224}
+  - component: {fileID: 6623888601341479456}
   m_Layer: 0
   m_Name: TrapDoor
   m_TagString: Untagged
@@ -149,6 +151,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOpen: 0
+--- !u!114 &2008757041031300224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 418690184823932613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 609a8a211c0241f46b4fa68b9f9f7164, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  requirePlayerReference: 0
+  player: {fileID: 0}
+--- !u!114 &6623888601341479456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 418690184823932613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 447b8047bc6b4604abc8cd1d87e6e1ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &418690185041284221
 GameObject:
   m_ObjectHideFlags: 0
