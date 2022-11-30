@@ -17,6 +17,16 @@ namespace Assets.Source.Components.Behavior
             StartCoroutine(BeginLoadingScene("good-ending"));
         }
 
+        public void GoToGame()
+        {
+            StartCoroutine(BeginLoadingScene("game"));
+        }
+
+        public void GoToEndCredits()
+        {
+            StartCoroutine(BeginLoadingScene("end-credits"));
+        }
+
         private IEnumerator BeginLoadingScene(string name)
         {
             AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(name);

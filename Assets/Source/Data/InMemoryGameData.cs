@@ -28,5 +28,24 @@ namespace Assets.Source.Data
         /// </summary>
         public static int Deaths { get; set; }
 
+        /// <summary>
+        /// How many times the player jumped
+        /// </summary>
+        public static int Jumps { get; set; }
+
+        /// <summary>
+        /// How many items the player threw 
+        /// </summary>
+        public static int Throws { get; set; }
+
+        public static int Pickups { get; set; }
+        public static int Drops { get; set; }
+
+        /// <summary>
+        /// How many buttons the player pressed
+        /// </summary>
+        public static int ButtonsPressed { get; set; }
+        public static int Damage { get; set; }
+
     }
 }

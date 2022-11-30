@@ -16,6 +16,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using Assets.Source.Data;
 
 namespace Assets.Source.Components.ActorControllers
 {
@@ -324,7 +325,7 @@ namespace Assets.Source.Components.ActorControllers
             {
                 if (groundDetector.IsGrounded)
                 {
-
+                    InMemoryGameData.Jumps++;
                     float carriedItemWeight = 0;
                     // carrying heavier items affects jump height
                     if (UnityUtils.Exists(carriedItem))
@@ -365,10 +366,12 @@ namespace Assets.Source.Components.ActorControllers
             // item or drop the current item.
             if (UnityUtils.Exists(carriedItem))
             {
+                InMemoryGameData.Drops++;
                 playerAnimator.PutDown();
                 soundEffects.PlayPickupSound();
             }
             else if (interactionTrigger.CarryableItems.Any()) {
+                InMemoryGameData.Pickups++;
                 soundEffects.PlayPickupSound();
                 playerAnimator.Pickup();
             }
@@ -380,6 +383,7 @@ namespace Assets.Source.Components.ActorControllers
             
             if (UnityUtils.Exists(carriedItem))
             {
+                InMemoryGameData.Throws++;
                 soundEffects.PlayThrowSound();
                 playerAnimator.Throw();
             }
@@ -394,6 +398,7 @@ namespace Assets.Source.Components.ActorControllers
             var item = interactionTrigger.InteractibleItems.FirstOrDefault();
 
             if (UnityUtils.Exists(item) && item.TryGetComponent<IInteract>(out var interact)) {
+                InMemoryGameData.ButtonsPressed++;
                 soundEffects.PlaySwitchSOund();
                 interact?.OnInteract();
             }
