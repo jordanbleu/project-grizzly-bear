@@ -457,6 +457,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 4.133333
+    functionName: PlaySound2D
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: 0bef11bd13014d948b2a238c9310e6a1, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 6.1666665
     functionName: DisableCinematicBars
     data: 

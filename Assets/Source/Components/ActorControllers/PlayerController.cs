@@ -16,6 +16,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using Assets.Source.Data;
 
 namespace Assets.Source.Components.ActorControllers
 {
@@ -278,6 +279,9 @@ namespace Assets.Source.Components.ActorControllers
             return new Vector2(xs, ys);
         }
 
+
+
+
         private void OnTriggerEnter2D(Collider2D col)
         {
             if (col.gameObject.TryGetComponent<RigidBodyVelocityEffector>(out var rbve))
@@ -324,7 +328,7 @@ namespace Assets.Source.Components.ActorControllers
             {
                 if (groundDetector.IsGrounded)
                 {
-
+                    InMemoryGameData.Jumps++;
                     float carriedItemWeight = 0;
                     // carrying heavier items affects jump height
                     if (UnityUtils.Exists(carriedItem))
@@ -365,10 +369,12 @@ namespace Assets.Source.Components.ActorControllers
             // item or drop the current item.
             if (UnityUtils.Exists(carriedItem))
             {
+                InMemoryGameData.Drops++;
                 playerAnimator.PutDown();
                 soundEffects.PlayPickupSound();
             }
             else if (interactionTrigger.CarryableItems.Any()) {
+                InMemoryGameData.Pickups++;
                 soundEffects.PlayPickupSound();
                 playerAnimator.Pickup();
             }
@@ -380,6 +386,7 @@ namespace Assets.Source.Components.ActorControllers
             
             if (UnityUtils.Exists(carriedItem))
             {
+                InMemoryGameData.Throws++;
                 soundEffects.PlayThrowSound();
                 playerAnimator.Throw();
             }
@@ -394,6 +401,7 @@ namespace Assets.Source.Components.ActorControllers
             var item = interactionTrigger.InteractibleItems.FirstOrDefault();
 
             if (UnityUtils.Exists(item) && item.TryGetComponent<IInteract>(out var interact)) {
+                InMemoryGameData.ButtonsPressed++;
                 soundEffects.PlaySwitchSOund();
                 interact?.OnInteract();
             }
@@ -417,6 +425,8 @@ namespace Assets.Source.Components.ActorControllers
 
         #region Animator Callbacks
         // The below callbacks are invoked via the PlayerAnimationHook
+        public void PlayServoSound() => soundEffects.PlayGetUp();
+        public void PlayThudSound() => soundEffects.PlayThud();
 
         public void AnimatorPickup() {
             // Confusingly enough, this animator event is called from the

@@ -13,7 +13,7 @@ namespace Assets.Source.Components.Animators
     /// </summary>
     public class PlayerAnimationHook : MonoBehaviour
     {
-
+        
 
         [SerializeField]
         private UnityEvent onAnimationPickup = new UnityEvent();
@@ -22,11 +22,22 @@ namespace Assets.Source.Components.Animators
         [SerializeField]
         private UnityEvent onAnimationThrow = new UnityEvent();
 
+        [SerializeField]
+        private UnityEvent onServoSound = new UnityEvent();
+
+        [SerializeField]
+        private UnityEvent onThudSound = new UnityEvent();
+
         public void AnimatorPickup() => onAnimationPickup?.Invoke();
 
         public void AnimatorThrow() => onAnimationThrow?.Invoke();
-        
 
+        
+        public void SndServo() =>
+            onServoSound?.Invoke();
+
+        public void SndThud() =>
+            onThudSound?.Invoke();
 
     }
 }

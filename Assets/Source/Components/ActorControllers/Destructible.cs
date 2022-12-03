@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Source.Data;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace Assets.Source.Components.ActorControllers
@@ -28,8 +29,15 @@ namespace Assets.Source.Components.ActorControllers
         }
 
         public void DecreaseHealth(int amount) {
+
+            amount = Mathf.Clamp(amount, 0, Health);
+
             if (health > 0)
             {
+                if (gameObject.tag == "Player") {
+                    InMemoryGameData.Damage += amount;
+                }
+
                 health -= amount;
                 health = Mathf.Clamp(health, 0, maxHealth);
                 onHealthDecreased?.Invoke();

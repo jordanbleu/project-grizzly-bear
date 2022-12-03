@@ -14,6 +14,7 @@ namespace Assets.Source.Components.ActorControllers
         private const float MAX_TOSS_VELOCITY = 5;
         
         [SerializeField] private GameObject rockPrefab;
+        [SerializeField] private AudioSource throwSound;
 
         private SkeletonAnimation skeletonAnim;
 
@@ -33,6 +34,7 @@ namespace Assets.Source.Components.ActorControllers
         
         private void ThrowRock()
         {
+            throwSound.Play();
             // skeleton is facing left
             var tossVelocityX = skeletonAnim.initialFlipX ? 
                 Random.Range(-MAX_TOSS_VELOCITY, -MIN_TOSS_VELOCITY) : 
