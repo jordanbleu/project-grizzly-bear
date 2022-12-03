@@ -735,6 +735,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onServoSound:
+    m_PersistentCalls:
+      m_Calls: []
+  onThudSound:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4883225518873824765
 GameObject:
   m_ObjectHideFlags: 0
@@ -1436,6 +1442,8 @@ MonoBehaviour:
   throwSound: {fileID: 0}
   resetSound: {fileID: 0}
   switchSound: {fileID: 0}
+  thud: {fileID: 0}
+  getUp: {fileID: 0}
 --- !u!114 &8046619093487918745
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,8 +1,5 @@
-using System;
 using Assets.Source.Components.ActorControllers;
-using Codice.Client.BaseCommands.Merge;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace DefaultNamespace
 {
