@@ -63,6 +63,12 @@ MonoBehaviour:
     m_Scale: 1
     m_Name: xbox-button-prompts_3
     m_HashCode: -1719105984
+  - m_ElementType: 2
+    m_Unicode: 65534
+    m_GlyphIndex: 4
+    m_Scale: 1
+    m_Name: xbox-button-prompts_4
+    m_HashCode: -1719105977
   m_SpriteGlyphTable:
   - m_Index: 0
     m_Metrics:
@@ -124,6 +130,21 @@ MonoBehaviour:
     m_Scale: 1
     m_AtlasIndex: 0
     sprite: {fileID: -2114483346, guid: 1ac295d8f9767c44eb88c232b9407563, type: 3}
+  - m_Index: 4
+    m_Metrics:
+      m_Width: 32
+      m_Height: 16
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 16
+      m_HorizontalAdvance: 32
+    m_GlyphRect:
+      m_X: 128
+      m_Y: 0
+      m_Width: 32
+      m_Height: 16
+    m_Scale: 1
+    m_AtlasIndex: 0
+    sprite: {fileID: 2106296514, guid: 1ac295d8f9767c44eb88c232b9407563, type: 3}
   spriteInfoList: []
   fallbackSpriteAssets: []
 --- !u!21 &5304793669210912677

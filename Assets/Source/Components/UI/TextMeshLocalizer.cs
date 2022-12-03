@@ -22,7 +22,7 @@ namespace Assets.Source.Components.UI
         [Tooltip("Just drag the player object here")]
         private PlayerInput playerInputSystem;
         
-        private void Start()
+        private void Update()
         {
             var controlContext = playerInputSystem.currentControlScheme;
 
