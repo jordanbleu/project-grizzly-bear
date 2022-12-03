@@ -17,11 +17,6 @@ namespace Assets.Source.Data
         /// </summary>
         public static Checkpoint LastCheckpoint { get; set; } = Checkpoint.Frame1_Start;
         
-        /// <summary>
-        /// Total amount of time the player took to finish the game (not populated until the game is finished).
-        /// NOTE FOR FUTURE - Use Time.realtimeSinceStartup
-        /// </summary>
-        public static TimeSpan TotalPlayTime { get; set; }
 
         /// <summary>
         /// How many times the player died
@@ -46,6 +41,8 @@ namespace Assets.Source.Data
         /// </summary>
         public static int ButtonsPressed { get; set; }
         public static int Damage { get; set; }
+
+        public static bool IsBadEnding { get; set; }
 
     }
 }

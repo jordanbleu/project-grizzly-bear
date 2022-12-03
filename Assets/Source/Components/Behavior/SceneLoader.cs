@@ -1,3 +1,4 @@
+using Assets.Source.Data;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,11 +10,13 @@ namespace Assets.Source.Components.Behavior
 
         public void GoToBadEnding()
         {
+            InMemoryGameData.IsBadEnding = false;
             StartCoroutine(BeginLoadingScene("bad-ending"));
         }
 
         public void GoToGoodEnding()
         {
+            InMemoryGameData.IsBadEnding = false;
             StartCoroutine(BeginLoadingScene("good-ending"));
         }
 
@@ -25,6 +28,14 @@ namespace Assets.Source.Components.Behavior
         public void GoToEndCredits()
         {
             StartCoroutine(BeginLoadingScene("end-credits"));
+        }
+
+        public void GoToIntroScreens()
+        {
+            // reset data
+
+
+            StartCoroutine(BeginLoadingScene("intro-screens"));
         }
 
         private IEnumerator BeginLoadingScene(string name)

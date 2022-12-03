@@ -2,14 +2,15 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &-8463460121869489553
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Masaaki-Regular Material
   m_Shader: {fileID: 4800000, guid: 128e987d567d4e2c824d754223b3f3b0, type: 3}
-  m_ShaderKeywords: 
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -27,6 +28,7 @@ Material:
         m_Texture: {fileID: -7481479905970463440}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
     - _ColorMask: 15
     - _CullMode: 0
@@ -102,9 +104,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: Masaaki-Regular
   m_EditorClassIdentifier: 
-  hashCode: 0
+  hashCode: -2071969590
   material: {fileID: -8463460121869489553}
-  materialHashCode: 0
+  materialHashCode: -1396089430
   m_Version: 1.1.0
   m_SourceFontFileGUID: 7d5cb115b3b86a34b95c084e896f58b5
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 7d5cb115b3b86a34b95c084e896f58b5, type: 3}

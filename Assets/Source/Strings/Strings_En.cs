@@ -29,11 +29,11 @@ namespace Assets.Source.Strings
             { "pickup-tutorial-xbox", @"Press <sprite=""Xbox-button-prompts"" index=2>  to pick up / drop items" },
             { "drop-tutorial-xbox", @"Press <sprite=""Xbox-button-prompts"" index=2> again to drop items" },
             { "drop-tutorial2-xbox", @"Press <sprite=""Xbox-button-prompts"" index=2> to drop items" },
-            { "throw-tutorial-xbox", "Press (Y) to throw items" },
-            { "interact-tutorial-xbox", "Press (B) to interact" },
+            { "throw-tutorial-xbox", @"Press <sprite=""Xbox-button-prompts"" index=3> to throw items" },
+            { "interact-tutorial-xbox", @"Press <sprite=""Xbox-button-prompts"" index=3> to throw items" },
             { "press-jump-to-begin-xbox", @"Press  <sprite=""Xbox-button-prompts"" index=0> to begin"},
-            { "press-again-to-reset-xbox", @"Press <sprite=""Xbox-button-prompts"" index=3> again to self-destruct. \nWarning! Progress will be lost."},
-            { "reset-tutorial-xbox", @"If you get stuck, press <sprite=""Xbox-button-prompts"" index=3> twice to reset."},
+            { "press-again-to-reset-xbox", @"Press <sprite=""Xbox-button-prompts"" index=4> again to self-destruct. \nWarning! Progress will be lost."},
+            { "reset-tutorial-xbox", @"If you get stuck, press <sprite=""Xbox-button-prompts"" index=4> twice to reset."},
             { "checkpoint-xbox", "Checkpoint reached"},
 
 

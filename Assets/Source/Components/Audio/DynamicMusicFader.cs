@@ -32,7 +32,7 @@ namespace Assets.Source.Components.Audio
 
         private Deferred<AudioClip> silentAudio = new Deferred<AudioClip>(() => Resources.Load<AudioClip>("SoundFX/environment/silent"));
 
-        private void Start()
+        private void Awake()
         {
             var gameObjectA = new GameObject("audio-source-a");
             sourceA = gameObjectA.AddComponent<AudioSource>();
@@ -133,6 +133,6 @@ namespace Assets.Source.Components.Audio
             GetNonActiveAudioSource().Stop();
         }
 
-        public void FadeOut() => QueueAudioClip(silentAudio.Value);
+           public void FadeOut() => QueueAudioClip(silentAudio.Value);
     }
 }

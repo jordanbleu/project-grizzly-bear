@@ -209,6 +209,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: xbox-button-prompts_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e9fafa9a0eb6c1458ac166fad07940a
+      internalID: 2106296514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -221,6 +242,7 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       xbox-button-prompts_1: -7725729932995432890
+      xbox-button-prompts_4: 2106296514
       xbox-button-prompts_3: -2114483346
       xbox-button-prompts_0: 1062792037882261425
       xbox-button-prompts_2: 7586367613549303075

@@ -1,6 +1,7 @@
 using System;
 using Assets.Editor.Attributes;
 using Assets.Source.Components.ActorControllers;
+using Assets.Source.Components.Audio;
 using Assets.Source.Components.Finders;
 using Assets.Source.Data;
 using UnityEngine;
@@ -33,6 +34,19 @@ namespace Source.Components.Data
         [SerializeField] private GameObject birdEmitter;
         [SerializeField] private GameObject tumbleweedEmitter;
 
+        // music for each checkpoint
+        [SerializeField] private AudioClip frame1AfterLasermusic;
+        [SerializeField] private AudioClip frame2Startmusic;
+        [SerializeField] private AudioClip frame2AfterWaterPlatformmusic;
+        [SerializeField] private AudioClip frame2AfterElevatorPuzzlmusic;
+        [SerializeField] private AudioClip frame2BeforeHardPlatformingAremusic;
+        [SerializeField] private AudioClip frame3Starmusic;
+        [SerializeField] private AudioClip frame3BeforeZoomoutPuzzlmusic;
+        [SerializeField] private AudioClip frame3AfterZoomoutPuzzlmusic;
+        [SerializeField] private AudioClip frame3AfterJunkPilePuzzlmusic;
+        [SerializeField] private AudioClip frame3BeforeMultiLevelPuzzlemusic;
+        [SerializeField] private AudioClip frame3AfterMultiLevelPuzzlemusic;
+        [SerializeField] private DynamicMusicFader music;
 
         [SerializeField]
         [ReadOnly]
@@ -76,10 +90,12 @@ namespace Source.Components.Data
                     break;
                 
                 case Checkpoint.Frame1_AfterLaser:
+                    music.QueueAudioClip(frame1AfterLasermusic);
                     player.transform.position = new Vector3(309, -3.64f, 0);
                     break;
                 
                 case Checkpoint.Frame2_Start:
+                    music.QueueAudioClip(frame2Startmusic);
                     parallaxObject.transform.Find("Desert").gameObject.SetActive(false);
                     parallaxObject.transform.Find("Underground").gameObject.SetActive(true);
                     player.transform.position = new Vector3(540f, -65f, 0);
@@ -88,6 +104,7 @@ namespace Source.Components.Data
                     break;
                 
                 case Checkpoint.Frame2_AfterWaterPlatforms:
+                    music.QueueAudioClip(frame2AfterWaterPlatformmusic);
                     parallaxObject.transform.Find("Desert").gameObject.SetActive(false);
                     parallaxObject.transform.Find("Underground").gameObject.SetActive(true);
                     player.transform.position = new Vector3(686, -28f, 0);
@@ -96,6 +113,7 @@ namespace Source.Components.Data
                     break;
                 
                 case Checkpoint.Frame2_AfterElevatorPuzzle:
+                    music.QueueAudioClip(frame2AfterElevatorPuzzlmusic);
                     parallaxObject.transform.Find("Desert").gameObject.SetActive(false);
                     parallaxObject.transform.Find("Underground").gameObject.SetActive(true);
                     player.transform.position = new Vector3(758, -18.7f, 0);
@@ -104,6 +122,7 @@ namespace Source.Components.Data
                     break;
                 
                 case Checkpoint.Frame2_BeforeHardPlatformingArea:
+                    music.QueueAudioClip(frame2BeforeHardPlatformingAremusic);
                     parallaxObject.transform.Find("Desert").gameObject.SetActive(false);
                     parallaxObject.transform.Find("Underground").gameObject.SetActive(true);
                     player.transform.position = new Vector3(931.75f, -63.65f, 0);
@@ -112,6 +131,7 @@ namespace Source.Components.Data
                     break;
                 
                 case Checkpoint.Frame3_Start:
+                    music.QueueAudioClip(frame3Starmusic);
                     parallaxObject.transform.Find("Desert").gameObject.SetActive(false);
                     parallaxObject.transform.Find("UndergroundPt2").gameObject.SetActive(true);
                     player.transform.position = new Vector3(0, -111, 0);
@@ -120,6 +140,7 @@ namespace Source.Components.Data
                     break;
                 
                 case Checkpoint.Frame3_BeforeZoomoutPuzzle:
+                    music.QueueAudioClip(frame3BeforeZoomoutPuzzlmusic);
                     parallaxObject.transform.Find("Desert").gameObject.SetActive(false);
                     parallaxObject.transform.Find("UndergroundPt2").gameObject.SetActive(true);
                     player.transform.position = new Vector3(393f, -124.67f, 0);
@@ -128,6 +149,7 @@ namespace Source.Components.Data
                     break;
                 
                 case Checkpoint.Frame3_AfterZoomoutPuzzle:
+                    music.QueueAudioClip(frame3AfterZoomoutPuzzlmusic);
                     parallaxObject.transform.Find("Desert").gameObject.SetActive(false);
                     parallaxObject.transform.Find("UndergroundPt2").gameObject.SetActive(true);
                     player.transform.position = new Vector3(317f, -124.67f, 0);
@@ -136,6 +158,7 @@ namespace Source.Components.Data
                     break;
                 
                 case Checkpoint.Frame3_AfterJunkPilePuzzle:
+                    music.QueueAudioClip(frame3AfterJunkPilePuzzlmusic);
                     parallaxObject.transform.Find("Desert").gameObject.SetActive(false);
                     parallaxObject.transform.Find("UndergroundPt2").gameObject.SetActive(true);
                     player.transform.position = new Vector3(545.5f, -110.5f, 0);
@@ -144,6 +167,7 @@ namespace Source.Components.Data
                     break;
                 
                 case Checkpoint.Frame3_BeforeMultiLevelPuzzle:
+                    music.QueueAudioClip(frame3BeforeMultiLevelPuzzlemusic);
                     parallaxObject.transform.Find("Desert").gameObject.SetActive(false);
                     parallaxObject.transform.Find("UndergroundPt2").gameObject.SetActive(true);
                     player.transform.position = new Vector3(637.5f, -152.7f, 0);
@@ -152,6 +176,7 @@ namespace Source.Components.Data
                     break;
                 
                 case Checkpoint.Frame3_AfterMultiLevelPuzzle:
+                    music.QueueAudioClip(frame3AfterMultiLevelPuzzlemusic);
                     parallaxObject.transform.Find("Desert").gameObject.SetActive(false);
                     parallaxObject.transform.Find("UndergroundPt2").gameObject.SetActive(true);
                     player.transform.position = new Vector3(669.5f, -104.5f, 0);

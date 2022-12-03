@@ -279,6 +279,9 @@ namespace Assets.Source.Components.ActorControllers
             return new Vector2(xs, ys);
         }
 
+
+
+
         private void OnTriggerEnter2D(Collider2D col)
         {
             if (col.gameObject.TryGetComponent<RigidBodyVelocityEffector>(out var rbve))
@@ -422,6 +425,8 @@ namespace Assets.Source.Components.ActorControllers
 
         #region Animator Callbacks
         // The below callbacks are invoked via the PlayerAnimationHook
+        public void PlayServoSound() => soundEffects.PlayGetUp();
+        public void PlayThudSound() => soundEffects.PlayThud();
 
         public void AnimatorPickup() {
             // Confusingly enough, this animator event is called from the

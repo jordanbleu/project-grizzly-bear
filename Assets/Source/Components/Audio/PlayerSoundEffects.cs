@@ -25,6 +25,12 @@ namespace Assets.Source.Components.Audio
         [SerializeField]
         private AudioClip switchSound;
 
+        [SerializeField]
+        private AudioClip thud;
+
+        [SerializeField]
+        private AudioClip getUp;
+
         private void Start()
         {
             objectFactory = GetComponent<SingleUseObjectFactory>();
@@ -44,5 +50,11 @@ namespace Assets.Source.Components.Audio
 
         public void PlaySwitchSOund() =>
             objectFactory?.PlaySound(switchSound);
+
+        public void PlayThud() =>  
+            objectFactory?.PlaySound(thud);
+
+        public void PlayGetUp() =>
+            objectFactory?.PlaySound(getUp);
     }
 }
