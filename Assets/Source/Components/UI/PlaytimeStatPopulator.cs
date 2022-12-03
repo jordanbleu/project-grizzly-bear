@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using Assets.Source.Data;
 
 namespace Assets.Source.Components.UI
 {
@@ -7,7 +6,7 @@ namespace Assets.Source.Components.UI
     {
         public override string GetStatText() 
         {
-            var ts = TimeSpan.FromSeconds(Time.realtimeSinceStartup);
+            var ts = InMemoryGameData.FinishTime - InMemoryGameData.StartTime;
             // format to {hours}:{minutes}:{seconds}:{fractions of a second}
             return ts.ToString("hh':'mm':'ss'.'fff");
         }

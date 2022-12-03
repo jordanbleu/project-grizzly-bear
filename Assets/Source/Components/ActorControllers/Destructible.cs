@@ -29,6 +29,9 @@ namespace Assets.Source.Components.ActorControllers
         }
 
         public void DecreaseHealth(int amount) {
+
+            amount = Mathf.Clamp(amount, 0, Health);
+
             if (health > 0)
             {
                 if (gameObject.tag == "Player") {

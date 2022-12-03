@@ -44,5 +44,15 @@ namespace Assets.Source.Data
 
         public static bool IsBadEnding { get; set; }
 
+        /// <summary>
+        /// The date / time that the session started.  Set via <seealso cref="GameDataResetter"/>
+        /// </summary>
+        public static DateTime StartTime { get; set; }
+
+        /// <summary>
+        /// The date / time the session ended.  Set via <seealso cref="SceneLoader"/>
+        /// </summary>
+        public static DateTime FinishTime { get; set; }
+
     }
 }

@@ -25,15 +25,15 @@ namespace Assets.Source.Strings
             { "checkpoint-kbm", "Checkpoint reached"},
 
             // xbox controls
-            { "jump-tutorial-xbox", @"Press <sprite=""Xbox-button-prompts"" index=0> to jump" },
-            { "pickup-tutorial-xbox", @"Press <sprite=""Xbox-button-prompts"" index=2>  to pick up / drop items" },
-            { "drop-tutorial-xbox", @"Press <sprite=""Xbox-button-prompts"" index=2> again to drop items" },
-            { "drop-tutorial2-xbox", @"Press <sprite=""Xbox-button-prompts"" index=2> to drop items" },
-            { "throw-tutorial-xbox", @"Press <sprite=""Xbox-button-prompts"" index=3> to throw items" },
-            { "interact-tutorial-xbox", @"Press <sprite=""Xbox-button-prompts"" index=1> to interact" },
-            { "press-jump-to-begin-xbox", @"Press  <sprite=""Xbox-button-prompts"" index=0> to begin"},
-            { "press-again-to-reset-xbox", @"Press <sprite=""Xbox-button-prompts"" index=4> again to self-destruct. Progress will be lost."},
-            { "reset-tutorial-xbox", @"If you get stuck, press <sprite=""Xbox-button-prompts"" index=4> twice to self-destruct"},
+            { "jump-tutorial-xbox", @"Press <sprite=""xbox-button-prompts-upd"" index=0> to jump" },
+            { "pickup-tutorial-xbox", @"Press <sprite=""xbox-button-prompts-upd"" index=2>  to pick up / drop items" },
+            { "drop-tutorial-xbox", @"Press <sprite=""xbox-button-prompts-upd"" index=2> again to drop items" },
+            { "drop-tutorial2-xbox", @"Press <sprite=""xbox-button-prompts-upd"" index=2> to drop items" },
+            { "throw-tutorial-xbox", @"Press <sprite=""xbox-button-prompts-upd"" index=3> to throw items" },
+            { "interact-tutorial-xbox", @"Press <sprite=""xbox-button-prompts-upd"" index=1> to interact" },
+            { "press-jump-to-begin-xbox", @"Press  <sprite=""xbox-button-prompts-upd"" index=0> to begin"},
+            { "press-again-to-reset-xbox", @"Press <sprite=""xbox-button-prompts-upd"" index=4> again to self-destruct. Progress will be lost."},
+            { "reset-tutorial-xbox", @"If you get stuck, press <sprite=""xbox-button-prompts-upd"" index=4> twice to self-destruct"},
             { "checkpoint-xbox", "Checkpoint reached"},
 
 

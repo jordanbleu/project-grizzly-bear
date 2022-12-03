@@ -143,7 +143,7 @@ namespace Source.Components.Data
                     music.QueueAudioClip(frame3BeforeZoomoutPuzzlmusic);
                     parallaxObject.transform.Find("Desert").gameObject.SetActive(false);
                     parallaxObject.transform.Find("UndergroundPt2").gameObject.SetActive(true);
-                    player.transform.position = new Vector3(393f, -124.67f, 0);
+                    player.transform.position = new Vector3(317f, -124.67f, 0);
                     frameStart.SetActive(false);
                     frameUnderground2.SetActive(true);
                     break;
@@ -152,7 +152,7 @@ namespace Source.Components.Data
                     music.QueueAudioClip(frame3AfterZoomoutPuzzlmusic);
                     parallaxObject.transform.Find("Desert").gameObject.SetActive(false);
                     parallaxObject.transform.Find("UndergroundPt2").gameObject.SetActive(true);
-                    player.transform.position = new Vector3(317f, -124.67f, 0);
+                    player.transform.position = new Vector3(393f, -124.67f, 0);
                     frameStart.SetActive(false);
                     frameUnderground2.SetActive(true);
                     break;

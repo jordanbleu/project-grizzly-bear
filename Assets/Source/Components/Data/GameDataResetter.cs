@@ -1,4 +1,5 @@
 ﻿using Assets.Source.Data;
+using System;
 using UnityEngine;
 
 namespace Assets.Source.Components.Data
@@ -16,6 +17,7 @@ namespace Assets.Source.Components.Data
             InMemoryGameData.ButtonsPressed = 0;
             InMemoryGameData.Damage = 0;
             InMemoryGameData.IsBadEnding = false;
+            InMemoryGameData.StartTime = DateTime.Now;
         }
     }
 }
