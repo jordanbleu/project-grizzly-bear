@@ -20,8 +20,8 @@ namespace Assets.Source.Strings
             { "interact-tutorial-kbm", "Press [F] to interact" },
             { "drop-tutorial2-kbm", "Press [LMB] to drop items" },
             { "press-jump-to-begin-kbm", "Press [Space] to begin"},
-            { "press-again-to-reset-kbm", "Press [F5] again to self-destruct.  Progress will be lost."},
-            { "reset-tutorial-kbm", "If you get stuck, press [F5] twice to self-destruct"},
+            { "press-again-to-reset-kbm", "Press [Backspace] again to self-destruct.  Progress will be lost."},
+            { "reset-tutorial-kbm", "Press [Backspace] to self-destruct"},
             { "checkpoint-kbm", "Checkpoint reached"},
 
             // xbox controls
